@@ -1,0 +1,5 @@
+---
+- name: Git | Copies git config | template
+  template:
+    src: git/gitconfig.j2
+    dest: "{{ dotfiles_user_home }}/.gitconfig"

@@ -1,0 +1,167 @@
+###############################################################################
+# BEGIN: Base/Nix
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/{{ zsh_username }}/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/nix.sh
+#source ~/.nix-profile/etc/profile.d/nix.sh
+# END: Base
+###############################################################################
+
+###############################################################################
+# BEGIN: Environment
+export EDITOR={{ nix_bin }}/nvim
+export VISUAL={{ nix_bin }}/nvim
+# END: Environment
+###############################################################################
+
+###############################################################################
+# BEGIN: Others
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+eval "$(starship init zsh)"
+eval "$(navi widget zsh)"
+# source {{ dotfiles_home }}/roles/zsh/files/aliases.zsh
+# source {{ dotfiles_home }}/roles/erlang/files/erlang.zsh
+# source {{ dotfiles_home }}/roles/docker/files/docker.zsh
+# source {{ dotfiles_home }}/roles/fzf/files/fzf.zsh
+# source {{ dotfiles_home }}/roles/flutter/files/flutter.zsh
+# source {{ dotfiles_home }}/roles/microsoft/files/microsoft.zsh
+
+# END: Others
+###############################################################################
+
+###############################################################################
+# BEGIN: FZF
+# Options for fzf
+export FZF_COMPLETION_OPTS='+c -x'
+export FZF_DEFAULT_COMMAND='fd --type f'
+#export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+export FZF_DEFAULT_OPTS='
+  --height 75% --multi --reverse
+  --bind ctrl-f:page-down,ctrl-b:page-up
+'
+#export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
+
+fzf_find_edit() {
+    local file=$(
+    fzf --query="$1" --no-multi --select-1 --exit-0 \
+        --preview 'bat --color=always --line-range :500 {}'
+    )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}
+fzf_change_directory() {
+    local directory=$(
+    fd --type d | \
+        fzf --query="$1" --no-multi --select-1 --exit-0 \
+        --preview 'tree -C {} | head -100'
+    )
+    if [[ -n $directory ]]; then
+        cd "$directory"
+    fi
+}
+fzf_grep_edit(){
+    if [[ $# == 0 ]]; then
+        echo 'Error: search term was not provided.'
+        return
+    fi
+    local match=$(
+    rg --color=never --line-number "$1" |
+        fzf --no-multi --delimiter : \
+        --preview "bat --color=always --line-range {2}: {1}"
+    )
+    local file=$(echo "$match" | cut -d':' -f1)
+    if [[ -n $file ]]; then
+        $EDITOR "$file" +$(echo "$match" | cut -d':' -f2)
+    fi
+}
+fzf_kill() {
+    local pid_col
+    if [[ $(uname) = Linux ]]; then
+        pid_col=2
+    elif [[ $(uname) = Darwin ]]; then
+        pid_col=3;
+    else
+        echo 'Error: unknown platform'
+        return
+    fi
+    local pids=$(
+        ps -f -u $USER | sed 1d | fzf --multi | tr -s [:blank:] | cut -d' ' -f"$pid_col"
+    )
+    if [[ -n $pids ]]; then
+        echo "$pids" | xargs kill -9 "$@"
+    fi
+}
+# # Use fd (https://github.com/sharkdp/fd) instead of the default find
+# # # command for listing path candidates.
+# # # - The first argument to the function ($1) is the base path to start
+# # traversal
+# # # - See the source code (completion.{bash,zsh}) for the details.
+# _fzf_compgen_path() {
+#     fd --hidden --follow --exclude ".svn" . "$1"
+# }
+# 
+# # Use fd to generate the list for directory completion
+# _fzf_compgen_dir() {
+#     fd --type d --hidden --follow --exclude ".svn" . "$1"
+# }
+# END: FZF
+###############################################################################
+
+###############################################################################
+# BEGIN: Aliases
+alias v=nvim
+alias cat=bat
+alias ls='exa  --group-directories-first'
+alias ffe='fzf_find_edit'
+alias fcd='fzf_change_directory'
+alias fge='fzf_grep_edit'
+alias fkill='fzf_kill'
+alias fsk='sk --ansi -i -c '"'"'fd --type f "{}"'"'"''
+alias gsk='sk --ansi -i -c '"'"'rg --color=always --line-number "{}"'"'"''
+alias dsk='sk --ansi -i -c '"'"'fd --type d "{}"'"'"''
+alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
+# END: Aliases
+###############################################################################
+
+###############################################################################
+# BEGIN: SSH
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+
+unset env
+# END: SSH

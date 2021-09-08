@@ -1,0 +1,40 @@
+---
+- name: Setup Neovim Config Directory
+  file:
+    path: "{{ nvim_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Copies Neovim Config | template
+  changed_when: false
+  template:
+    src: nvim/init.vim.j2
+    dest: "{{ nvim_config_dir }}/init.vim"
+
+- name: Install Neovim COC Plugin Settings
+  changed_when: false
+  template:
+    src: nvim/coc-settings.json.j2
+    dest: "{{ nvim_coc_settings_file }}"
+
+- name: Setup Vim-Plug
+  file:
+    path: "{{ nvim_vim_plug_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Install Vim-Plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ nvim_vim_plug_dir }}/plug.vim"
+
+- name: Setup Neovim Plugin Config Directory
+  file:
+    path: "{{ nvim_plugin_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Install Neovim Plugin Configs
+  copy:
+    src: nvim/nvim-config/
+    dest: "{{ nvim_plugin_config_dir }}"

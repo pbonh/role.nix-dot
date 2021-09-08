@@ -1,2 +1,12 @@
 ---
-# tasks file for nix-dot
+- name: Install Zsh Config
+  import_tasks: install_zsh.yml
+
+- name: Install Git Config
+  import_tasks: install_git.yml
+
+- name: Install Navi Config
+  import_tasks: install_navi.yml
+
+- name: Install Neovim Config
+  import_tasks: install_neovim.yml
