@@ -3,6 +3,7 @@ dotfiles_user_home: "{{ ansible_env.HOME }}"
 code_checkout_path: "{{ dotfiles_user_home }}/Code"
 nix_path: "{{ lookup('env', 'HOME') }}/.nix-profile"
 nix_bin: "{{ nix_path }}/bin"
+nix_share: "{{ nix_path }}/share"
 nix_buildenv_name: dev-pack
 bin_directory: "{{ dotfiles_user_home }}/.local/bin"
 xdg_share_dir: "{{ dotfiles_user_home }}/.local/share"
