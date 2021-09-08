@@ -3,6 +3,12 @@
 # Update Installed Packages
 nix-env -u '*'
 
+# List Installed Packages
+nix-env -f '<nixpkgs>' -qa
+
+# Build Nix Environment
+nix-env -i {{ nix_buildenv_name }}
+
 % git, code
 
 # Change branch
