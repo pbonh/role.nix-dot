@@ -11,8 +11,7 @@ lua <<EOF
         "cpp",
         "json",
         "yaml",
-        "rust",
-        "markdown"
+        "rust"
       },
     }
 
