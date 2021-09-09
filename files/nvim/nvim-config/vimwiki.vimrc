@@ -1,4 +1,4 @@
-  let g:vimwiki_list = [{'path': '~/Github.src/github.com/pbonh/org/'}]
+" let g:vimwiki_list = [{'path': '~/Github.src/github.com/pbonh/org/'}]
 " let g:vimwiki_list = [{'path': '~/Github.src/github.com/pbonh/org/', 'syntax': 'markdown', 'ext': '.org'}]
 " let g:vimwiki_key_mappings =
 "   \ {
@@ -14,6 +14,6 @@
 "   \   'mouse': 0,
 "   \ }
 
-  autocmd FileType wiki nunmap <buffer> <cr>
-  autocmd FileType wiki nunmap <buffer> :
-  let g:vimwiki_folding = 'syntax'
+" autocmd FileType wiki nunmap <buffer> <cr>
+" autocmd FileType wiki nunmap <buffer> :
+" let g:vimwiki_folding = 'syntax'
