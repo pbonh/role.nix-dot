@@ -10,7 +10,7 @@ lua <<EOF
     },
 
     require('nvim-treesitter.configs').setup() {
-      ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "markdown", "maintained" },
+      ensure_installed = { "norg", "haskell", "cpp", "c", "rust", "markdown" },
       ignore_install = { "javascript" }, -- List of parsers to ignore installing
       highlight = {
         enable = true,              -- false will disable the whole extension
