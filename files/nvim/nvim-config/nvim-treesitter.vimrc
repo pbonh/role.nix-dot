@@ -7,7 +7,7 @@ lua <<EOF
             files = { "src/parser.c", "src/scanner.cc" },
             branch = "main"
         },
-    }
+    },
 
     require('nvim-treesitter.configs').setup() {
       ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "markdown", "maintained" },
