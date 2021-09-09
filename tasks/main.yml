@@ -10,3 +10,7 @@
 
 - name: Install Neovim Config
   import_tasks: install_neovim.yml
+
+- name: Install Ranger-Zoxide Plugin
+  import_tasks: install_ranger_zoxide.yml
+
