@@ -23,5 +23,5 @@ lua <<EOF
             files = { "src/parser.c", "src/scanner.cc" },
             branch = "main"
         },
-    },
+    }
 EOF
