@@ -1,13 +1,14 @@
 ---
 dotfiles_user_home: "{{ ansible_env.HOME }}"
 code_checkout_path: "{{ dotfiles_user_home }}/Code"
+bin_directory: "{{ dotfiles_user_home }}/.local/bin"
+xdg_share_dir: "{{ dotfiles_user_home }}/.local/share"
+xdg_config_dir: "{{ dotfiles_user_home }}/.config"
 nix_path: "{{ lookup('env', 'HOME') }}/.nix-profile"
 nix_bin: "{{ nix_path }}/bin"
 nix_share: "{{ nix_path }}/share"
 nix_buildenv_name: dev-pack
-bin_directory: "{{ dotfiles_user_home }}/.local/bin"
-xdg_share_dir: "{{ dotfiles_user_home }}/.local/share"
-xdg_config_dir: "{{ dotfiles_user_home }}/.config"
+nix_config: "{{ xdg_config_dir }}/nixpkgs/config.nix"
 zsh_username: "{{ lookup('env', 'USER') }}"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
