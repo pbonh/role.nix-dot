@@ -9,7 +9,7 @@
   changed_when: false
   template:
     src: nvim/init.vim.j2
-    dest: "{{ nvim_config_dir }}/init.vim"
+    dest: "{{ nvim_init }}"
 
 - name: Install Neovim COC Plugin Settings
   changed_when: false
