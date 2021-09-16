@@ -4,3 +4,14 @@
   template:
     src: zsh/zshrc.j2
     dest: "{{ dotfiles_user_home }}/.zshrc"
+
+- name: Zsh | Setup Zsh Plugins Directory | directory
+  file:
+    path: "{{ zsh_plugins }}"
+    state: directory
+    mode: '0755'
+
+- name: Zsh | Install FZF-Tab Plugin | git
+  git:
+    repo: "https://github.com/Aloxaf/fzf-tab"
+    dest: "{{ zsh_fzf_tab }}"

@@ -125,7 +125,7 @@ set number relativenumber
   tnoremap <C-l> <C-\><C-n><C-w>l
   tnoremap <C-w>l <C-\><C-n><C-w><C-l>
   "au BufEnter 'term://*' startinsert
-  set shell={{ nix_bin }}/zsh
+  set shell={{ nvim_shell }}
   augroup TerminalStuff
       au!
       autocmd TermOpen * setlocal nonumber norelativenumber

@@ -38,3 +38,10 @@
   copy:
     src: nvim/nvim-config/
     dest: "{{ nvim_plugin_config_dir }}"
+
+- name: Install Neovim Plugin Configs
+  template:
+    src: 'nvim/nvim-config/{{ item.src }}'
+    dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
+  with_filetree: '../templates'
+  when: item.state == 'file'

@@ -46,6 +46,7 @@ eval "$(navi widget zsh)"
 
 ###############################################################################
 # BEGIN: FZF
+source {{ zsh_fzf_tab }}/fzf-tab.plugin.zsh
 # Options for fzf
 export FZF_COMPLETION_OPTS='+c -x'
 export FZF_DEFAULT_COMMAND='fd --type f'

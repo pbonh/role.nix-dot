@@ -3,13 +3,16 @@ xnoremap <leader>s :Floaterms<cr>
 let g:fzf_floaterm_newentries = {
   \ '+lazygit' : {
     \ 'title': 'Lazygit',
-    \ 'cmd': 'lazygit' },
+    \ 'cmd': '{{ nix_bin }}/lazygit' },
   \ '+zsh' : {
     \ 'title': 'Zsh Shell',
-    \ 'cmd': 'zsh' },
+    \ 'cmd': '{{ nix_bin }}/zsh' },
   \ '+ranger' : {
     \ 'title': 'Ranger File Manager',
-    \ 'cmd': 'ranger' },
+    \ 'cmd': '{{ nix_bin }}/ranger' },
+  \ '+broot' : {
+    \ 'title': 'Broot File Manager',
+    \ 'cmd': '{{ nix_bin }}/br' },
   \ '+pwsh' : {
     \ 'title': 'Powershell',
     \ 'cmd': 'pwsh' }
