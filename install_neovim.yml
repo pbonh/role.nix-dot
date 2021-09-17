@@ -45,3 +45,12 @@
     dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
   with_filetree: '../templates/nvim/nvim-config'
   when: item.state == 'file'
+
+- name: Check if Neovim Plugins Installed
+  find:
+    paths: "{{ nvim_plugged_dir }}/"
+  register: pluginsInstalled
+
+- name: Install Neovim Plugins
+  when: pluginsInstalled.matched > 0
+  command: "{{ nix_bin }}/nvim --headless +PlugInstall +qall"
