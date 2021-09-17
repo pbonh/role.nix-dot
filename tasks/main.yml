@@ -14,3 +14,6 @@
 - name: Install Ranger-Zoxide Plugin
   import_tasks: install_ranger_zoxide.yml
 
+- name: Install Broot
+  import_tasks: install_broot.yml
+

@@ -4,6 +4,8 @@ let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
 "set guicursor=
 " Plugins ---------------------------------------------------------------------
 call plug#begin('{{ nvim_plugged_dir }}')
+  " Treesitter ----------------------------------------------------------------
+  Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
   " Motion/Text Objects -------------------------------------------------------
   " Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-surround'
@@ -17,8 +19,11 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " ---------------------------------------------------------------------------
   Plug 'ryanoasis/vim-devicons'
   " ---------------------------------------------------------------------------
-  Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
-  Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+  Plug 'rbgrouleff/bclose.vim'
+  Plug 'skyuplam/broot.nvim'
+  Plug 'kevinhwang91/rnvimr'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-neorg/neorg'
   Plug 'tpope/vim-dispatch' | Plug 'radenling/vim-dispatch-neovim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'juneedahamed/vc.vim'
@@ -33,7 +38,6 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'skywind3000/asyncrun.vim'
   Plug 'skywind3000/asyncrun.extra'
   Plug 'mhinz/vim-signify'
-  Plug 'kevinhwang91/rnvimr'
   " Split UI ------------------------------------------------------------------
   "Plug 'Iron-E/vim-libmodal'
   "Plug 'Iron-E/nvim-libmodal'
