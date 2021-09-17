@@ -49,8 +49,9 @@
 - name: Check if Neovim Plugins Installed
   find:
     paths: "{{ nvim_plugged_dir }}/"
+    file_type: directory
   register: pluginsInstalled
 
 - name: Install Neovim Plugins
-  when: pluginsInstalled.matched > 0
+  when: pluginsInstalled.matched == 0
   command: "{{ nix_bin }}/nvim --headless +PlugInstall +qall"
