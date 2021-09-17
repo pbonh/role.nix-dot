@@ -1,3 +1,4 @@
+let g:floaterm_autoinsert = v:true
 "nnoremap <C-\> :FloatermNew<cr>
 "nnoremap S :FloatermToggle<cr>
 "nnoremap <C-t> :FloatermNew ranger<cr>

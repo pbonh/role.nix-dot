@@ -1,4 +1,3 @@
-let g:floaterm_autoinsert = 'true'
 " let g:asyncrun_open = 6
 " let g:asynctasks_term_pos="terminal"
 
