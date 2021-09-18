@@ -18,7 +18,7 @@
   nnoremap <C-q> :RG<cr>
   nnoremap <leader>/ :RGCWord<cr>
 
-  nnoremap : :Commands<cr>
+  nnoremap <C-@> :Commands<cr>
 
   function! s:fzf_sink(what)
       let p1 = stridx(a:what, '<')
