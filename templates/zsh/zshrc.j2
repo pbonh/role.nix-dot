@@ -49,17 +49,17 @@ eval "$(navi widget zsh)"
 source {{ zsh_fzf_tab }}/fzf-tab.plugin.zsh
 # Options for fzf
 export FZF_COMPLETION_OPTS='+c -x'
-export FZF_DEFAULT_COMMAND='fd --type f'
-#export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+export FZF_DEFAULT_COMMAND='{{ nix_bin }}/fd --type f'
+#export FZF_DEFAULT_COMMAND='{{ nix_bin }}/fd --type f --color=never'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
-export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+export FZF_ALT_C_COMMAND='{{ nix_bin }}/fd --type d . --color=never'
 export FZF_DEFAULT_OPTS='
   --height 75% --multi --reverse
   --bind ctrl-f:page-down,ctrl-b:page-up
 '
 #export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
-export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
+export SKIM_DEFAULT_COMMAND="{{ nix_bin }}/fd --type f || git ls-tree -r --name-only HEAD || {{ nix_bin }}/rg --files || find ."
 
 fzf_find_edit() {
     local file=$(
@@ -72,7 +72,7 @@ fzf_find_edit() {
 }
 fzf_change_directory() {
     local directory=$(
-    fd --type d | \
+    {{ nix_bin }}/fd --type d | \
         fzf --query="$1" --no-multi --select-1 --exit-0 \
         --preview 'tree -C {} | head -100'
     )
@@ -86,7 +86,7 @@ fzf_grep_edit(){
         return
     fi
     local match=$(
-    rg --color=never --line-number "$1" |
+    {{ nix_bin }}/rg --color=never --line-number "$1" |
         fzf --no-multi --delimiter : \
         --preview "bat --color=always --line-range {2}: {1}"
     )
@@ -118,12 +118,12 @@ fzf_kill() {
 # # traversal
 # # # - See the source code (completion.{bash,zsh}) for the details.
 # _fzf_compgen_path() {
-#     fd --hidden --follow --exclude ".svn" . "$1"
+#     {{ nix_bin }}/fd --hidden --follow --exclude ".svn" . "$1"
 # }
 # 
 # # Use fd to generate the list for directory completion
 # _fzf_compgen_dir() {
-#     fd --type d --hidden --follow --exclude ".svn" . "$1"
+#     {{ nix_bin }}/fd --type d --hidden --follow --exclude ".svn" . "$1"
 # }
 # END: FZF
 ###############################################################################
@@ -137,9 +137,9 @@ alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
 alias fge='fzf_grep_edit'
 alias fkill='fzf_kill'
-alias fsk='sk --ansi -i -c '"'"'fd --type f "{}"'"'"''
-alias gsk='sk --ansi -i -c '"'"'rg --color=always --line-number "{}"'"'"''
-alias dsk='sk --ansi -i -c '"'"'fd --type d "{}"'"'"''
+alias fsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
+alias gsk='sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
+alias dsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
 alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
 # END: Aliases
 ###############################################################################
