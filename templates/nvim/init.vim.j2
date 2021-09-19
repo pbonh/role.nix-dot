@@ -65,6 +65,8 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'liuchengxu/vista.vim'
   Plug 'antoinemadec/coc-fzf'
+  " DAP(Debug Adapter Protocol) Debugger --------------------------------------
+  Plug 'mfussenegger/nvim-dap'
   " Language Server Protocol Providers ----------------------------------------
   " Language Server Protocol Providers(End) -----------------------------------
 call plug#end()
@@ -223,3 +225,6 @@ lua << EOF
     }
 EOF
 " Treesitter/Neorg Settings(End) ----------------------------------------------
+
+" Extra Plugin Settings -------------------------------------------------------
+" Extra Plugin Settings(End) --------------------------------------------------
