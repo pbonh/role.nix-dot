@@ -13,6 +13,6 @@
 - name: Broot | Configure Extra Broot Configs | template
   template:
     src: '{{ item.src }}'
-    dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
+    dest: "{{ broot_config }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
   with_filetree: '../templates/broot/broot-plugins'
   when: item.state == 'file'
