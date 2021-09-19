@@ -63,6 +63,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'pearofducks/ansible-vim'
   " Language Server Protocol --------------------------------------------------
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'fannheyward/telescope-coc.nvim'
   Plug 'liuchengxu/vista.vim'
   Plug 'antoinemadec/coc-fzf'
   " DAP(Debug Adapter Protocol) Debugger --------------------------------------
@@ -179,6 +180,13 @@ set number relativenumber
     exe 'source' f
   endfor
 " Plugin Settings(End) --------------------------------------------------------
+
+" Telescope Settings ----------------------------------------------------------
+  require('telescope').load_extension('coc')
+  nnoremap <silent> g/ :Telescope coc document_symbols<cr>
+  nnoremap <silent> gS :Telescope coc workspace_symbols<cr>
+  nnoremap <silent> gr :Telescope coc references<cr>
+" Telescope Settings(End) -----------------------------------------------------
 
 " Treesitter/Neorg Settings ---------------------------------------------------
 lua <<EOF
