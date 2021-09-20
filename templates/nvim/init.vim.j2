@@ -182,7 +182,9 @@ set number relativenumber
 " Plugin Settings(End) --------------------------------------------------------
 
 " Telescope Settings ----------------------------------------------------------
-  require('telescope').load_extension('coc')
+lua <<EOF
+    require('telescope').load_extension('coc')
+EOF
   nnoremap <silent> g/ :Telescope coc document_symbols<cr>
   nnoremap <silent> gS :Telescope coc workspace_symbols<cr>
   nnoremap <silent> gr :Telescope coc references<cr>
