@@ -24,6 +24,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'kevinhwang91/rnvimr'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-neorg/neorg'
+  Plug 'sbdchd/neoformat'
   Plug 'tpope/vim-dispatch' | Plug 'radenling/vim-dispatch-neovim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'juneedahamed/vc.vim'
@@ -235,6 +236,13 @@ lua << EOF
     }
 EOF
 " Treesitter/Neorg Settings(End) ----------------------------------------------
+
+" Neoformat Settings ----------------------------------------------------------
+let g:neoformat_enabled_shell = ['shfmt']
+let g:neoformat_enabled_yaml = ['prettier']
+let g:neoformat_enabled_json = ['prettier']
+let g:shfmt_opt="-ci"
+" Neoformat Settings(End) -----------------------------------------------------
 
 " Extra Plugin Settings -------------------------------------------------------
 " Extra Plugin Settings(End) --------------------------------------------------
