@@ -186,6 +186,11 @@ set number relativenumber
 lua <<EOF
     require('telescope').load_extension('coc')
 EOF
+  nnoremap <silent> gD :Telescope coc definitions<cr>
+  nnoremap <silent> gd :Telescope coc declarations<cr>
+  nnoremap <silent> gy :Telescope coc type_definitions<cr>
+  nnoremap <silent> gi :Telescope coc implementations<cr>
+  nnoremap <silent> gl :Telescope coc locations<cr>
   nnoremap <silent> g/ :Telescope coc document_symbols<cr>
   nnoremap <silent> gS :Telescope coc workspace_symbols<cr>
   nnoremap <silent> gr :Telescope coc references<cr>
