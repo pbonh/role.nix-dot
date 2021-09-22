@@ -17,3 +17,5 @@
 - name: Install Broot
   import_tasks: install_broot.yml
 
+- name: Install Bookmarks
+  import_tasks: install_bookmarks.yml

@@ -28,3 +28,5 @@ ranger_config: "{{ xdg_config_dir }}/ranger"
 ranger_plugins: "{{ ranger_config }}/plugins"
 broot_config: "{{ xdg_config_dir }}/broot"
 broot_config_file: "{{ broot_config }}/conf.hjson"
+cdg_paths_global: /etc/cdg_paths
+cdg_paths_user: "{{ dotfiles_user_home }}/.cdg_paths"
