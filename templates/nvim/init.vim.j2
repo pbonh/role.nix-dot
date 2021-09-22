@@ -52,9 +52,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'junegunn/fzf.vim'
   Plug 'voldikss/fzf-floaterm'
   Plug 'voldikss/vim-floaterm'
-  "Plug 'yuki-ycino/fzf-preview.vim'
-  "Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-  "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
   " Syntax Highlighting -------------------------------------------------------
   Plug 'vim-scripts/bnf.vim'
   Plug 'vim-scripts/ebnf.vim'
@@ -63,7 +61,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " Ansible -------------------------------------------------------------------
   Plug 'pearofducks/ansible-vim'
   " Language Server Protocol --------------------------------------------------
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc.nvim', {'do': '{{ nix_bin }}/yarn install --frozen-lockfile'}
   Plug 'fannheyward/telescope-coc.nvim'
   Plug 'liuchengxu/vista.vim'
   Plug 'antoinemadec/coc-fzf'
