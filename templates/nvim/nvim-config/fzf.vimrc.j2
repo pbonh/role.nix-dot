@@ -16,7 +16,7 @@
   command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
   command! -nargs=* -bang RGCWord call RipgrepFzf(expand('<cword>'), <bang>0)
   nnoremap <C-q> :RG<cr>
-  nnoremap <leader>/ :RGCWord<cr>
+  nnoremap _ :RGCWord<cr>
 
   nnoremap : :Commands<cr>
 
