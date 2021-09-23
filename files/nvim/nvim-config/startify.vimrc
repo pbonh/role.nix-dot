@@ -1,8 +1,8 @@
 let g:startify_list_order = [ 'commands', 'files', 'dir', 'bookmarks', 'sessions' ]
 let g:startify_commands = [
-        \ {'b': ['Broot File Manager', 'FloatermNew br']},
-        \ {'r': ['Ranger File Manager', 'Ranger']},
-        \ {'c': ['CMake Project(Debug, Makefile)', 'CMake']},
+        \ {'b': ['Broot File Manager', 'FloatermNew broot']},
+        \ {'r': ['Ranger File Manager', 'FloatermNew ranger']},
+        \ {'g': ['Lazygit Viewer', 'FloatermNew lazygit']},
         \ {'t': ['Launch Shell', 'Tnew']},
         \ {'pi': ['Install Plugins', 'PlugInstall']},
         \ {'pc': ['Clean Plugins', 'PlugClean']},
