@@ -54,9 +54,9 @@ call plug#begin('{{ nvim_plugged_dir }}')
   "Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
   Plug 'voldikss/fzf-floaterm'
   Plug 'voldikss/vim-floaterm'
-  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
   " Syntax Highlighting -------------------------------------------------------
   Plug 'vim-scripts/bnf.vim'
   Plug 'vim-scripts/ebnf.vim'
@@ -66,7 +66,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'pearofducks/ansible-vim'
   " Language Server Protocol --------------------------------------------------
   Plug 'neoclide/coc.nvim', {'do': '{{ nix_bin }}/yarn install --frozen-lockfile'}
-  Plug 'fannheyward/telescope-coc.nvim'
+  "Plug 'fannheyward/telescope-coc.nvim'
   Plug 'liuchengxu/vista.vim'
   Plug 'antoinemadec/coc-fzf'
   " DAP(Debug Adapter Protocol) Debugger --------------------------------------
@@ -200,18 +200,18 @@ set number relativenumber
 " Plugin Settings(End) --------------------------------------------------------
 
 " Telescope Settings ----------------------------------------------------------
-lua <<EOF
-    require('telescope').load_extension('coc')
-EOF
-  nnoremap <silent> gD :Telescope coc definitions<cr>
-  nnoremap <silent> gd :Telescope coc declarations<cr>
-  nnoremap <silent> gy :Telescope coc type_definitions<cr>
-  nnoremap <silent> gi :Telescope coc implementations<cr>
-  nnoremap <silent> gl :Telescope coc locations<cr>
-  nnoremap <silent> g/ :Telescope coc document_symbols<cr>
-  nnoremap <silent> gS :Telescope coc workspace_symbols<cr>
-  nnoremap <silent> gr :Telescope coc references<cr>
-  nnoremap <silent> gc :Telescope coc commands<cr>
+"lua <<EOF
+"    require('telescope').load_extension('coc')
+"EOF
+"  nnoremap <silent> gD :Telescope coc definitions<cr>
+"  nnoremap <silent> gd :Telescope coc declarations<cr>
+"  nnoremap <silent> gy :Telescope coc type_definitions<cr>
+"  nnoremap <silent> gi :Telescope coc implementations<cr>
+"  nnoremap <silent> gl :Telescope coc locations<cr>
+"  nnoremap <silent> g/ :Telescope coc document_symbols<cr>
+"  nnoremap <silent> gS :Telescope coc workspace_symbols<cr>
+"  nnoremap <silent> gr :Telescope coc references<cr>
+"  nnoremap <silent> gc :Telescope coc commands<cr>
 " Telescope Settings(End) -----------------------------------------------------
 
 " Treesitter/Neorg Settings ---------------------------------------------------
