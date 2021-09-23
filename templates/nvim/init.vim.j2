@@ -2,6 +2,7 @@
 let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
 let g:loaded_node_provider=1
 let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
+let g:ale_disable_lsp = 1
 " VTE Workaround
 "set guicursor=
 " Plugins ---------------------------------------------------------------------
@@ -27,6 +28,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-neorg/neorg'
   Plug 'sbdchd/neoformat'
+  Plug 'dense-analysis/ale'
   Plug 'tpope/vim-dispatch' | Plug 'radenling/vim-dispatch-neovim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'juneedahamed/vc.vim'
@@ -117,6 +119,21 @@ set number relativenumber
 "  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 "augroup END
 " Terminal Settings  ----------------------------------------------------------
+  if $TERM =~ '^\(rxvt\|screen\|interix\|putty\)\(-.*\)\?$'
+      set notermguicolors
+  elseif $TERM =~ '^\(tmux\|iterm\|vte\|gnome\)\(-.*\)\?$'
+      set termguicolors
+  elseif $TERM =~ '^\(xterm\)\(-.*\)\?$'
+      if $XTERM_VERSION != ''
+          set termguicolors
+      elseif $KONSOLE_PROFILE_NAME != ''
+          set termguicolors
+      elseif $VTE_VERSION != ''
+          set termguicolors
+      else
+          set notermguicolors
+      endif
+  endif
   "command! -bar StartTerminal terminal<cr>
   "nnoremap <C-t> :StartTerminal|startinsert
   "nnoremap <C-t> :Tnew<cr>
@@ -249,6 +266,12 @@ let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_json = ['prettier']
 let g:shfmt_opt="-ci"
 " Neoformat Settings(End) -----------------------------------------------------
+
+" ALE Settings ----------------------------------------------------------------
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+" ALE Settings(End) -----------------------------------------------------------
 
 " Extra Plugin Settings -------------------------------------------------------
 " Extra Plugin Settings(End) --------------------------------------------------
