@@ -42,14 +42,14 @@ git:
     mode: 'auto' # one of 'auto' | 'merge' | 'rebase' | 'ff-only', auto reads from git configuration
   skipHookPrefix: WIP
   autoFetch: true
-  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
+  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {% raw %}{{branchName}}{% endraw %} --'
   allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
 os:
   editCommand: '' # see 'Configuring File Editing' section
-  editCommandTemplate: '{{editor}} {{filename}}'
+  editCommandTemplate: '{% raw %}{{editor}} {{filename}}{% endraw %}'
   openCommand: ''
 refresher:
   refreshInterval: 10 # file/submodule refresh interval in seconds
