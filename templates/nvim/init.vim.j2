@@ -269,7 +269,7 @@ let g:shfmt_opt="-ci"
 " Neoformat Settings(End) -----------------------------------------------------
 
 " FZF Settings ----------------------------------------------------------------
-  let g:fzf_preview_use_dev_icons = 0
+  let g:fzf_preview_use_dev_icons = 1
   let g:fzf_preview_command = '{{ nix_bin }}/bat --color=always --plain {-1}'
   let g:fzf_preview_lines_command = '{{ nix_bin }}/bat --color=always --plain --number'
   let g:fzf_preview_directory_files_command = '{{ nix_bin }}/rg --files --hidden --follow --no-messages -g \!"* *"'
