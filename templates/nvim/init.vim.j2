@@ -1,7 +1,7 @@
 " Python Host Version
 let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
-let g:loaded_node_provider=1
-let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
+"let g:loaded_node_provider=1
+"let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
 let g:ale_disable_lsp = 1
 " VTE Workaround
 "set guicursor=
@@ -266,6 +266,88 @@ let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_json = ['prettier']
 let g:shfmt_opt="-ci"
 " Neoformat Settings(End) -----------------------------------------------------
+
+" FZF Settings ----------------------------------------------------------------
+  let g:fzf_preview_use_dev_icons = 0
+  let g:fzf_preview_command = '{{ nix_bin }}/bat --color=always --plain {-1}'
+  let g:fzf_preview_lines_command = '{{ nix_bin }}/bat --color=always --plain --number'
+  let g:fzf_preview_directory_files_command = '{{ nix_bin }}/rg --files --hidden --follow --no-messages -g \!"* *"'
+  let g:fzf_preview_filelist_command = '{{ nix_bin }}/rg --files --hidden --follow --no-messages -g \!"* *"'
+  let g:fzf_preview_grep_cmd = '{{ nix_bin }}/rg --line-number --no-heading --color=never --hidden'
+  set rtp+=~/.fzf
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+  nmap <Leader>f [fzf-p]
+  xmap <Leader>f [fzf-p]
+  nnoremap <silent> [fzf-p]f     :<C-u>FzfPreviewProjectFilesRpc<CR>
+  nnoremap <silent> [fzf-p]gf    :<C-u>FzfPreviewGitFilesRpc<CR>
+  nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
+  nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatusRpc<CR>
+  nnoremap <silent> [fzf-p]ga    :<C-u>FzfPreviewGitActionsRpc<CR>
+  nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffersRpc<CR>
+  nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffersRpc<CR>
+  nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResourcesRpc buffer project_mru<CR>
+  nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumpsRpc<CR>
+  nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChangesRpc<CR>
+  nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+  nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+  nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrepRpc<Space>
+  xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrepRpc<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+  nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTagsRpc<CR>
+  nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFixRpc<CR>
+  nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationListRpc<CR>
+
+
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+" nnoremap <leader>f :Files<cr>
+" nnoremap <leader>b :Buffers<cr>
+
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = '{{ nix_bin }}/rg --column --line-number --no-heading --color=always --smart-case %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+  command! -nargs=* -bang RGCWord call RipgrepFzf(expand('<cword>'), <bang>0)
+  nnoremap <C-q> :RG<cr>
+  nnoremap _ :RGCWord<cr>
+
+  nnoremap : :Commands<cr>
+
+  function! s:fzf_sink(what)
+      let p1 = stridx(a:what, '<')
+      if p1 >= 0
+          let name = strpart(a:what, 0, p1)
+          let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+          if name != ''
+              exec "AsyncTask ". fnameescape(name)
+          endif
+      endif
+  endfunction
+
+  function! s:fzf_task()
+      let rows = asynctasks#source(&columns * 48 / 100)
+      let source = []
+      for row in rows
+          let name = row[0]
+          let source += [name . '  ' . row[1] . '  : ' . row[2]]
+      endfor
+      let opts = { 'source': source, 'sink': function('s:fzf_sink'),
+                  \ 'options': '+m --nth 1 --inline-info --tac' }
+      if exists('g:fzf_layout')
+          for key in keys(g:fzf_layout)
+              let opts[key] = deepcopy(g:fzf_layout[key])
+          endfor
+      endif
+      call fzf#run(opts)
+  endfunction
+
+  command! -nargs=0 AsyncTaskFzf call s:fzf_task()
+  nnoremap <leader>t :AsyncTaskFzf<cr>
+" FZF Settings(End) -----------------------------------------------------------
 
 " ALE Settings ----------------------------------------------------------------
 let g:ale_lint_on_text_changed = 'never'
