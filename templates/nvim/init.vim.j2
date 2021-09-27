@@ -272,8 +272,8 @@ let g:shfmt_opt="-ci"
   let g:fzf_preview_use_dev_icons = 1
   let g:fzf_preview_command = '{{ nix_bin }}/bat --color=always --plain {-1}'
   let g:fzf_preview_lines_command = '{{ nix_bin }}/bat --color=always --plain --number'
-  let g:fzf_preview_directory_files_command = '{{ nix_bin }}/rg --files --hidden --follow --no-messages -g \!"* *"'
-  let g:fzf_preview_filelist_command = '{{ nix_bin }}/rg --files --hidden --follow --no-messages -g \!"* *"'
+  let g:fzf_preview_directory_files_command = '{{ nix_bin }}/fd --type f'
+  let g:fzf_preview_filelist_command = '{{ nix_bin }}/fd --type f'
   let g:fzf_preview_grep_cmd = '{{ nix_bin }}/rg --line-number --no-heading --color=never --hidden'
   set rtp+=~/.fzf
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -297,7 +297,14 @@ let g:shfmt_opt="-ci"
   nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTagsRpc<CR>
   nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFixRpc<CR>
   nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationListRpc<CR>
-
+  augroup fzf_preview
+    autocmd!
+    autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings() " fzf_preview#remote#initialized or fzf_preview#coc#initialized
+  augroup END
+  function! s:fzf_preview_settings() abort
+    let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
+    let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+  endfunction
 
 " command! -bang -nargs=? -complete=dir Files
 "   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
