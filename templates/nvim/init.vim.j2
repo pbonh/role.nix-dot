@@ -119,21 +119,22 @@ set number relativenumber
 "  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 "augroup END
 " Terminal Settings  ----------------------------------------------------------
-  if $TERM =~ '^\(rxvt\|screen\|interix\|putty\)\(-.*\)\?$'
-      set notermguicolors
-  elseif $TERM =~ '^\(tmux\|iterm\|vte\|gnome\)\(-.*\)\?$'
-      set termguicolors
-  elseif $TERM =~ '^\(xterm\)\(-.*\)\?$'
-      if $XTERM_VERSION != ''
-          set termguicolors
-      elseif $KONSOLE_PROFILE_NAME != ''
-          set termguicolors
-      elseif $VTE_VERSION != ''
-          set termguicolors
-      else
-          set notermguicolors
-      endif
-  endif
+  set termguicolors
+" if $TERM =~ '^\(rxvt\|screen\|interix\|putty\)\(-.*\)\?$'
+"     set notermguicolors
+" elseif $TERM =~ '^\(tmux\|iterm\|vte\|gnome\)\(-.*\)\?$'
+"     set termguicolors
+" elseif $TERM =~ '^\(xterm\)\(-.*\)\?$'
+"     if $XTERM_VERSION != ''
+"         set termguicolors
+"     elseif $KONSOLE_PROFILE_NAME != ''
+"         set termguicolors
+"     elseif $VTE_VERSION != ''
+"         set termguicolors
+"     else
+"         set notermguicolors
+"     endif
+" endif
   "command! -bar StartTerminal terminal<cr>
   "nnoremap <C-t> :StartTerminal|startinsert
   "nnoremap <C-t> :Tnew<cr>
