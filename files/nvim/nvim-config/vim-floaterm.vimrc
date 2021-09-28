@@ -10,6 +10,7 @@ command! FloatermRanger :FloatermNew ranger
 command! FloatermBroot :FloatermNew broot
 nnoremap <silent> <leader>g :FloatermLazygit<CR>
 nnoremap <silent> <leader>r :FloatermRanger<CR>
+nnoremap <silent> <leader>b :FloatermBroot<CR>
 "nnoremap S :CocList floaterm<cr>
 "nnoremap _ :FloatermToggle<cr>
 "let g:floaterm_keymap_toggle = '_'
@@ -22,3 +23,8 @@ let g:floaterm_opener = 'edit'
 "let g:floaterm_winblend = '1'
 "hi FloatermNF guibg=black
 "hi FloatermBorderNF guibg=blue guifg=white
+" Set floaterm window's background to black
+"hi Floaterm guibg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder guibg=orange guifg=gray
+hi FloatermNC guibg=gray

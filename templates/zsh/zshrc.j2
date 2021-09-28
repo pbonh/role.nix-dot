@@ -52,7 +52,7 @@ export FZF_COMPLETION_OPTS='+c -x'
 export FZF_DEFAULT_COMMAND='{{ nix_bin }}/fd --type f'
 #export FZF_DEFAULT_COMMAND='{{ nix_bin }}/fd --type f --color=never'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+export FZF_CTRL_T_OPTS="--preview '{{ nix_bin }}/bat --color=always --line-range :500 {}'"
 export FZF_ALT_C_COMMAND='{{ nix_bin }}/fd --type d . --color=never'
 export FZF_DEFAULT_OPTS='
   --height 75% --multi --reverse
@@ -64,7 +64,7 @@ export SKIM_DEFAULT_COMMAND="{{ nix_bin }}/fd --type f || git ls-tree -r --name-
 fzf_find_edit() {
     local file=$(
     fzf --query="$1" --no-multi --select-1 --exit-0 \
-        --preview 'bat --color=always --line-range :500 {}'
+        --preview '{{ nix_bin }}/bat --color=always --line-range :500 {}'
     )
     if [[ -n $file ]]; then
         $EDITOR "$file"
@@ -88,7 +88,7 @@ fzf_grep_edit(){
     local match=$(
     {{ nix_bin }}/rg --color=never --line-number "$1" |
         fzf --no-multi --delimiter : \
-        --preview "bat --color=always --line-range {2}: {1}"
+        --preview "{{ nix_bin }}/bat --color=always --line-range {2}: {1}"
     )
     local file=$(echo "$match" | cut -d':' -f1)
     if [[ -n $file ]]; then
@@ -140,7 +140,7 @@ alias fkill='fzf_kill'
 alias fsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
 alias gsk='sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
 alias dsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
-alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
+alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="{{ nix_bin }}/bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
 unalias cdg 2> /dev/null
 cdg() {
    local dest_dir=$(cdscuts_glob_echo | {{ nix_bin }}/fzf )
