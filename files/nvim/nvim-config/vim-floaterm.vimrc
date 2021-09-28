@@ -1,4 +1,10 @@
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.9
+let g:floaterm_position = 'center'
+let g:floaterm_autoclose = 1
 let g:floaterm_autoinsert = v:true
+let g:floaterm_opener = 'edit'
+let g:floaterm_keymap_toggle = '<C-\>'
 "nnoremap <C-\> :FloatermNew<cr>
 "nnoremap S :FloatermToggle<cr>
 "nnoremap <C-t> :FloatermNew ranger<cr>
@@ -14,12 +20,8 @@ nnoremap <silent> <leader>b :FloatermBroot<CR>
 "nnoremap S :CocList floaterm<cr>
 "nnoremap _ :FloatermToggle<cr>
 "let g:floaterm_keymap_toggle = '_'
-let g:floaterm_keymap_toggle = '<C-\>'
 "tnoremap <C-\> <C-\><C-n>S
 "inoremap <C-\> <C-[>:FloatermNew<cr>
-let g:floaterm_position = 'center'
-let g:floaterm_autoclose = 1
-let g:floaterm_opener = 'edit'
 "let g:floaterm_winblend = '1'
 "hi FloatermNF guibg=black
 "hi FloatermBorderNF guibg=blue guifg=white
