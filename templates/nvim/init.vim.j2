@@ -54,7 +54,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   "Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+" Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
   Plug 'voldikss/fzf-floaterm'
   Plug 'voldikss/vim-floaterm'
   " Syntax Highlighting -------------------------------------------------------
@@ -269,12 +269,6 @@ let g:shfmt_opt="-ci"
 " Neoformat Settings(End) -----------------------------------------------------
 
 " FZF Settings ----------------------------------------------------------------
-  let g:fzf_preview_use_dev_icons = 1
-  let g:fzf_preview_command = '{{ nix_bin }}/bat --color=always --plain {-1}'
-  let g:fzf_preview_lines_command = '{{ nix_bin }}/bat --color=always --plain --number'
-  let g:fzf_preview_directory_files_command = '{{ nix_bin }}/fd --type f'
-  let g:fzf_preview_filelist_command = '{{ nix_bin }}/fd --type f'
-  let g:fzf_preview_grep_cmd = '{{ nix_bin }}/rg --line-number --no-heading --color=never --hidden'
   set rtp+=~/.fzf
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'relative': v:true } }
   let g:fzf_colors =
@@ -291,39 +285,53 @@ let g:shfmt_opt="-ci"
     \ 'marker':  ['fg', 'Keyword'],
     \ 'spinner': ['fg', 'Label'],
     \ 'header':  ['fg', 'Comment'] }
-
-  nmap <Leader>f [fzf-p]
-  xmap <Leader>f [fzf-p]
-  nnoremap <silent> [fzf-p]f     :<C-u>FzfPreviewProjectFilesRpc<CR>
-  nnoremap <silent> [fzf-p]gf    :<C-u>FzfPreviewGitFilesRpc<CR>
-  nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
-  nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatusRpc<CR>
-  nnoremap <silent> [fzf-p]ga    :<C-u>FzfPreviewGitActionsRpc<CR>
-  nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffersRpc<CR>
-  nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffersRpc<CR>
-  nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResourcesRpc buffer project_mru<CR>
-  nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumpsRpc<CR>
-  nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChangesRpc<CR>
-  nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
-  nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
-  nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrepRpc<Space>
-  xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrepRpc<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
-  nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTagsRpc<CR>
-  nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFixRpc<CR>
-  nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationListRpc<CR>
-  augroup fzf_preview
-    autocmd!
-    autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings() " fzf_preview#remote#initialized or fzf_preview#coc#initialized
-  augroup END
-  function! s:fzf_preview_settings() abort
-    let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
-    let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+  let g:fzf_commands_expect = 'alt-enter'
+  function! s:fzf_statusline()
+    " Override statusline as you like
+    highlight fzf1 ctermfg=161 ctermbg=251
+    highlight fzf2 ctermfg=23 ctermbg=251
+    highlight fzf3 ctermfg=237 ctermbg=251
+    setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
   endfunction
+  autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-" nnoremap <leader>f :Files<cr>
-" nnoremap <leader>b :Buffers<cr>
+" let g:fzf_preview_use_dev_icons = 1
+" let g:fzf_preview_command = '{{ nix_bin }}/bat --color=always --plain {-1}'
+" let g:fzf_preview_lines_command = '{{ nix_bin }}/bat --color=always --plain --number'
+" let g:fzf_preview_directory_files_command = '{{ nix_bin }}/fd --type f'
+" let g:fzf_preview_filelist_command = '{{ nix_bin }}/fd --type f'
+" let g:fzf_preview_grep_cmd = '{{ nix_bin }}/rg --line-number --no-heading --color=never --hidden'
+" nmap <Leader>f [fzf-p]
+" xmap <Leader>f [fzf-p]
+" nnoremap <silent> [fzf-p]f     :<C-u>FzfPreviewProjectFilesRpc<CR>
+" nnoremap <silent> [fzf-p]gf    :<C-u>FzfPreviewGitFilesRpc<CR>
+" nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
+" nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatusRpc<CR>
+" nnoremap <silent> [fzf-p]ga    :<C-u>FzfPreviewGitActionsRpc<CR>
+" nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffersRpc<CR>
+" nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffersRpc<CR>
+" nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResourcesRpc buffer project_mru<CR>
+" nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumpsRpc<CR>
+" nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChangesRpc<CR>
+" nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+" nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+" nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrepRpc<Space>
+" xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrepRpc<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+" nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTagsRpc<CR>
+" nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFixRpc<CR>
+" nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationListRpc<CR>
+" augroup fzf_preview
+"   autocmd!
+"   autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings() " fzf_preview#remote#initialized or fzf_preview#coc#initialized
+" augroup END
+" function! s:fzf_preview_settings() abort
+"   let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
+"   let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+" endfunction
+
+  command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 
   function! RipgrepFzf(query, fullscreen)
     let command_fmt = '{{ nix_bin }}/rg --column --line-number --no-heading --color=always --smart-case %s || true'
@@ -334,10 +342,6 @@ let g:shfmt_opt="-ci"
   endfunction
   command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
   command! -nargs=* -bang RGCWord call RipgrepFzf(expand('<cword>'), <bang>0)
-  nnoremap <C-q> :RG<cr>
-  nnoremap _ :RGCWord<cr>
-
-  nnoremap : :Commands<cr>
 
   function! s:fzf_sink(what)
       let p1 = stridx(a:what, '<')
@@ -349,7 +353,6 @@ let g:shfmt_opt="-ci"
           endif
       endif
   endfunction
-
   function! s:fzf_task()
       let rows = asynctasks#source(&columns * 48 / 100)
       let source = []
@@ -366,9 +369,17 @@ let g:shfmt_opt="-ci"
       endif
       call fzf#run(opts)
   endfunction
-
   command! -nargs=0 AsyncTaskFzf call s:fzf_task()
+
+  nmap <Leader>f [fzf-p]
+  xmap <Leader>f [fzf-p]
   nnoremap <leader>t :AsyncTaskFzf<cr>
+  nnoremap <C-q> :RG<cr>
+  nnoremap _ :RGCWord<cr>
+  nnoremap : :Commands<cr>
+  nnoremap <silent> [fzf-p]f :Files<CR>
+  nnoremap <silent> [fzf-p]b :Buffers<CR>
+
 " FZF Settings(End) -----------------------------------------------------------
 
 " ALE Settings ----------------------------------------------------------------
