@@ -26,5 +26,5 @@ let g:floaterm_opener = 'edit'
 " Set floaterm window's background to black
 "hi Floaterm guibg=black
 " Set floating window border line color to cyan, and background to orange
-hi FloatermBorder guibg=orange guifg=gray
+hi FloatermBorder guibg=gray guifg=orange
 hi FloatermNC guibg=gray
