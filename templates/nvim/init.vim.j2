@@ -187,6 +187,8 @@ set number relativenumber
 "       return ":\<c-u>echo 'start=" . string(getpos("v")) . " end=" . string(getpos(".")) . "'\<cr>gv"
 " endfunction
 " vmap <expr> ;j s:show_position()
+
+  command! -nargs=1 SilentVimscriptCommand execute ':silent !'.<q-args> | execute ':redraw!'
 " Leader/Command Functions  ---------------------------------------------------
   nnoremap <cr> :
   map <Space> <leader>
