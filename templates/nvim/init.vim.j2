@@ -201,6 +201,8 @@ set number relativenumber
 " Plugin Settings(End) --------------------------------------------------------
 
 " Telescope Settings ----------------------------------------------------------
+  nmap <Leader>t [telescope-p]
+  xmap <Leader>t [telescope-p]
 "lua <<EOF
 "    require('telescope').load_extension('coc')
 "EOF
@@ -373,7 +375,7 @@ let g:shfmt_opt="-ci"
 
   nmap <Leader>f [fzf-p]
   xmap <Leader>f [fzf-p]
-  nnoremap <leader>t :AsyncTaskFzf<cr>
+  nnoremap <C-t> :AsyncTaskFzf<cr>
   nnoremap <C-q> :RG<cr>
   nnoremap _ :RGCWord<cr>
   nnoremap : :Commands<cr>
