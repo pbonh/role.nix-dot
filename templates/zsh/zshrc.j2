@@ -13,8 +13,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # . /home/{{ zsh_username }}/.nix-profile/etc/profile.d/nix.sh
-source ~/.nix-profile/etc/profile.d/nix.sh
+# source ~/.nix-profile/etc/profile.d/nix.sh
 export PATH=$PATH:{{ bin_directory }}
+export PATH=$PATH:{{ nix_bin }}
 # END: Base
 ###############################################################################
 
