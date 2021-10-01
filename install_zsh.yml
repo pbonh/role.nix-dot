@@ -1,6 +1,5 @@
 ---
 - name: zsh | Copies .zshrc | template
-  changed_when: false
   template:
     src: zsh/zshrc.j2
     dest: "{{ dotfiles_user_home }}/.zshrc"

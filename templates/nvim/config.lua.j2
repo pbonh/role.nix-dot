@@ -1,0 +1,47 @@
+-- Neorg/Treesitter Config
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main"
+    },
+}
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "norg",
+    "haskell",
+    "c",
+    "cpp",
+    "json",
+    "yaml",
+    "rust"
+  },
+}
+
+-- Neorg Config
+require('neorg').setup {
+  -- Tell Neorg what modules to load
+  load = {
+      ["core.defaults"] = {}, -- Load all the default modules
+      ["core.norg.concealer"] = {}, -- Allows for use of icons
+      ["core.norg.dirman"] = { -- Manage your directories with Neorg
+          config = {
+              workspaces = {
+                  my_workspace = "{{ code_checkout_path }}"
+              }
+          }
+      }
+  },
+}
+
+-- DAP Settings
+{{ dap_plugin_settings_file or "-- No DAP Languages Configured" }}
+
+-- Extra Plugin Settings
+{{ extra_lua_plugin_settings_file or "-- No Extra Languages Configured" }}
