@@ -60,10 +60,10 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " DAP(Debug Adapter Protocol) Debugger --------------------------------------
   Plug 'mfussenegger/nvim-dap'
   " Language Server Protocol Providers ----------------------------------------
-  {{ lsp_provider_neovim_plugins_file or "\" No LSP Providers Installed" }}
+{{ lsp_provider_neovim_plugins_file or "\" No LSP Providers Installed" }}
   " Language Server Protocol Providers(End) -----------------------------------
   " Language Plugins ----------------------------------------------------------
-  {{ language_neovim_plugins_file or "\" No Language Plugins Installed" }}
+{{ language_neovim_plugins_file or "\" No Language Plugins Installed" }}
   " Language Plugins(End) -----------------------------------------------------
 call plug#end()
 " Plugins(End) ----------------------------------------------------------------
@@ -447,7 +447,7 @@ call plug#end()
   let g:neoformat_enabled_yaml = ['prettier']
   let g:neoformat_enabled_json = ['prettier']
   let g:shfmt_opt="-ci"
-  {{ neoformat_plugin_settings_file or "\" No Languages Configured for Formatting" }}
+{{ neoformat_plugin_settings_file or "\" No Languages Configured for Formatting" }}
 " Neoformat Settings(End) -----------------------------------------------------
 
 " FZF Settings ----------------------------------------------------------------
@@ -603,14 +603,14 @@ call plug#end()
 " Vista Settings(End) ---------------------------------------------------------
 
 " DAP Settings ----------------------------------------------------------------
-  {{ dap_plugin_settings_file or "\" No DAP Languages Configured" }}
+{{ dap_plugin_settings_file or "\" No DAP Languages Configured" }}
 " DAP Settings(End) -----------------------------------------------------------
 
 " ALE Settings ----------------------------------------------------------------
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_lint_on_insert_leave = 0
   let g:ale_lint_on_enter = 0
-  {{ ale_plugin_settings_file or "\" No ALE Languages Configured" }}
+{{ ale_plugin_settings_file or "\" No ALE Languages Configured" }}
 " ALE Settings(End) -----------------------------------------------------------
 
 " Sneak Settings --------------------------------------------------------------
@@ -623,5 +623,5 @@ call plug#end()
 " Sneak Settings(End) ---------------------------------------------------------
 
 " Extra Plugin Settings -------------------------------------------------------
-  {{ extra_plugin_settings_file or "\" No Extra Language Plugins Configured" }}
+{{ extra_plugin_settings_file or "\" No Extra Language Plugins Configured" }}
 " Extra Plugin Settings(End) --------------------------------------------------
