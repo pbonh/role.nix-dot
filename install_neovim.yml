@@ -11,7 +11,7 @@
     state: directory
     mode: '0755'
 
-- name: Neovim | Copies Neovim Config | template
+- name: Neovim | Copies Neovim Lua Config | template
   template:
     src: nvim/config.lua.j2
     dest: "{{ nvim_config_lua }}"
