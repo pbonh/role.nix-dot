@@ -1,13 +1,3 @@
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<C-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<C-v>"
-
-" If you want :UltiSnipsEdit to split your window.
-  let g:UltiSnipsEditSplit="vertical"
-
-" Prevent UltiSnips from conflicting with mapping
-  let g:UltiSnipsMappingsToIgnore = ['autocomplete']
 "if has('autocmd')
 "  augroup WincentAutocomplete
 "    autocmd!
