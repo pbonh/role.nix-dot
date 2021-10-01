@@ -39,7 +39,7 @@ neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
 extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 lsp_provider_coc_settings: {}
-lsp_provider_coc_settings_json: "{{ lsp_provider_coc_settings | to_json }}"
+lsp_provider_coc_settings_json: "{{ lsp_provider_coc_settings | to_nice_json }}"
 ranger_config: "{{ xdg_config_dir }}/ranger"
 ranger_plugins: "{{ ranger_config }}/plugins"
 lazygit_config: "{{ xdg_config_dir }}/lazygit"
