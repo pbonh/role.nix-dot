@@ -35,6 +35,7 @@ neoformat_plugin_settings: []
 dap_plugin_settings: []
 extra_plugin_settings: []
 extra_lua_plugin_settings: []
+extra_bookmarks: []
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
@@ -42,6 +43,7 @@ neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
 extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 extra_lua_plugin_settings_file: "{{ extra_lua_plugin_settings | join('\n') }}"
+extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
 lsp_provider_coc_settings: {}
 lsp_provider_coc_settings_base:
   diagnostic.displayByAle: true
