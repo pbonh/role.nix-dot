@@ -1,6 +1,5 @@
 ---
 dotfiles_user_home: "{{ ansible_env.HOME }}"
-code_checkout_path: "{{ dotfiles_user_home }}/Code"
 bin_directory: "{{ dotfiles_user_home }}/.local/bin"
 xdg_share_dir: "{{ dotfiles_user_home }}/.local/share"
 xdg_config_dir: "{{ dotfiles_user_home }}/.config"
@@ -16,6 +15,9 @@ extra_zsh_aliases: []
 extra_zsh_aliases_file: "{{ extra_zsh_aliases | join('\n') }}"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
+github_username: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GITHUB_USERNAME') }}"
+code_checkout_path: "{{ dotfiles_user_home }}/Code"
+code_checkout_path_github: "{{ code_checkout_path }}/github.com/{{ github_username }}"
 xdg_config_dir_navi: "{{ xdg_share_dir }}/navi"
 xdg_config_dir_navi_cheats: "{{ xdg_config_dir_navi }}/cheats"
 nvim_share_dir: "{{ xdg_share_dir }}/nvim"
