@@ -250,12 +250,12 @@ call plug#end()
   let g:floaterm_autoinsert = v:true
   let g:floaterm_opener = 'edit'
 " let g:floaterm_keymap_toggle = '<C-\>'
-  nnoremap <C-s> :FloatermNew<cr>
   command! FloatermLazygit :FloatermNew lazygit
   command! FloatermRanger :FloatermNew ranger
   command! FloatermBroot :FloatermNew broot
   hi FloatermBorder guibg=gray guifg=orange
   hi FloatermNC guibg=gray
+  nnoremap <C-s> :FloatermNew<cr>
   nmap <Leader>s [floaterm-p]
   xmap <Leader>s [floaterm-p]
   nnoremap <silent> [floaterm-p]s :Floaterms<cr>
@@ -283,6 +283,11 @@ call plug#end()
       \ 'cmd': 'pwsh' }
     \ }
 " Floaterm Settings(End) ------------------------------------------------------
+
+" Toggleterm Settings -----------------------------------------------------------
+  nnoremap <silent> [floaterm-p]x :ToggleTerm size=40 direction=horizontal<cr>
+  nnoremap <silent> [floaterm-p]v :ToggleTerm size=40 direction=vertical<cr>
+" Toggleterm Settings(End) ------------------------------------------------------
 
 " RNvimR Settings -------------------------------------------------------------
 " Make Ranger replace Netrw and be the file explorer
@@ -515,7 +520,6 @@ call plug#end()
   nnoremap : :Commands<cr>
   nnoremap <silent> [fzf-p]f :Files<CR>
   nnoremap <silent> [fzf-p]b :Buffers<CR>
-
 " FZF Settings(End) -----------------------------------------------------------
 
 " UltiSnips Settings -----------------------------------------------------------
