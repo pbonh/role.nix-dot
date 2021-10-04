@@ -63,6 +63,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'antoinemadec/coc-fzf'
   " DAP(Debug Adapter Protocol) Debugger --------------------------------------
   Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
   " Language Server Protocol Providers ----------------------------------------
 {{ lsp_provider_neovim_plugins_file or "\" No LSP Providers Installed" }}
   " Language Server Protocol Providers(End) -----------------------------------
@@ -570,6 +571,10 @@ call plug#end()
 " Vista Settings(End) ---------------------------------------------------------
 
 " DAP Settings ----------------------------------------------------------------
+  nmap <Leader>d [dap-p]
+  xmap <Leader>d [dap-p]
+  nnoremap <silent> [dap-p]e <Cmd>lua require("dapui").eval()<CR>
+  vnoremap <silent> [dap-p]e <Cmd>lua require("dapui").eval()<CR>
 " DAP Settings(End) -----------------------------------------------------------
 
 " ALE Settings ----------------------------------------------------------------
