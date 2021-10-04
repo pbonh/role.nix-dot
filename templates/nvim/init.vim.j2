@@ -568,7 +568,12 @@ call plug#end()
   set statusline+=%{NearestMethodOrFunction()}
   autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " nnoremap <silent> <C-_> :Vista finder lcn<CR>
-  nnoremap <silent> <leader>v :Vista!!<CR>
+  nmap <Leader>v [vista-p]
+  xmap <Leader>v [vista-p]
+  nnoremap <silent> [vista-p]v :Vista<CR>
+  nnoremap <silent> [vista-p]c :Vista!<CR>
+  nnoremap <silent> [vista-p]t :Vista!!<CR>
+  nnoremap <silent> [vista-p]/ :Vista finder coc<CR>
 " Vista Settings(End) ---------------------------------------------------------
 
 " DAP Settings ----------------------------------------------------------------
