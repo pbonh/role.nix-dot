@@ -29,14 +29,6 @@ require'fzf-lua'.setup {
     },
   },
   grep = {
-    prompt            = 'Rg❯ ',
-    input_prompt      = 'Grep For❯ ',
-    cmd               = "{{ nix_bin }}/rg --vimgrep",
-    rg_opts           = "--hidden --column --line-number --no-heading " ..
-                        "--color=always --smart-case -g '!{.git,node_modules}/*'",
-    git_icons         = true,           -- show git icons?
-    file_icons        = true,           -- show file icons?
-    color_icons       = true,           -- colorize file|git icons
     actions = {
       ["ctrl-x"]      = actions.file_split,
     }
