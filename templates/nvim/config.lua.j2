@@ -1,18 +1,6 @@
 -- FZF Config
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup {
-  -- previewer setup
-  default_previewer   = "bat",
-  previewers = {
-    cat = {
-      cmd             = "cat",
-      args            = "--number",
-    },
-    bat = {
-      cmd             = "{{ nix_bin }}/bat",
-      args            = "--color=always --style=numbers --line-range=:500",
-    },
-  },
   -- provider setup
   files = {
     actions = {

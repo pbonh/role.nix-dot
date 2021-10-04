@@ -522,12 +522,12 @@ call plug#end()
   nnoremap <C-t> :AsyncTaskFzf<cr>
 " nnoremap <C-q> :RG<cr>
 " nnoremap _ :RGCWord<cr>
-" nnoremap : :Commands<cr>
+  nnoremap : :Commands<cr>
 " nnoremap <silent> [fzf-p]f :Files<CR>
 " nnoremap <silent> [fzf-p]b :Buffers<CR>
   nnoremap <silent> <C-q> <cmd>lua require('fzf-lua').live_grep()<CR>
   nnoremap <silent> _ <cmd>lua require('fzf-lua').grep_cword()<CR>
-  nnoremap <silent> : <cmd>lua require('fzf-lua').commands()<CR>
+" nnoremap <silent> : <cmd>lua require('fzf-lua').commands()<CR>
   nnoremap <silent> [fzf-p]f <cmd>lua require('fzf-lua').files()<CR>
   nnoremap <silent> [fzf-p]b <cmd>lua require('fzf-lua').buffers()<CR>
 " FZF Settings(End) -----------------------------------------------------------
