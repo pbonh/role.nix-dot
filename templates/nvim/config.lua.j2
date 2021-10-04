@@ -1,3 +1,56 @@
+-- FZF Config
+local actions = require "fzf-lua.actions"
+require'fzf-lua'.setup {
+  -- previewer setup
+  default_previewer   = "bat",
+  previewers = {
+    cat = {
+      cmd             = "cat",
+      args            = "--number",
+    },
+    bat = {
+      cmd             = "{{ nix_bin }}/bat",
+      args            = "--style=numbers,changes --color always",
+      theme           = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
+      config          = nil,            -- nil uses $BAT_CONFIG_PATH
+    },
+  },
+  -- provider setup
+  files = {
+    actions = {
+      ["ctrl-x"]      = actions.file_split,
+    }
+  },
+  git = {
+    bcommits = {
+      actions = {
+        ["ctrl-x"]  = actions.git_buf_split,
+      },
+    },
+  },
+  grep = {
+    prompt            = 'Rg❯ ',
+    input_prompt      = 'Grep For❯ ',
+    -- cmd               = "rg --vimgrep",
+    rg_opts           = "--hidden --column --line-number --no-heading " ..
+                        "--color=always --smart-case -g '!{.git,node_modules}/*'",
+    git_icons         = true,           -- show git icons?
+    file_icons        = true,           -- show file icons?
+    color_icons       = true,           -- colorize file|git icons
+  },
+  buffers = {
+    actions = {
+      ["ctrl-x"]      = actions.buf_split,
+      ["ctrl-d"]      = actions.buf_del,
+    }
+  },
+  blines = {
+    actions = {
+      ["ctrl-x"]      = actions.buf_split,
+    }
+  },
+}
+
 -- Toggleterm Config
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
