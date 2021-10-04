@@ -48,6 +48,9 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'voldikss/fzf-floaterm'
   Plug 'voldikss/vim-floaterm'
   Plug 'akinsho/toggleterm.nvim'
+  Plug 'ibhagwan/fzf-lua'
+  Plug 'vijaymarupudi/nvim-fzf'
+  Plug 'kyazdani42/nvim-web-devicons'
   " Syntax Highlighting -------------------------------------------------------
   Plug 'vim-scripts/bnf.vim'
   Plug 'vim-scripts/ebnf.vim'
@@ -516,11 +519,16 @@ call plug#end()
   nmap <Leader>f [fzf-p]
   xmap <Leader>f [fzf-p]
   nnoremap <C-t> :AsyncTaskFzf<cr>
-  nnoremap <C-q> :RG<cr>
-  nnoremap _ :RGCWord<cr>
-  nnoremap : :Commands<cr>
-  nnoremap <silent> [fzf-p]f :Files<CR>
-  nnoremap <silent> [fzf-p]b :Buffers<CR>
+" nnoremap <C-q> :RG<cr>
+" nnoremap _ :RGCWord<cr>
+" nnoremap : :Commands<cr>
+" nnoremap <silent> [fzf-p]f :Files<CR>
+" nnoremap <silent> [fzf-p]b :Buffers<CR>
+  nnoremap <silent> <C-q> <cmd>lua require('fzf-lua').live_grep()<CR>
+  nnoremap <silent> _ <cmd>lua require('fzf-lua').grep_cword()<CR>
+  nnoremap <silent> : <cmd>lua require('fzf-lua').commands()<CR>
+  nnoremap <silent> [fzf-p]f <cmd>lua require('fzf-lua').files()<CR>
+  nnoremap <silent> [fzf-p]b <cmd>lua require('fzf-lua').buffers()<CR>
 " FZF Settings(End) -----------------------------------------------------------
 
 " UltiSnips Settings -----------------------------------------------------------
