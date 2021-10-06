@@ -49,6 +49,8 @@ eval "$(navi widget zsh)"
 # BEGIN: FZF
 source {{ zsh_fzf_tab }}/fzf-tab.plugin.zsh
 export PATH=$PATH:{{ zsh_git_fuzzy }}/bin
+export GF_BASE_REMOTE={{ zsh_git_fuzzy_upstream }}
+export GF_BASE_BRANCH={{ zsh_git_fuzzy_branch }}
 # Options for fzf
 export FZF_COMPLETION_OPTS='+c -x'
 export FZF_DEFAULT_COMMAND='{{ nix_bin }}/fd --type f'
