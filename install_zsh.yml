@@ -14,3 +14,8 @@
   git:
     repo: "https://github.com/Aloxaf/fzf-tab"
     dest: "{{ zsh_fzf_tab }}"
+
+- name: Zsh | Install Git Fuzzy Plugin | git
+  git:
+    repo: "https://github.com/bigH/git-fuzzy"
+    dest: "{{ zsh_git_fuzzy }}"
