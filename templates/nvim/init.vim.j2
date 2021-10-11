@@ -531,6 +531,7 @@ call plug#end()
   nnoremap <silent> _ <cmd>lua require('fzf-lua').grep_cword()<CR>
 " nnoremap <silent> : <cmd>lua require('fzf-lua').commands()<CR>
   nnoremap <silent> [fzf-p]f <cmd>lua require('fzf-lua').files()<CR>
+  nnoremap <silent> [fzf-p]r <cmd>lua require('fzf-lua').files({ cwd = '{{ code_checkout_path }}' })<CR>
   nnoremap <silent> [fzf-p]b <cmd>lua require('fzf-lua').buffers()<CR>
 " FZF Settings(End) -----------------------------------------------------------
 
