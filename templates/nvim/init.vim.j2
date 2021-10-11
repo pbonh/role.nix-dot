@@ -7,6 +7,8 @@ let g:ale_disable_lsp = 1
 "set guicursor=
 " Plugins ---------------------------------------------------------------------
 call plug#begin('{{ nvim_plugged_dir }}')
+  " Direnv --------------------------------------------------------------------
+  Plug 'direnv/direnv.vim'
   " Treesitter ----------------------------------------------------------------
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
   " Motion/Text Objects -------------------------------------------------------
