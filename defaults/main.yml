@@ -64,3 +64,4 @@ broot_config: "{{ xdg_config_dir }}/broot"
 broot_config_file: "{{ broot_config }}/conf.hjson"
 cdg_paths_global: /etc/cdg_paths
 cdg_paths_user: "{{ dotfiles_user_home }}/.cdg_paths"
+direnv_config: "{{ dotfiles_user_home }}/.direnvrc"

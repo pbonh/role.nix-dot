@@ -22,3 +22,6 @@
 
 - name: Install Bookmarks
   import_tasks: install_bookmarks.yml
+
+- name: Install Direnv Config
+  import_tasks: install_direnv.yml
