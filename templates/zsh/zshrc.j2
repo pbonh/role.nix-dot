@@ -137,7 +137,8 @@ fzf_kill() {
 # BEGIN: Aliases
 alias v=nvim
 alias cat=bat
-alias ls='exa  --group-directories-first'
+#alias ls='{{ nix_bin }}/exa  --group-directories-first'
+alias ls='{{ nix_bin}}/lsd --group-dirs first'
 alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
 alias fge='fzf_grep_edit'
