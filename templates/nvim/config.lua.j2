@@ -143,6 +143,10 @@ require('session-lens').setup {
 }
 require("telescope").load_extension("session-lens")
 
+-- Hop Settings
+require'hop'.setup()
+vim.api.nvim_set_keymap('n', ',', "<cmd>lua require'hop'.hint_words()<cr>", {})
+
 -- DAP Settings
 require("dapui").setup()
 {{ dap_plugin_settings_file or "-- No DAP Languages Configured" }}

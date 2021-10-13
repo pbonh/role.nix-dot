@@ -16,6 +16,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'tpope/vim-surround'
   Plug 'wellle/targets.vim'
   Plug 'justinmk/vim-sneak'
+  Plug 'phaazon/hop.nvim'
   " Theme ---------------------------------------------------------------------
   Plug 'morhetz/gruvbox'
   " Needed Before Devicons ----------------------------------------------------
@@ -200,9 +201,9 @@ call plug#end()
 
 " DevIcons Settings -----------------------------------------------------------
   set encoding=utf8
-" adding to vim-airline's tabline 
+" adding to vim-airline's tabline
   let g:webdevicons_enable_airline_tabline = 1
-" adding to vim-airline's statusline 
+" adding to vim-airline's statusline
   let g:webdevicons_enable_airline_statusline = 1
 " for vim-startify
   let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
@@ -609,6 +610,9 @@ call plug#end()
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
 " Sneak Settings(End) ---------------------------------------------------------
+
+" Hop Settings ----------------------------------------------------------------
+" Hop Settings(End) -----------------------------------------------------------
 
 " Extra Plugin Settings -------------------------------------------------------
 {{ extra_plugin_settings_file or "\" No Extra Language Plugins Configured" }}
