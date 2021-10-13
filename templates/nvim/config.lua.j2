@@ -145,7 +145,7 @@ require("telescope").load_extension("session-lens")
 
 -- Hop Settings
 require'hop'.setup()
-vim.api.nvim_set_keymap('n', '\\', "<cmd>lua require'hop'.hint_words()<cr>", {noremap = true})
+vim.api.nvim_set_keymap('n', '<Bslash>', "<cmd>lua require'hop'.hint_words()<cr>", {noremap = true})
 
 -- DAP Settings
 require("dapui").setup()
