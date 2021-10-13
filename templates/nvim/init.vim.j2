@@ -1,8 +1,13 @@
+" Leader/Command Functions  ---------------------------------------------------
+  nnoremap <cr> :
+" map <Space> <leader>
+  let mapleader="\<Space>"
 " Python Host Version
-let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
-"let g:loaded_node_provider=1
-"let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
-let g:ale_disable_lsp = 1
+  let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
+" let g:loaded_node_provider=1
+" let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
+" ALE Settings Functions  -----------------------------------------------------
+  let g:ale_disable_lsp = 1
 " VTE Workaround
 "set guicursor=
 " Plugins ---------------------------------------------------------------------
@@ -184,9 +189,6 @@ call plug#end()
   vnoremap K :m '<-2<CR>gv=gv
   command! ReloadVimrc :source $MYVIMRC
   command! -nargs=1 SilentVimscriptCommand execute ':silent !'.<q-args> | execute ':redraw!'
-" Leader/Command Functions  ---------------------------------------------------
-  nnoremap <cr> :
-  map <Space> <leader>
 " General(End) ----------------------------------------------------------------
 
 " Plugin Settings -------------------------------------------------------------
@@ -228,7 +230,7 @@ call plug#end()
   nmap <silent> gr <Plug>(coc-references)
   nnoremap <silent> g/  :CocFzfList outline<cr>
   nnoremap <silent> gS :CocFzfList symbols<cr>
-  nmap <leader>rn <Plug>(coc-rename)
+  nmap <Leader>rn <Plug>(coc-rename)
   augroup mygroup
     autocmd!
     " Setup formatexpr specified filetype(s).
@@ -236,10 +238,10 @@ call plug#end()
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   augroup end
-  xmap <leader>a  <Plug>(coc-codeaction-selected)
-  nmap <leader>a  <Plug>(coc-codeaction-selected)
-  nmap <leader>ac  <Plug>(coc-codeaction)
-  nmap <leader>qf  <Plug>(coc-fix-current)
+  xmap <Leader>a  <Plug>(coc-codeaction-selected)
+  nmap <Leader>a  <Plug>(coc-codeaction-selected)
+  nmap <Leader>ac  <Plug>(coc-codeaction)
+  nmap <Leader>qf  <Plug>(coc-fix-current)
   xmap if <Plug>(coc-funcobj-i)
   xmap af <Plug>(coc-funcobj-a)
   omap if <Plug>(coc-funcobj-i)
@@ -330,8 +332,8 @@ call plug#end()
 " Link CursorLine into RnvimrNormal highlight in the Floating window
   highlight link RnvimrNormal CursorLine
 
-" nnoremap <silent> <leader>r :RnvimrToggle<CR>
-" tnoremap <silent> <leader>r <C-\><C-n>:RnvimrToggle<CR>
+" nnoremap <silent> <Leader>r :RnvimrToggle<CR>
+" tnoremap <silent> <Leader>r <C-\><C-n>:RnvimrToggle<CR>
 
 " Resize floating window by all preset layouts
   tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
