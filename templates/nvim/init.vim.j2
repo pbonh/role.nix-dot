@@ -7,6 +7,16 @@
 " let g:node_host_prog="{{ nix_bin }}/neovim-node-host"
 " ALE Settings Functions  -----------------------------------------------------
   let g:ale_disable_lsp = 1
+" Sneak Settings --------------------------------------------------------------
+  let g:sneak#label = 1
+  map s <Plug>Sneak_s
+  map S <Plug>Sneak_S
+  map f <Plug>Sneak_f
+  map F <Plug>Sneak_F
+  map t <Plug>Sneak_t
+  map T <Plug>Sneak_T
+  map <Bslash> <Plug>Sneak_
+" Sneak Settings(End) ---------------------------------------------------------
 " VTE Workaround
 "set guicursor=
 " Plugins ---------------------------------------------------------------------
@@ -601,17 +611,6 @@ call plug#end()
   let g:ale_lint_on_enter = 0
 {{ ale_plugin_settings_file or "\" No ALE Languages Configured" }}
 " ALE Settings(End) -----------------------------------------------------------
-
-" Sneak Settings --------------------------------------------------------------
-  let g:sneak#label = 1
-  map s <Plug>Sneak_s
-  map S <Plug>Sneak_S
-  map f <Plug>Sneak_f
-  map F <Plug>Sneak_F
-  map t <Plug>Sneak_t
-  map T <Plug>Sneak_T
-  map <Bslash> <Plug>Sneak_
-" Sneak Settings(End) ---------------------------------------------------------
 
 " Hop Settings ----------------------------------------------------------------
 " Hop Settings(End) -----------------------------------------------------------
