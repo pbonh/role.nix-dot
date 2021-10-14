@@ -49,7 +49,7 @@ dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
 extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 extra_lua_plugin_settings_file: "{{ extra_lua_plugin_settings | join('\n') }}"
 extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
-extra_bookmarks_startify: "{{ extra_bookmarks | map('regex_replace', '^(.*)$', ''\\1',') | list }}"
+extra_bookmarks_startify: "{{ extra_bookmarks | join(',') }}"
 lsp_provider_coc_settings: {}
 lsp_provider_coc_settings_base:
   diagnostic.displayByAle: true
