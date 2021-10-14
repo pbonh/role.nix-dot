@@ -1,6 +1,8 @@
 " Leader/Command Functions  ---------------------------------------------------
   nnoremap <cr> :
   let mapleader="\<Space>"
+" Sneak Mapping  --------------------------------------------------------------
+  map \ <Plug>Sneak_,
 " Python Host Version
   let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
 " let g:loaded_node_provider=1
@@ -611,7 +613,6 @@ call plug#end()
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
 " map <Bslash> <Plug>Sneak_,
-  map \ <Plug>Sneak_,
 " Sneak Settings(End) ---------------------------------------------------------
 
 " Hop Settings ----------------------------------------------------------------
