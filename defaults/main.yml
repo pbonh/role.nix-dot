@@ -41,7 +41,6 @@ dap_plugin_settings: []
 extra_plugin_settings: []
 extra_lua_plugin_settings: []
 extra_bookmarks: []
-extra_bookmarks_quotes: "{{ '\\'' + extra_bookmarks | join('\\'') }}"
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
@@ -51,7 +50,9 @@ extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 extra_lua_plugin_settings_file: "{{ extra_lua_plugin_settings | join('\n') }}"
 extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
 #extra_bookmarks_startify: "{{ extra_bookmarks | map('regex_replace', '^(.*)$', '\'\\1\', ') | list }}"
-extra_bookmarks_startify: "{{ extra_bookmarks_quotes | join(', ') }}"
+#extra_bookmarks_startify: "{{ extra_bookmarks_quotes | join(', ') }}"
+#extra_bookmarks_startify: "{{ '\'' + extra_bookmarks | join('\', ') }}"
+extra_bookmarks_startify: "{{ '\"' + extra_bookmarks |join('\", \"') + '\"' }}"
 lsp_provider_coc_settings: {}
 lsp_provider_coc_settings_base:
   diagnostic.displayByAle: true
