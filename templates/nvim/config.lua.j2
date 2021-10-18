@@ -1,20 +1,20 @@
 -- Telescope
-require'telescope'.load_extension('project')
-require('telescope').setup {
-  extensions = {% raw %}{{% endraw %}
-    project = {% raw %}{{% endraw %}
-      base_dirs = {% raw %}{{% endraw %}
-        {{ extra_bookmarks_project }}
-      {% raw %}}{% endraw %}
-    {% raw %}}{% endraw %}
-  {% raw %}}{% endraw %}
-{% raw %}}{% endraw %}
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-p>',
-    ":lua require'telescope'.extensions.project.project{}<CR>",
-    {noremap = true, silent = true}
-)
+-- require'telescope'.load_extension('project')
+-- require('telescope').setup {
+--   extensions = {% raw %}{{% endraw %}
+--     project = {% raw %}{{% endraw %}
+--       base_dirs = {% raw %}{{% endraw %}
+--         {{ extra_bookmarks_project }}
+--       {% raw %}}{% endraw %}
+--     {% raw %}}{% endraw %}
+--   {% raw %}}{% endraw %}
+-- {% raw %}}{% endraw %}
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<C-p>',
+--     ":lua require'telescope'.extensions.project.project{}<CR>",
+--     {noremap = true, silent = true}
+-- )
 
 -- FZF Config
 local actions = require "fzf-lua.actions"
@@ -151,15 +151,15 @@ require('neorg').setup {
 }
 
 -- Auto-Session Settings
--- require('auto-session').setup {
---     auto_session_enable_last_session=true,
--- }
--- vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
--- require('session-lens').setup {
---   path_display = {'shorten'},
---   previewer = true
--- }
--- require("telescope").load_extension("session-lens")
+require('auto-session').setup {
+    auto_session_enable_last_session=true,
+}
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
+require('session-lens').setup {
+  path_display = {'shorten'},
+  previewer = true
+}
+require("telescope").load_extension("session-lens")
 
 -- Hop Settings
 require'hop'.setup()

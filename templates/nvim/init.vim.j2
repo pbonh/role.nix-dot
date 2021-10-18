@@ -50,7 +50,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " Split UI ------------------------------------------------------------------
   " Selection UI --------------------------------------------------------------
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-project.nvim'
+" Plug 'nvim-telescope/telescope-project.nvim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'voldikss/fzf-floaterm'
@@ -60,8 +60,8 @@ call plug#begin('{{ nvim_plugged_dir }}')
   Plug 'vijaymarupudi/nvim-fzf'
   Plug 'kyazdani42/nvim-web-devicons'
   " Session Management --------------------------------------------------------
-" Plug 'rmagatti/auto-session'
-" Plug 'rmagatti/session-lens'
+  Plug 'rmagatti/auto-session'
+  Plug 'rmagatti/session-lens'
   " Syntax Highlighting -------------------------------------------------------
   Plug 'vim-scripts/bnf.vim'
   Plug 'vim-scripts/ebnf.vim'
@@ -413,6 +413,7 @@ call plug#end()
 
 " Auto-Session Settings -------------------------------------------------------
 " nnoremap <silent> [telescope-p]s :SearchSession<CR>
+  nnoremap <silent> <C-p> :SearchSession<CR>
 " Auto-Session Settings(End) --------------------------------------------------
 
 " Treesitter/Neorg Settings ---------------------------------------------------
