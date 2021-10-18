@@ -534,20 +534,25 @@ call plug#end()
   endfunction
   command! -nargs=0 AsyncTaskFzf call s:fzf_task()
 
-  nmap <Leader>f [fzf-p]
-  xmap <Leader>f [fzf-p]
+  nmap <Leader>f [fzf-file-p]
+  xmap <Leader>f [fzf-file-p]
+  nmap <Leader>g [fzf-git-p]
+  xmap <Leader>g [fzf-git-p]
   nnoremap <C-t> :AsyncTaskFzf<cr>
 " nnoremap <C-q> :RG<cr>
 " nnoremap _ :RGCWord<cr>
   nnoremap : :Commands<cr>
-" nnoremap <silent> [fzf-p]f :Files<CR>
-" nnoremap <silent> [fzf-p]b :Buffers<CR>
+" nnoremap <silent> [fzf-file-p]f :Files<CR>
+" nnoremap <silent> [fzf-file-p]b :Buffers<CR>
   nnoremap <silent> <C-q> <cmd>lua require('fzf-lua').live_grep()<CR>
   nnoremap <silent> _ <cmd>lua require('fzf-lua').grep_cword()<CR>
 " nnoremap <silent> : <cmd>lua require('fzf-lua').commands()<CR>
-  nnoremap <silent> [fzf-p]f <cmd>lua require('fzf-lua').files()<CR>
-  nnoremap <silent> [fzf-p]r <cmd>lua require('fzf-lua').files({ cwd = '{{ code_checkout_path }}' })<CR>
-  nnoremap <silent> [fzf-p]b <cmd>lua require('fzf-lua').buffers()<CR>
+  nnoremap <silent> [fzf-file-p]f <cmd>lua require('fzf-lua').files()<CR>
+  nnoremap <silent> [fzf-file-p]r <cmd>lua require('fzf-lua').files({ cwd = '{{ code_checkout_path }}' })<CR>
+  nnoremap <silent> [fzf-file-p]b <cmd>lua require('fzf-lua').buffers()<CR>
+  nnoremap <silent> [fzf-git-p]b <cmd>lua require('fzf-lua').git_branches()<CR>
+  nnoremap <silent> [fzf-git-p]c <cmd>lua require('fzf-lua').git_commits()<CR>
+  nnoremap <silent> [fzf-git-p]s <cmd>lua require('fzf-lua').git_status()<CR>
 " FZF Settings(End) -----------------------------------------------------------
 
 " UltiSnips Settings -----------------------------------------------------------

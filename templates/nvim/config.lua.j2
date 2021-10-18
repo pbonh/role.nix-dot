@@ -156,8 +156,7 @@ require('auto-session').setup {
 }
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
 require('session-lens').setup {
-  path_display = {'shorten'},
-  previewer = true
+  path_display = {'shorten'}
 }
 require("telescope").load_extension("session-lens")
 
