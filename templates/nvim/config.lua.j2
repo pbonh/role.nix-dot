@@ -8,7 +8,12 @@ require('telescope').setup {
       {% raw %}}{% endraw %}
   {% raw %}}{% endraw %}
 {% raw %}}{% endraw %}
-
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-p>',
+    ":lua require'telescope'.extensions.project.project{}<CR>",
+    {noremap = true, silent = true}
+)
 
 -- FZF Config
 local actions = require "fzf-lua.actions"
