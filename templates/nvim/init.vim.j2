@@ -412,6 +412,7 @@ call plug#end()
 " Telescope Settings(End) -----------------------------------------------------
 
 " Auto-Session Settings -------------------------------------------------------
+  let g:auto_session_pre_restore_cmds = ["ReloadVimrc"]
 " nnoremap <silent> [telescope-p]s :SearchSession<CR>
   nnoremap <silent> <C-p> :SearchSession<CR>
 " Auto-Session Settings(End) --------------------------------------------------
