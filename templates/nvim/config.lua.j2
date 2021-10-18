@@ -1,3 +1,15 @@
+-- Telescope
+require'telescope'.load_extension('project')
+require('telescope').setup {
+  extensions = {% raw %}{{% endraw %}
+    project = {% raw %}{{% endraw %}
+      base_dirs = {% raw %}{{% endraw %}
+        {{ extra_bookmarks_project }}
+      {% raw %}}{% endraw %}
+  {% raw %}}{% endraw %}
+{% raw %}}{% endraw %}
+
+
 -- FZF Config
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup {

@@ -1,8 +1,6 @@
 " Leader/Command Functions  ---------------------------------------------------
   nnoremap <cr> :
   let mapleader="\<Space>"
-" Sneak Mapping  --------------------------------------------------------------
-  map \ <Plug>Sneak_,
 " Python Host Version
   let g:python3_host_prog="{{ nix_bin }}/nvim-python3"
 " let g:loaded_node_provider=1
@@ -52,6 +50,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " Split UI ------------------------------------------------------------------
   " Selection UI --------------------------------------------------------------
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-project.nvim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'voldikss/fzf-floaterm'
@@ -560,10 +559,10 @@ call plug#end()
 " UltiSnips Settings(End) ------------------------------------------------------
 
 " Startify Settings -----------------------------------------------------------
-" let g:startify_list_order = [ 'bookmarks', 'files', 'dir', 'commands', 'sessions' ]
+" let g:startify_list_order = [ 'files', 'bookmarks', 'dir', 'commands', 'sessions' ]
   let g:startify_lists = [
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ { 'type': 'files',     'header': ['   MRU']            },
         \ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -623,6 +622,7 @@ call plug#end()
   map F <Plug>Sneak_F
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
+  map \ <Plug>Sneak_,
 " map <Bslash> <Plug>Sneak_,
 " Sneak Settings(End) ---------------------------------------------------------
 
