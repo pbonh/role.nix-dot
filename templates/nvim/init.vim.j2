@@ -260,14 +260,16 @@ call plug#end()
   let g:floaterm_position = 'center'
   let g:floaterm_autoclose = 1
   let g:floaterm_autoinsert = v:true
-  let g:floaterm_opener = 'edit'
+  let g:floaterm_opener = 'tabe'
+  let g:floaterm_keymap_new    = '<C-s>'
+  let g:floaterm_keymap_prev   = '<C-p>'
+  let g:floaterm_keymap_next   = '<C-n>'
   let g:floaterm_keymap_toggle = '<C-\>'
   command! FloatermLazygit :FloatermNew lazygit
   command! FloatermRanger :FloatermNew ranger
   command! FloatermBroot :FloatermNew broot
   hi FloatermBorder guibg=gray guifg=orange
   hi FloatermNC guibg=gray
-  nnoremap <C-s> :FloatermNew<cr>
   nmap <Leader>s [floaterm-p]
   xmap <Leader>s [floaterm-p]
   nnoremap <silent> [floaterm-p]s :Floaterms<cr>
@@ -415,7 +417,7 @@ call plug#end()
   let g:auto_session_pre_restore_cmds = ["CocDisable"]
   let g:auto_session_post_restore_cmds = ["ReloadVimrc", "CocStart"]
 " nnoremap <silent> [telescope-p]s :SearchSession<CR>
-  nnoremap <silent> <C-p> :SearchSession<CR>
+  nnoremap <silent> <Leader>p :SearchSession<CR>
 " Auto-Session Settings(End) --------------------------------------------------
 
 " Treesitter/Neorg Settings ---------------------------------------------------
