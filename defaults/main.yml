@@ -53,7 +53,7 @@ extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
 #extra_bookmarks_startify: "{{ extra_bookmarks_quotes | join(', ') }}"
 #extra_bookmarks_startify: "{{ '\'' + extra_bookmarks | join('\', ') }}"
 extra_bookmarks_startify: "{{ '\"' + extra_bookmarks |join('\", \"') + '\"' }}"
-extra_bookmarks_project: "{{ '\'' + extra_bookmarks |join('\', \'') + '\'' }}"
+extra_bookmarks_project: "{{ '\\'' + extra_bookmarks |join('\\', \\'') + '\\'' }}"
 lsp_provider_coc_settings: {}
 lsp_provider_coc_settings_base:
   diagnostic.displayByAle: true
