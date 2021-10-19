@@ -29,6 +29,7 @@ call plug#begin('{{ nvim_plugged_dir }}')
   " ---------------------------------------------------------------------------
   Plug 'ryanoasis/vim-devicons'
   " ---------------------------------------------------------------------------
+  Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'rbgrouleff/bclose.vim'
   Plug 'skyuplam/broot.nvim'
   Plug 'kevinhwang91/rnvimr'
@@ -253,6 +254,60 @@ call plug#end()
   command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " COC.nvim Settings(End) ------------------------------------------------------
+
+" Wilder.nvim Settings --------------------------------------------------------
+  call wilder#setup({
+        \ 'modes': [':', '/', '?'],
+        \ 'next_key': '<Tab>',
+        \ 'previous_key': '<S-Tab>',
+        \ 'accept_key': '<Down>',
+        \ 'reject_key': '<Up>',
+        \ })
+  call wilder#set_option('pipeline', [
+        \   wilder#branch(
+        \     wilder#python_file_finder_pipeline({
+        \       'file_command': ['{{ nix_bin }}/fd', '-tf'],
+        \       'dir_command': ['{{ nix_bin }}/fd', '-td'],
+        \       'filters': ['fuzzy_filter', 'difflib_sorter'],
+        \     }),
+        \     wilder#cmdline_pipeline({
+        \       'language': 'python',
+        \       'fuzzy': 1,
+        \     }),
+        \     wilder#python_search_pipeline(),
+        \   ),
+        \ ])
+  call wilder#set_option('renderer', wilder#wildmenu_renderer(
+        \ wilder#wildmenu_airline_theme({
+        \   'highlights': {},
+        \   'highlighter': wilder#basic_highlighter(),
+        \   'separator': ' · ',
+        \ })))
+  call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+        \ 'highlights': {
+        \   'border': 'Normal',
+        \ },
+        \ 'border': 'rounded',
+        \ })))
+  call wilder#set_option('renderer', wilder#popupmenu_renderer({
+        \ 'highlighter': wilder#basic_highlighter(),
+        \ 'left': [
+        \   ' ', wilder#popupmenu_devicons(),
+        \ ],
+        \ 'right': [
+        \   ' ', wilder#popupmenu_scrollbar(),
+        \ ],
+        \ }))
+" call wilder#set_option('renderer', wilder#popupmenu_renderer({
+"       \ 'highlighter': [
+"       \   wilder#lua_pcre2_highlighter(),
+"       \   wilder#lua_fzy_highlighter(),
+"       \ ],
+"       \ 'highlights': {
+"       \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
+"       \ },
+"       \ }))
+" Wilder.nvim Settings(End) ---------------------------------------------------
 
 " Floaterm Settings -----------------------------------------------------------
   let g:floaterm_width = 0.8
