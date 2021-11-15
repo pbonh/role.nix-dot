@@ -378,10 +378,10 @@ call plug#end()
   let g:floaterm_autoclose = 1
   let g:floaterm_autoinsert = v:true
   let g:floaterm_opener = 'tabe'
+  let g:floaterm_keymap_toggle = '<C-\>'
   nnoremap   <silent>   <C-s>   :FloatermNew<CR>
   nnoremap   <silent>   <C-p>   :FloatermPrev<CR>
   nnoremap   <silent>   <C-n>   :FloatermNext<CR>
-  nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
   command! FloatermLazygit :FloatermNew lazygit
   command! FloatermRanger :FloatermNew ranger
   command! FloatermBroot :FloatermNew broot

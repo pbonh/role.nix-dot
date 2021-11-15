@@ -17,7 +17,16 @@
 -- )
 
 -- Focus.nvim Config
--- lua require("focus").setup()
+-- require("focus").setup(
+--     {
+--         excluded_filetypes = {
+--             "toggleterm"
+--         },
+--         excluded_buftypes = {
+--             "help"
+--         }
+--     }
+-- )
 -- vim.api.nvim_set_keymap('n', '<C-h>', ':FocusSplitLeft<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-j>', ':FocusSplitDown<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-k>', ':FocusSplitUp<CR>', { silent = true })
