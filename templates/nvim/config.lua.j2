@@ -1,20 +1,20 @@
 -- Telescope
--- require'telescope'.load_extension('project')
--- require('telescope').setup {
---   extensions = {% raw %}{{% endraw %}
---     project = {% raw %}{{% endraw %}
---       base_dirs = {% raw %}{{% endraw %}
---         {{ extra_bookmarks_project }}
---       {% raw %}}{% endraw %}
---     {% raw %}}{% endraw %}
---   {% raw %}}{% endraw %}
--- {% raw %}}{% endraw %}
--- vim.api.nvim_set_keymap(
---     'n',
---     '<C-p>',
---     ":lua require'telescope'.extensions.project.project{}<CR>",
---     {noremap = true, silent = true}
--- )
+require'telescope'.load_extension('project')
+require('telescope').setup {
+  extensions = {
+    project = {
+      base_dirs = {% raw %}{{% endraw %}
+        {{ extra_bookmarks_project }}
+      {% raw %}}{% endraw %}
+    }
+  }
+}
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>p',
+    ":lua require'telescope'.extensions.project.project{}<CR>",
+    {noremap = true, silent = true}
+)
 
 -- Focus.nvim Config
 -- require("focus").setup(
