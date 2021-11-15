@@ -51,19 +51,17 @@
 
 - name: Install Neovim Custom Filetypes
   vars:
-    ftype: "{{ item.name }}"
+    ftype: "{{ item.value.name }}"
   template:
     src: nvim/ftype.j2
-    dest: "{{ nvim_filetype_dir }}/{{ item.name }}.vim"
-  loop:
-    - "{{ nvim_custom_filetypes }}"
+    dest: "{{ nvim_filetype_dir }}/{{ item.value.name }}.vim"
+  loop: "{{ nvim_custom_filetypes | dict2items }}"
 
 - name: Install Neovim Custom Syntax Highlighting
   get_url:
-    url: "{{ item.url }}"
-    dest: "{{ nvim_syntax_dir }}/{{ item.name }}.vim"
-  loop:
-    - "{{ nvim_custom_filetypes }}"
+    url: "{{ item.value.url }}"
+    dest: "{{ nvim_syntax_dir }}/{{ item.value.name }}.vim"
+  loop: "{{ nvim_custom_filetypes | dict2items }}"
 
 # - name: Setup Neovim Plugin Config Directory
 #   file:
