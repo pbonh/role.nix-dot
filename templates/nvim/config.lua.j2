@@ -170,14 +170,14 @@ require('neorg').setup {
 }
 
 -- Auto-Session Settings
-require('auto-session').setup {
-    auto_session_enable_last_session=true,
-}
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
-require('session-lens').setup {
-  path_display = {'shorten'}
-}
-require("telescope").load_extension("session-lens")
+-- require('auto-session').setup {
+--     auto_session_enable_last_session=false,
+-- }
+-- vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
+-- require('session-lens').setup {
+--   path_display = {'shorten'}
+-- }
+-- require("telescope").load_extension("session-lens")
 
 -- Hop Settings
 require'hop'.setup()
