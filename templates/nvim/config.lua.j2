@@ -16,6 +16,14 @@
 --     {noremap = true, silent = true}
 -- )
 
+-- Focus.nvim Config
+-- lua require("focus").setup()
+-- vim.api.nvim_set_keymap('n', '<C-h>', ':FocusSplitLeft<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-j>', ':FocusSplitDown<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-k>', ':FocusSplitUp<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-l>', ':FocusSplitRight<CR>', { silent = true })
+
+
 -- FZF Config
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup {
@@ -144,7 +152,9 @@ require('neorg').setup {
           config = {
               workspaces = {
                   my_workspace = "{{ code_checkout_path }}/neorg"
-              }
+              },
+              autodetect = true,
+              autochdir = true,
           }
       }
   },
