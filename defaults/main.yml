@@ -32,7 +32,10 @@ nvim_lua_config_dir: "{{ nvim_config_dir }}/lua"
 nvim_config_lua: "{{ nvim_lua_config_dir }}/config.lua"
 nvim_plugin_config_dir: "{{ nvim_config_dir }}/nvim-config"
 nvim_coc_settings_file: "{{ nvim_config_dir }}/coc-settings.json"
+nvim_filetype_dir: "{{ nvim_config_dir }}/ftdetect"
+nvim_syntax_dir: "{{ nvim_config_dir }}/syntax"
 nvim_shell: "{{ nix_bin }}/zsh"
+nvim_custom_filetypes: {}
 lsp_provider_neovim_plugins: []
 language_neovim_plugins: []
 ale_plugin_settings: []

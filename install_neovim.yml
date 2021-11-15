@@ -37,23 +37,51 @@
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ nvim_vim_plug_dir }}/plug.vim"
 
-      #- name: Setup Neovim Plugin Config Directory
-      #  file:
-      #    path: "{{ nvim_plugin_config_dir }}"
-      #    state: directory
-      #    mode: '0755'
-      #
-      #- name: Install Neovim Plugin Configs
-      #  copy:
-      #    src: nvim/nvim-config/
-      #    dest: "{{ nvim_plugin_config_dir }}"
-      #
-      #- name: Install Neovim Plugin Configs
-      #  template:
-      #    src: '{{ item.src }}'
-      #    dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
-      #  with_filetree: '../templates/nvim/nvim-config'
-      #  when: item.state == 'file'
+- name: Setup Neovim Filetype Directory
+  file:
+    path: "{{ nvim_filetype_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Setup Neovim Syntax Highlighting Files Directory
+  file:
+    path: "{{ nvim_syntax_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Install Neovim Custom Filetypes
+  vars:
+    ftype: "{{ item.name }}"
+  template:
+    src: nvim/ftype.j2
+    dest: "{{ nvim_filetype_dir }}/{{ item.name }}.vim"
+  loop:
+    - "{{ nvim_custom_filetypes }}"
+
+- name: Install Neovim Custom Syntax Highlighting
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ nvim_syntax_dir }}/{{ item.name }}.vim"
+  loop:
+    - "{{ nvim_custom_filetypes }}"
+
+# - name: Setup Neovim Plugin Config Directory
+#   file:
+#     path: "{{ nvim_plugin_config_dir }}"
+#     state: directory
+#     mode: '0755'
+#
+# - name: Install Neovim Plugin Configs
+#   copy:
+#     src: nvim/nvim-config/
+#     dest: "{{ nvim_plugin_config_dir }}"
+#
+# - name: Install Neovim Plugin Configs
+#   template:
+#     src: '{{ item.src }}'
+#     dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
+#   with_filetree: '../templates/nvim/nvim-config'
+#   when: item.state == 'file'
 
 - name: Check if Neovim Plugins Installed
   find:
