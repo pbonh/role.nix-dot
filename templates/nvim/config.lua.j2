@@ -4,7 +4,8 @@ require('telescope').setup {
   extensions = {
     project = {
       base_dirs = {% raw %}{{% endraw %}
-        {{ extra_bookmarks_project }}
+        {{ code_checkout_path }},
+        {{ dotfiles_user_home }},
       {% raw %}}{% endraw %}
     }
   }
