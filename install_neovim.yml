@@ -49,6 +49,12 @@
     state: directory
     mode: '0755'
 
+- name: Setup Neovim Filetype Settings
+  file:
+    path: "{{ nvim_filetype_settings_dir }}"
+    state: directory
+    mode: '0755'
+
 - name: Install Neovim Custom Filetypes
   vars:
     ftype: "{{ item.value.name }}"
