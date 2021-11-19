@@ -153,7 +153,7 @@ require('neorg').setup {
       ["core.defaults"] = {}, -- Load all the default modules
       ["core.keybinds"] = {
           config = {
-              default_keybinds = true,
+              default_keybinds = false,
               neorg_leader = "<Leader>o"
           }
       },
@@ -161,7 +161,7 @@ require('neorg').setup {
       ["core.norg.dirman"] = { -- Manage your directories with Neorg
           config = {
               workspaces = {
-                  my_workspace = "{{ code_checkout_path }}/neorg"
+                  notes_workspace = "{{ code_checkout_path }}/neorg.notes"
               },
               autodetect = true,
               autochdir = true,
@@ -169,6 +169,18 @@ require('neorg').setup {
       }
   },
 }
+local neorg_callbacks = require('neorg.callbacks')
+neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
+    keybinds.map_event_to_mode("norg", {
+        n = { -- Bind keys in normal mode
+            -- Keys for managing TODO items and setting their states
+            { "gtd", "core.norg.qol.todo_items.todo.task_done" },
+            { "gtu", "core.norg.qol.todo_items.todo.task_undone" },
+            { "gtp", "core.norg.qol.todo_items.todo.task_pending" },
+            { "<C-Space>", "core.norg.qol.todo_items.todo.task_cycle" }
+        },
+    }, { silent = true, noremap = true })
+end)
 
 -- Auto-Session Settings
 -- require('auto-session').setup {
