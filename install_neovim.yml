@@ -69,6 +69,11 @@
     dest: "{{ nvim_syntax_dir }}/{{ item.value.name }}.vim"
   loop: "{{ nvim_custom_filetypes | dict2items }}"
 
+- name: Setup Neorg Keymaps
+  copy:
+    src: norg.vim
+    dest: "{{ nvim_filetype_settings_dir }}/norg.vim"
+
 # - name: Setup Neovim Plugin Config Directory
 #   file:
 #     path: "{{ nvim_plugin_config_dir }}"
