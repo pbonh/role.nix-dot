@@ -1,9 +1,15 @@
 % nix
 
-# Update Installed Packages
+# Update Installed Nix Packages
 nix-env -u '*'
 
-# List Installed Packages
+# Update Nix Itself(WSL)
+nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert;
+
+# Update Nix Itself
+nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert; systemctl daemon-reload; systemctl restart nix-daemon
+
+# List Installed Nix Packages
 nix-env -f '<nixpkgs>' -qa
 
 # Build Nix Environment
