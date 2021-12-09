@@ -702,7 +702,11 @@ call plug#end()
   nnoremap <silent> [fzf-git-p]s <cmd>lua require('fzf-lua').git_status()<CR>
 " FZF Settings(End) -----------------------------------------------------------
 
-" UltiSnips Settings -----------------------------------------------------------
+" AsyncTasks Settings ---------------------------------------------------------
+  let g:asynctasks_term_pos = 'floaterm'
+" AsyncTasks Settings(End) ----------------------------------------------------
+
+" UltiSnips Settings ----------------------------------------------------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<C-b>"
@@ -713,7 +717,7 @@ call plug#end()
 
 " Prevent UltiSnips from conflicting with mapping
   let g:UltiSnipsMappingsToIgnore = ['autocomplete']
-" UltiSnips Settings(End) ------------------------------------------------------
+" UltiSnips Settings(End) -----------------------------------------------------
 
 " Startify Settings -----------------------------------------------------------
 " let g:startify_list_order = [ 'files', 'bookmarks', 'dir', 'commands', 'sessions' ]
