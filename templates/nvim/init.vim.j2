@@ -13,8 +13,10 @@
 call plug#begin('{{ nvim_plugged_dir }}')
   " Direnv --------------------------------------------------------------------
   Plug 'direnv/direnv.vim'
+  " Quickfix ------------------------------------------------------------------
+  Plug 'kevinhwang91/nvim-bqf'
   " Treesitter ----------------------------------------------------------------
-  Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   " Motion/Text Objects -------------------------------------------------------
   " Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-surround'
@@ -446,6 +448,7 @@ call plug#end()
 " Floaterm Settings(End) ------------------------------------------------------
 
 " Toggleterm Settings -----------------------------------------------------------
+  tnoremap <silent> <C-/> :ToggleTerm<cr>
   nnoremap <silent> [floaterm-p]/ :2ToggleTerm<cr>
   nnoremap <silent> [floaterm-p]x :ToggleTerm size=20 direction=horizontal<cr>
   nnoremap <silent> [floaterm-p]v :ToggleTerm size=80 direction=vertical<cr>
