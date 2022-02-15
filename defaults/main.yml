@@ -75,3 +75,8 @@ broot_config_file: "{{ broot_config }}/conf.hjson"
 cdg_paths_global: /etc/cdg_paths
 cdg_paths_user: "{{ dotfiles_user_home }}/.cdg_paths"
 direnv_config: "{{ dotfiles_user_home }}/.direnvrc"
+tmux_config_dir: "{{ xdg_config_dir }}/tmux"
+tmux_config_file: "{{ tmux_config_dir }}/tmux.conf"
+tmux_plugin_dir: "{{ dotfiles_user_home }}/.tmux/plugins"
+tmux_tpm_dir: "{{ tmux_plugin_dir }}/tpm"
+tmux_tpm_url: https://github.com/tmux-plugins/tpm

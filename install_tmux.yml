@@ -1,0 +1,16 @@
+---
+- name: Setup Tmux Config Directory
+  file:
+    path: "{{ tmux_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Tmux | Copies Tmux Config | template
+  template:
+    src: tmux/tmux.conf.j2
+    dest: "{{ tmux_config_file }}"
+
+- name: Tmux | Install Tmux Plugin Manager | git
+  git:
+    repo: "{{ tmux_tpm_url }}"
+    dest: "{{ tmux_tpm_dir }}"

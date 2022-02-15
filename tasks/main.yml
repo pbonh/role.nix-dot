@@ -11,6 +11,9 @@
 - name: Install Neovim Config
   import_tasks: install_neovim.yml
 
+- name: Install Tmux Config
+  import_tasks: install_tmux.yml
+
 - name: Install Ranger-Zoxide Plugin
   import_tasks: install_ranger_zoxide.yml
 
