@@ -106,4 +106,4 @@
 
 - name: Install Neovim Plugins
   when: pluginsInstalled.matched == 0
-  command: "{{ nix_bin }}/nvim --headless +PlugInstall +qall"
+  command: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless +PlugInstall +qall"
