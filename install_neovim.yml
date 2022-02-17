@@ -12,7 +12,8 @@
 
 - name: Install Neovim Plugins(Packer)
   changed_when: false
-  shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+  shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless +PackerInstall +qall"
+    #shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
       #- name: Setup Neovim Lua Config Directory
       #  file:
