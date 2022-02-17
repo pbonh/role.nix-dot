@@ -15,6 +15,17 @@
   shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless +PackerInstall +qall"
     #shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
+- name: Setup Neovim Lua Config Directory
+  file:
+    path: "{{ nvim_lua_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Copies Neovim Statusline Config | template
+  template:
+    src: nvim/lua/slanted-gaps.lua.j2
+    dest: "{{ nvim_lua_config_dir }}/slanted-gaps.lua"
+
       #- name: Setup Neovim Lua Config Directory
       #  file:
       #    path: "{{ nvim_lua_config_dir }}"
