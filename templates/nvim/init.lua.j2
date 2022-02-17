@@ -43,6 +43,8 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  -- Motion Plugins
+  use 'ggandor/lightspeed.nvim'
   -- Start Screen
   use {
     "startup-nvim/startup.nvim",
@@ -51,6 +53,8 @@ require('packer').startup(function()
       require"startup".setup()
     end
   }
+  -- Project Management
+  use 'nvim-telescope/telescope-project.nvim'
 end)
 
 --Set highlight on search
@@ -338,5 +342,24 @@ cmp.setup {
 
 -- Startup Settings
 require('startup_nvim')
+
+-- Telescope Project
+require'telescope'.load_extension('project')
+require('telescope').setup {
+  extensions = {
+    project = {
+      base_dirs = {% raw %}{{% endraw %}
+        {% raw %}{{% endraw %}'{{ code_checkout_path_github }}', max_depth = 2{% raw %}}{% endraw %},
+        {% raw %}{{% endraw %}'{{ dotfiles_user_home }}', max_depth = 2{% raw %}}{% endraw %},
+      {% raw %}}{% endraw %}
+    }
+  }
+}
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>p',
+    ":lua require'telescope'.extensions.project.project{}<CR>",
+    {noremap = true, silent = true}
+)
 
 -- vim: ts=2 sts=2 sw=2 et
