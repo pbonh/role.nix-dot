@@ -9,6 +9,11 @@
   changed_when: false
   shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
+- name: Neovim | Copies Neovim Lua Config | template
+  template:
+    src: nvim/init.lua.j2
+    dest: "{{ nvim_init_lua }}"
+
       #- name: Setup Neovim Lua Config Directory
       #  file:
       #    path: "{{ nvim_lua_config_dir }}"
