@@ -1,59 +1,59 @@
 ---
 - name: Install Zsh Config
-  import_tasks: install_zsh.yml
+  import_tasks: tasks/install_zsh.yml
   tags:
     - zsh
     - shell
 
 - name: Install Git Config
-  import_tasks: install_git.yml
+  import_tasks: tasks/install_git.yml
   tags:
     - git
 
 - name: Install Navi Config
-  import_tasks: install_navi.yml
+  import_tasks: tasks/install_navi.yml
   tags:
     - navi
     - shell
 
 - name: Install Neovim Config
-  import_tasks: install_neovim.yml
+  import_tasks: tasks/install_neovim.yml
   tags:
     - neovim
 
 - name: Install Tmux Config
-  import_tasks: install_tmux.yml
+  import_tasks: tasks/install_tmux.yml
   tags:
     - tmux
 
 - name: Install Zellij Config
-  import_tasks: install_zellij.yml
+  import_tasks: tasks/install_zellij.yml
   tags:
     - zellij
 
 - name: Install Ranger-Zoxide Plugin
-  import_tasks: install_ranger_zoxide.yml
+  import_tasks: tasks/install_ranger_zoxide.yml
   tags:
     - ranger
     - zoxide
 
 - name: Install Lazygit
-  import_tasks: install_lazygit.yml
+  import_tasks: tasks/install_lazygit.yml
   tags:
     - git
     - lazygit
 
 - name: Install Broot
-  import_tasks: install_broot.yml
+  import_tasks: tasks/install_broot.yml
   tags:
     - broot
 
 - name: Install Bookmarks
-  import_tasks: install_bookmarks.yml
+  import_tasks: tasks/install_bookmarks.yml
   tags:
     - bookmarks
 
 - name: Install Direnv Config
-  import_tasks: install_direnv.yml
+  import_tasks: tasks/install_direnv.yml
   tags:
     - direnv
