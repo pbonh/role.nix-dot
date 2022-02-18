@@ -21,8 +21,7 @@ require('packer').startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use {'feline-nvim/feline.nvim'}
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {'vim-airline/vim-airline', requires = { 'vim-airline/vim-airline-themes' } }
   -- Theme
   use 'morhetz/gruvbox'
   -- Add indentation guides even on blank lines
@@ -95,10 +94,11 @@ vim.cmd [[colorscheme gruvbox]]
 vim.o.completeopt = 'menuone,noselect'
 
 -- Set statusbar
-require('user_statusline')
+-- require('user_statusline')
+vim.g['airline#extensions#tabline#enabled'] = 1
 
 -- Set Tabline
-require("bufferline").setup{}
+-- require("bufferline").setup{}
 
 -- Enable Comment.nvim
 require('Comment').setup()
