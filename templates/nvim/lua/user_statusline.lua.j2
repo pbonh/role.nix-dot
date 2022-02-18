@@ -74,12 +74,12 @@ local function tabline_colors_from_theme()
   }
 end
 
-M.gen_highlights = function()
+gen_highlights = function()
   local c = colors_from_theme()
   local sfg = vim.o.background == "dark" and c.black or c.white
   local sbg = vim.o.background == "dark" and c.white or c.black
   local ct = tabline_colors_from_theme()
-  M.colors = c
+  colors = c
   local groups = {
     FlnViBlack = { fg = c.white, bg = c.black, style = "bold" },
     FlnViRed = { fg = c.bg, bg = c.red, style = "bold" },
