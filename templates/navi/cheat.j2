@@ -74,3 +74,7 @@ cat <jsons>
 
 $ jsons: find . -iname '*.json' -type f -print --- --multi --map "navi fn map::expand"
 
+% neovim
+
+#Install/Update Packer Packages
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
