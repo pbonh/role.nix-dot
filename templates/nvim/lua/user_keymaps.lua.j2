@@ -1,0 +1,70 @@
+-- Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Enable Mapx/Which-Key
+local m = require'mapx'.setup{ global = true, whichkey = true }
+
+-- Enter Command Mode Mapping(Reassign Colon/Enter)
+nnoremap("<CR>", ":", "Enter Commands")
+
+-- Split/Window Mappings
+nnoremap("<C-h>", "<C-w>h", "silent", "Split/Window: Move Left")
+nnoremap("<C-j>", "<C-w>j", "silent", "Split/Window: Move Down")
+nnoremap("<C-k>", "<C-w>k", "silent", "Split/Window: Move Up")
+nnoremap("<C-l>", "<C-w>l", "silent", "Split/Window: Move Right")
+
+-- WinShift Mappings
+m.nname("<leader>w", "WinShift")
+nnoremap("<leader>ww", "<Cmd>WinShift<CR>", "silent", "WinShift: Enter WinShift Mode")
+nnoremap("<leader>wh", "<Cmd>WinShift left<CR>", "silent", "WinShift: Shift Split/Window Left")
+nnoremap("<leader>wj", "<Cmd>WinShift down<CR>", "silent", "WinShift: Shift Split/Window Down")
+nnoremap("<leader>wk", "<Cmd>WinShift up<CR>", "silent", "WinShift: Shift Split/Window Up")
+nnoremap("<leader>wl", "<Cmd>WinShift Right<CR>", "silent", "WinShift: Shift Split/Window Right")
+
+-- Base Telescope Mappings
+nnoremap("<leader><space>", "<cmd>lua require('telescope.builtin').buffers()<CR>", "silent", "Telescope: View Buffers")
+nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>", "silent", "Telescope: Find Files")
+nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "silent", "Telescope: Find in Current Buffer")
+nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", "silent", "Telescope: Help Tags")
+nnoremap("<leader>ft", "<cmd>lua require('telescope.builtin').tags()<CR>", "silent", "Telescope: Search Tags")
+nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<CR>", "silent", "Telescope: Grep String")
+nnoremap("<leader>fbt", "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>", "silent", "Telescope: Search Buffer Tags")
+nnoremap("<leader>q", "<cmd>lua require('telescope.builtin').live_grep()<CR>", "silent", "Telescope: Live Grep Project")
+nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "silent", "Telescope: Old Files")
+
+-- Diagnostic Mappings
+m.nname("<leader>e", "Diagnostic")
+nnoremap("<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>", "silent", "Diagnostic: Open Float")
+nnoremap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", "silent", "Diagnostic: Goto Previous")
+nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", "silent", "Diagnostic: Goto Next")
+nnoremap("<leader>el", "<cmd>lua vim.diagnostic.setloclist()<CR>", "silent", "Diagnostic: Set Location List")
+
+-- LSP Mappings
+m.nname("<leader>l", "LSP")
+nnoremap("<leader>li", ":LspInfo<Cr>",    "LSP: Show LSP information")
+nnoremap("<leader>lr", ":LspRestart<Cr>", "LSP: Restart LSP")
+nnoremap("<leader>ls", ":LspStart<Cr>",   "LSP: Start LSP")
+nnoremap("<leader>lS", ":LspStop<Cr>",    "LSP: Stop LSP")
+nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<Cr>", "silent", "LSP: Goto Declaration")
+nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "silent", "LSP: Goto Definition")
+nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "silent", "LSP: Goto Implementation")
+nnoremap("<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", "silent", "LSP: Type Definition")
+nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", "silent", "LSP: Find References")
+nnoremap("g/", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "silent", "LSP: Search Document Symbols")
+nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "silent", "LSP: Hover")
+nnoremap("<leader>K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "silent", "LSP: Signature Help")
+nnoremap("<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "silent", "LSP: Add Workspace Folder")
+nnoremap("<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "silent", "LSP: Remove Workspace Folder")
+nnoremap("<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "silent", "LSP: List Workspace Folders")
+nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "silent", "LSP: Rename")
+nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "silent", "LSP: Code Action")
+
+-- Telescope-Project Mappings
+nnoremap("<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", "silent", "Telescope: Select Project")
+
+--Remap for dealing with word wrap
+vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+

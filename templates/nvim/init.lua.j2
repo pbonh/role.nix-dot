@@ -18,11 +18,9 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -55,67 +53,52 @@ require('packer').startup(function()
   }
   -- Project Management
   use 'nvim-telescope/telescope-project.nvim'
+  -- Keymap Plugins
+  use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
+  -- Split/Window Management
+  use 'sindrets/winshift.nvim'
 end)
 
---Set highlight on search
-vim.o.hlsearch = false
+-- Set highlight on search
+vim.o.hlsearch = true
 
---UI Settings
+-- UI Settings
 vim.wo.relativenumber = true
 vim.wo.number = true
 vim.wo.wrap = false
 
---Enable mouse mode
+-- Enable mouse mode
 vim.o.mouse = 'a'
 
---Enable break indent
+-- Enable break indent
 vim.o.breakindent = true
 
---Save undo history
+-- Save undo history
 vim.opt.undofile = true
 
---Case insensitive searching UNLESS /C or capital in search
+-- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
---Decrease update time
+-- Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
---Set colorscheme
+-- Set colorscheme
 vim.o.termguicolors = true
 vim.cmd [[colorscheme gruvbox]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
---Set statusbar
+-- Set statusbar
 require('slanted-gaps')
--- require('lualine').setup {
---   options = {
---     icons_enabled = false,
---     theme = 'gruvbox',
---     component_separators = '|',
---     section_separators = '',
---   },
--- }
---Set Tabline
+
+-- Set Tabline
 require("bufferline").setup{}
 
---Enable Comment.nvim
+-- Enable Comment.nvim
 require('Comment').setup()
-
---Main Keymaps
-vim.api.nvim_set_keymap('n', '<CR>', ':', { noremap = true })
-
---Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
---Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
 -- Highlight on yank
 vim.cmd [[
@@ -125,7 +108,7 @@ vim.cmd [[
   augroup end
 ]]
 
---Map blankline
+-- Map blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
@@ -157,18 +140,6 @@ require('telescope').setup {
 -- Enable telescope fzf native
 require('telescope').load_extension 'fzf'
 
---Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
-
--- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require('nvim-treesitter.configs').setup {
   highlight = {
@@ -221,29 +192,9 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
-
 -- LSP settings
 local lspconfig = require 'lspconfig'
 local on_attach = function(_, bufnr)
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
@@ -355,11 +306,40 @@ require('telescope').setup {
     }
   }
 }
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>p',
-    ":lua require'telescope'.extensions.project.project{}<CR>",
-    {noremap = true, silent = true}
-)
+
+-- WinShift
+require("winshift").setup({
+  highlight_moving_win = true,  -- Highlight the window being moved
+  focused_hl_group = "Visual",  -- The highlight group used for the moving window
+  moving_win_options = {
+    -- These are local options applied to the moving window while it's
+    -- being moved. They are unset when you leave Win-Move mode.
+    wrap = false,
+    cursorline = false,
+    cursorcolumn = false,
+    colorcolumn = "",
+  },
+  -- The window picker is used to select a window while swapping windows with
+  -- ':WinShift swap'.
+  -- A string of chars used as identifiers by the window picker.
+  window_picker_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+  window_picker_ignore = {
+    -- This table allows you to indicate to the window picker that a window
+    -- should be ignored if its buffer matches any of the following criteria.
+    filetype = {  -- List of ignored file types
+      "NvimTree",
+    },
+    buftype = {   -- List of ignored buftypes
+      "terminal",
+      "quickfix",
+    },
+    bufname = {   -- List of regex patterns matching ignored buffer names
+      [[.*foo/bar/baz\.qux]]
+    },
+  },
+})
+
+-- Main Keymaps
+require('user_keymaps')
 
 -- vim: ts=2 sts=2 sw=2 et
