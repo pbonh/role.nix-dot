@@ -21,10 +21,7 @@ require('packer').startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  use {'feline-nvim/feline.nvim'}
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- Theme
   use 'morhetz/gruvbox'
@@ -92,7 +89,7 @@ vim.cmd [[colorscheme gruvbox]]
 vim.o.completeopt = 'menuone,noselect'
 
 -- Set statusbar
-require('slanted-gaps')
+require('user_statusline')
 
 -- Set Tabline
 require("bufferline").setup{}
