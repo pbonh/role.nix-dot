@@ -78,6 +78,9 @@ require('packer').startup(function()
   }
 end)
 
+-- Set Shell
+vim.o.shell = {{ nvim_shell }}
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
@@ -361,6 +364,9 @@ require("winshift").setup({
 -- Task Settings
 vim.g.asyncrun_open = 6
 vim.g.asynctasks_term_pos = 'toggleterm'
+
+-- Terminal Settings
+require('user_toggleterm')
 
 -- Main Keymaps
 require('user_keymaps')
