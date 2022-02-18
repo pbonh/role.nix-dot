@@ -36,7 +36,7 @@ nnoremap("<leader>q", "<cmd>lua require('telescope.builtin').live_grep()<CR>", "
 nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "silent", "Telescope: Old Files")
 
 -- Extra Telescope Mappings
-nnoremap("<leader>t", "require('telescope').extensions.asynctasks.all()", "silent", "Telescope: Run Task")
+nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
 
 -- Diagnostic Mappings
 m.nname("<leader>e", "Diagnostic")
