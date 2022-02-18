@@ -9,7 +9,7 @@ keybinds:
     unbind: true
     normal:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ',]
+          key: [Ctrl: 'g',]
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Resize,]
@@ -46,10 +46,10 @@ keybinds:
           key: [ Alt: '-']
     locked:
         - action: [SwitchToMode: Normal,]
-          key: [Ctrl: ' ',]
+          key: [Ctrl: 'g',]
     resize:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ']
+          key: [Ctrl: 'g']
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Tab,]
@@ -100,7 +100,7 @@ keybinds:
           key: [ Alt: '-']
     pane:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ']
+          key: [Ctrl: 'g']
         - action: [SwitchToMode: Resize,]
           key: [Ctrl: 'n',]
         - action: [SwitchToMode: Tab,]
@@ -161,7 +161,7 @@ keybinds:
           key: [Char: 'c']
     move:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ']
+          key: [Ctrl: 'g']
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Tab,]
@@ -208,7 +208,7 @@ keybinds:
           key: [ Alt: '-']
     tab:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ']
+          key: [Ctrl: 'g']
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Resize,]
@@ -281,7 +281,7 @@ keybinds:
         - action: [SwitchToMode: Tab,]
           key: [Ctrl: 't',]
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ',]
+          key: [Ctrl: 'g',]
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Move,]
@@ -378,7 +378,7 @@ keybinds:
           key: [ Alt: '-']
     session:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: ' ']
+          key: [Ctrl: 'g']
         - action: [SwitchToMode: Resize,]
           key: [Ctrl: 'n',]
         - action: [SwitchToMode: Pane,]
@@ -452,7 +452,7 @@ default_shell: {{ nvim_shell }}
 
 # Choose the mode that zellij uses when starting up.
 # Default: normal
-default_mode: locked
+#default_mode: locked
 
 # Toggle enabling the mouse mode.
 # On certain configurations, or terminals this could
