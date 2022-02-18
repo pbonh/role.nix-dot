@@ -38,13 +38,13 @@ eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 # eval "$(navi widget zsh)"
 _navi_call() {
-   local result="$(navi "$@" </dev/tty)"
+   local result="$({{ nix_bin }}/navi "$@" </dev/tty)"
    printf "%s" "$result"
 }
 
 _navi_widget() {
    local -r input="${LBUFFER}"
-   local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
+   local -r last_command="$(echo "${input}" | {{ nix_bin }}/navi fn widget::last_command)"
    local replacement="$last_command"
 
    if [ -z "$last_command" ]; then
