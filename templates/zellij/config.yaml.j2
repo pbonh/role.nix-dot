@@ -11,9 +11,9 @@ keybinds:
         - action: [SwitchToMode: Locked,]
           key: [Ctrl: 'g',]
         - action: [SwitchToMode: Pane,]
-          key: [Ctrl: 'a',]
+          key: [Ctrl: 'p',]
         - action: [SwitchToMode: Resize,]
-          key: [Ctrl: 'r',]
+          key: [Ctrl: 'n',]
         - action: [SwitchToMode: Tab,]
           key: [Ctrl: 't',]
         - action: [SwitchToMode: Scroll,]
@@ -438,6 +438,7 @@ plugins:
 
 # Choose the path to the default shell that zellij will use for opening new panes
 # Default: $SHELL
+#default_shell: fish
 default_shell: {{ nvim_shell }}
 
 # Toggle between having pane frames around the panes
