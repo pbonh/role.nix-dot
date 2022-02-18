@@ -21,7 +21,12 @@ require('packer').startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use {'vim-airline/vim-airline', requires = { 'vim-airline/vim-airline-themes' } }
+  -- Status/Tab Line
+  use {'konapun/vacuumline.nvim', requires = {
+    'glepnir/galaxyline.nvim', branch = 'main',
+    'kyazdani42/nvim-web-devicons', opt = true
+  }
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- Theme
   use 'morhetz/gruvbox'
   -- Add indentation guides even on blank lines
@@ -59,6 +64,17 @@ require('packer').startup(function()
   use { 'skywind3000/asynctasks.vim',
     requires = { 'skywind3000/asyncrun.vim', 'skywind3000/asyncrun.extra' }
   }
+  -- Task Runner
+  use { 'GustavoKatel/telescope-asynctasks.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'skywind3000/asynctasks.vim',
+      'skywind3000/asyncrun.vim',
+      'skywind3000/asyncrun.extra'
+    }
+  }
 end)
 
 -- Set highlight on search
@@ -94,12 +110,10 @@ vim.cmd [[colorscheme gruvbox]]
 vim.o.completeopt = 'menuone,noselect'
 
 -- Set statusbar
--- require('user_statusline')
-vim.g['airline#extensions#tabline#enabled'] = 1
-vim.g.airline_powerline_fonts = 1
+require('user_statusline')
 
 -- Set Tabline
--- require("bufferline").setup{}
+require("bufferline").setup{}
 
 -- Enable Comment.nvim
 require('Comment').setup()

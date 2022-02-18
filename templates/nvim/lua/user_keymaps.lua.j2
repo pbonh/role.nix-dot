@@ -30,10 +30,13 @@ nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files({previe
 nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "silent", "Telescope: Find in Current Buffer")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", "silent", "Telescope: Help Tags")
 nnoremap("<leader>ft", "<cmd>lua require('telescope.builtin').tags()<CR>", "silent", "Telescope: Search Tags")
-nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<CR>", "silent", "Telescope: Grep String")
+nnoremap("_", "<cmd>lua require('telescope.builtin').grep_string()<CR>", "silent", "Telescope: Grep String(Cursor Word)")
 nnoremap("<leader>fbt", "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>", "silent", "Telescope: Search Buffer Tags")
 nnoremap("<leader>q", "<cmd>lua require('telescope.builtin').live_grep()<CR>", "silent", "Telescope: Live Grep Project")
 nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "silent", "Telescope: Old Files")
+
+-- Extra Telescope Mappings
+nnoremap("<leader>t", "require('telescope').extensions.asynctasks.all()", "silent", "Telescope: Run Task")
 
 -- Diagnostic Mappings
 m.nname("<leader>e", "Diagnostic")
