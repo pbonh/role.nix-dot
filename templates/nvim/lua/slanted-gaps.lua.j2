@@ -41,7 +41,7 @@ local function process_sections(sections)
         comp = { comp }
         section[id] = comp
       end
-      comp.separator = left and { right = '\uE0B3' } or { left = '\uE0B1' }
+      comp.separator = left and { right = u'\uE0B3' } or { left = u'\uE0B1' }
     end
   end
   return sections
@@ -72,7 +72,7 @@ require('lualine').setup {
   options = {
     theme = gruvbox,
     component_separators = '',
-    section_separators = { left = '\uE0B1', right = '\uE0B3' },
+    section_separators = { left = u'\uE0B1', right = u'\uE0B3' },
   },
   sections = process_sections {
     lualine_a = { 'mode' },
