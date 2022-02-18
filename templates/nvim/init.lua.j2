@@ -79,7 +79,7 @@ require('packer').startup(function()
 end)
 
 -- Set Shell
-vim.o.shell = {{ nvim_shell }}
+vim.o.shell = "{{ nvim_shell }}"
 
 -- Set highlight on search
 vim.o.hlsearch = true
