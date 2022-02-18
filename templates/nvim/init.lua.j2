@@ -23,8 +23,9 @@ require('packer').startup(function()
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Status/Tab Line
   use {'konapun/vacuumline.nvim', requires = {
-    'glepnir/galaxyline.nvim', branch = 'main',
-    'kyazdani42/nvim-web-devicons', opt = true
+      'glepnir/galaxyline.nvim', branch = 'main',
+      'kyazdani42/nvim-web-devicons', opt = true
+    }
   }
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- Theme
