@@ -54,6 +54,12 @@ require('packer').startup(function()
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
   -- Split/Window Management
   use 'sindrets/winshift.nvim'
+  -- Terminal Plugins
+  use {"akinsho/toggleterm.nvim"}
+  -- Task Runner
+  use { 'skywind3000/asynctasks.vim', 
+    requires = { 'skywind3000/asyncrun.vim', 'skywind3000/asyncrun.extra' } 
+   }
 end)
 
 -- Set highlight on search
@@ -335,6 +341,10 @@ require("winshift").setup({
     },
   },
 })
+
+-- Task Settings
+vim.g.asyncrun_open = 6
+vim.g.asynctasks_term_pos = 'toggleterm'
 
 -- Main Keymaps
 require('user_keymaps')
