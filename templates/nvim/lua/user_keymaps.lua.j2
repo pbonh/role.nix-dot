@@ -23,6 +23,14 @@ nnoremap("<leader>wj", "<Cmd>WinShift down<CR>", "silent", "WinShift: Shift Spli
 nnoremap("<leader>wk", "<Cmd>WinShift up<CR>", "silent", "WinShift: Shift Split/Window Up")
 nnoremap("<leader>wl", "<Cmd>WinShift right<CR>", "silent", "WinShift: Shift Split/Window Right")
 
+-- Search Mappings
+nnoremap("n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "silent", "HLSLens: Next Search Result")
+nnoremap("N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "silent", "HLSLens: Previous Search Result")
+nnoremap("*", "*<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Cursorword")
+nnoremap("#", "#<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Cursorword In Reverse")
+nnoremap("g*", "g*<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Cursorword Go")
+nnoremap("g#", "g#<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Cursorword Go In Reverse")
+
 -- Terminal Mappings
 m.nname("<leader>s", "Floaterm")
 tnoremap("<C-/>", "<Cmd>ToggleTerm<CR>", "silent", "ToggleTerm: Toggle Terminal")
