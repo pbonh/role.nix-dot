@@ -49,16 +49,16 @@ local palette = {
 local gruvbox_theme = {
   line             = {foreground = palette.gray, background = palette.black},
   segment_odd      = {foreground = palette.black, background = palette.gray},
-  segment_even     = {foreground = palette.gray, background = palette.dark0_soft},
-  mode_normal      = {foreground = palette.faded_purple},
-  mode_insert      = {foreground = palette.faded_orange},
-  mode_command     = {foreground = palette.faded_blue},
-  mode_visual      = {foreground = palette.faded_yellow},
-  mode_visual_line = {foreground = palette.cyan},
-  mode_terminal    = {foreground = palette.faded_red},
-  warning          = {foreground = palette.black, background = palette.bright_yellow},
-  error            = {foreground = palette.black, background = palette.bright_red},
-  scroll           = {foreground = palette.faded_yellow}
+  segment_even     = {foreground = palette.gray, background = palette.dark4},
+  mode_normal      = {foreground = palette.dark0_hard},
+  mode_insert      = {foreground = palette.bright_green},
+  mode_command     = {foreground = palette.bright_blue},
+  mode_visual      = {foreground = palette.bright_purple},
+  mode_visual_line = {foreground = palette.bright_purple},
+  mode_terminal    = {foreground = palette.bright_red},
+  warning          = {foreground = palette.black, background = palette.faded_yellow},
+  error            = {foreground = palette.black, background = palette.faded_red},
+  scroll           = {foreground = palette.faded_orange}
 }
 require('vacuumline').setup({
   theme = gruvbox_theme
