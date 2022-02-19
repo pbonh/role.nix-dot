@@ -38,8 +38,9 @@ require('packer').startup(function()
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use 'nvim-treesitter/nvim-treesitter'
-  -- Better Search Highlighting
+  -- Better Highlighting
   use 'kevinhwang91/nvim-hlslens'
+  use { 'petertriho/nvim-scrollbar', requires = { 'kevinhwang91/nvim-hlslens' } }
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -115,6 +116,10 @@ vim.g.cursorline_timeout = 200
 
 -- Set highlight on search
 vim.o.hlsearch = true
+
+-- Set Scrollbar
+require("scrollbar").setup()
+require("scrollbar.handlers.search").setup()
 
 -- UI Settings
 vim.wo.relativenumber = true
