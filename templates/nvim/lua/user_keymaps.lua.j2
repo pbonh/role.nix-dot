@@ -9,6 +9,9 @@ local m = require'mapx'.setup{ global = true, whichkey = true }
 -- Enter Command Mode Mapping(Reassign Colon/Enter)
 nnoremap("<CR>", ":", "Enter Commands")
 
+-- WhichKey Mappings
+nnoremap(",", "<Cmd>WhichKey<CR>", "silent", "WhichKey: Show Keymappings")
+
 -- Split/Window Mappings
 nnoremap("<C-h>", "<C-w>h", "silent", "Split/Window: Move Left")
 nnoremap("<C-j>", "<C-w>j", "silent", "Split/Window: Move Down")
