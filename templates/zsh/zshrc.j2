@@ -128,6 +128,20 @@ fzf_change_directory() {
         cd "$directory"
     fi
 }
+fzf_change_directory_arg() {
+    if [[ $# == 0 ]]; then
+        echo 'Error: search term was not provided.'
+        return
+    fi
+    local directory=$(
+    {{ nix_bin }}/fd --type d $1 | \
+        fzf --query="$2" --no-multi --select-1 --exit-0 \
+        --preview 'tree -C {} | head -100'
+    )
+    if [[ -n $directory ]]; then
+        cd "$directory"
+    fi
+}
 fzf_grep_edit(){
     if [[ $# == 0 ]]; then
         echo 'Error: search term was not provided.'
@@ -184,6 +198,7 @@ alias cat=bat
 alias ls='{{ nix_bin}}/lsd --group-dirs first'
 alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
+alias fcdd='fzf_change_directory_arg'
 alias fge='fzf_grep_edit'
 alias fkill='fzf_kill'
 alias fsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
