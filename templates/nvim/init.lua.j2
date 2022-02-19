@@ -31,7 +31,8 @@ require('packer').startup(function()
   }
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- Theme
-  use 'RRethy/nvim-base16'
+  -- use 'RRethy/nvim-base16'
+  use 'ellisonleao/gruvbox.nvim'
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- Add git related info in the signs columns and popups
@@ -155,9 +156,10 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
-vim.o.termguicolors = true
--- vim.cmd [[colorscheme gruvbox]]
-vim.cmd('colorscheme base16-gruvbox-dark-medium')
+vim.opt.termguicolors = true
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd('colorscheme base16-gruvbox-dark-medium')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
