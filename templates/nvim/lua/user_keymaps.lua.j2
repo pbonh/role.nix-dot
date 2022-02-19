@@ -18,6 +18,10 @@ nnoremap("<C-j>", "<C-w>j", "silent", "Split/Window: Move Down")
 nnoremap("<C-k>", "<C-w>k", "silent", "Split/Window: Move Up")
 nnoremap("<C-l>", "<C-w>l", "silent", "Split/Window: Move Right")
 
+-- Terminal Mappings
+vim.cmd('tunmap <C-[>')
+tnoremap("<C-]>", "<C-\><C-n>", "silent", "Terminal: Exit Insert Mode")
+
 -- WinShift Mappings
 m.nname("<leader>w", "WinShift")
 nnoremap("<leader>ww", "<Cmd>WinShift<CR>", "silent", "WinShift: Enter WinShift Mode")
@@ -35,7 +39,7 @@ nnoremap("g*", "g*<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Nea
 nnoremap("g#", "g#<Cmd>lua require('hlslens').start()<CR>", "HLSLens: Search Nearest Cursorword In Reverse")
 nnoremap("<C-]>", ":noh<CR>", "silent", "HLSLens: Clear Search Result")
 
--- Terminal Mappings
+-- Terminal Plugin Mappings
 m.nname("<leader>s", "Floaterm")
 tnoremap("<C-/>", "<Cmd>ToggleTerm<CR>", "silent", "ToggleTerm: Toggle Terminal")
 nnoremap("<C-s>", "<Cmd>FloatermNew<CR>", "silent", "Floaterm: New Terminal")
