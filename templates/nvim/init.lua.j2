@@ -64,6 +64,13 @@ require('packer').startup(function()
   -- Project Management
   use 'windwp/nvim-projectconfig'
   use 'nvim-telescope/telescope-project.nvim'
+  use { 'jvgrootveld/telescope-zoxide',
+    requires = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-lua/popup.nvim'
+    }
+  }
   -- Keymap Plugins
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
   -- Split/Window Management
@@ -325,18 +332,8 @@ cmp.setup {
 -- Startup Settings
 require('startup_nvim')
 
--- Telescope Project
-require'telescope'.load_extension('project')
-require('telescope').setup {
-  extensions = {
-    project = {
-      base_dirs = {% raw %}{{% endraw %}
-        {% raw %}{{% endraw %}'{{ code_checkout_path_github }}', max_depth = 2{% raw %}}{% endraw %},
-        {% raw %}{{% endraw %}'{{ dotfiles_user_home }}', max_depth = 2{% raw %}}{% endraw %},
-      {% raw %}}{% endraw %}
-    }
-  }
-}
+-- Project Settings
+require('user_project')
 
 -- WinShift
 require("winshift").setup({

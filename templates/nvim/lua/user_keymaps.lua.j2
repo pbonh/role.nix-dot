@@ -103,7 +103,8 @@ nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "silent", "LSP: Rena
 nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "silent", "LSP: Code Action")
 
 -- Telescope-Project Mappings
-nnoremap("<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", "silent", "Telescope: Select Project")
+-- nnoremap("<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", "silent", "Telescope: Select Project")
+nnoremap("<leader>p", "<Cmd>Telescope zoxide list<CR>", "silent", "Telescope: Select Project")
 
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
