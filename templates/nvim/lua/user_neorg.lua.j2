@@ -1,31 +1,22 @@
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
-
--- These two are optional and provide syntax highlighting
--- for Neorg tables and the @document.meta tag
-parser_configs.norg_meta = {
-    install_info = {
-        url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
-        files = { "src/parser.c" },
-        branch = "main"
-    },
-}
-
-parser_configs.norg_table = {
-    install_info = {
-        url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
-        files = { "src/parser.c" },
-        branch = "main"
-    },
-}
-
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { 
-      "norg",
-      "norg_meta",
-      "norg_table",
-      {{ treesitter_parsers_file or "-- No Extra Treesitter Parsers Installed" }}
-      "markdown" },
-    highlight = { -- Be sure to enable highlights if you haven't!
-        enable = true,
-    }
+require('neorg').setup {
+  -- Tell Neorg what modules to load
+  load = {
+      ["core.defaults"] = {}, -- Load all the default modules
+      ["core.keybinds"] = {
+          config = {
+              default_keybinds = false,
+              neorg_leader = "<Leader>o"
+          }
+      },
+      ["core.norg.concealer"] = {}, -- Allows for use of icons
+      ["core.norg.dirman"] = { -- Manage your directories with Neorg
+          config = {
+              workspaces = {
+                  notes_workspace = "{{ code_checkout_path }}/neorg.notes"
+              },
+              autodetect = true,
+              autochdir = true,
+          }
+      }
+  },
 }
