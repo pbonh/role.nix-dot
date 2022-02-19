@@ -83,6 +83,9 @@ end)
 -- Set Shell
 vim.o.shell = "{{ nvim_shell }}"
 
+-- Set Editor
+vim.env.GIT_EDITOR = "{{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=wipe'"
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
