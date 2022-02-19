@@ -92,6 +92,8 @@ require('packer').startup(function()
       'skywind3000/asyncrun.extra'
     }
   }
+  -- Neorg/Org Mode
+  use { 'nvim-neorg/neorg', requires = { 'nvim-lua/plenary.nvim' } }
   -- Language Server Protocol Providers
 {{ lsp_provider_lspconfig_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
@@ -406,6 +408,9 @@ require('user_rnvimr')
 
 -- Terminal Settings
 require('user_toggleterm')
+
+-- Neorg Settings
+require('user_neorg')
 
 -- Main Keymaps
 require('user_keymaps')

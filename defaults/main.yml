@@ -49,10 +49,12 @@ extra_lua_plugin_settings: []
 extra_bookmarks: []
 lsp_providers: []
 lsp_providers_setup: []
+treesitter_parsers: []
 lsp_provider_lspconfig_file: "{{ lsp_providers | join('\n') }}"
 lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
+treesitter_parsers_file: "{{ '\"' + treesitter_parsers |join('\", \"') + '\"' }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
 neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
