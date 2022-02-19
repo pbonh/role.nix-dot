@@ -67,6 +67,8 @@ require('packer').startup(function()
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
   -- Split/Window Management
   use 'sindrets/winshift.nvim'
+  -- File Manager Plugin
+  use {'is0n/fm-nvim'}
   -- Terminal Plugins
   use { 'voldikss/vim-floaterm',
     requires = {
@@ -372,6 +374,9 @@ require('nvim-projectconfig').setup({
 
 -- Ranger/Rnvimr Settings
 require('user_rnvimr')
+
+-- File Manager Settings
+require('user_fm')
 
 -- Terminal Settings
 require('user_toggleterm')
