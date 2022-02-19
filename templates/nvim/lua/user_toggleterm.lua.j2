@@ -1,3 +1,34 @@
+-- Floaterm Config
+vim.g.floaterm_width = 0.9
+vim.g.floaterm_height = 0.9
+vim.g.floaterm_position = 'center'
+vim.g.floaterm_autoclose = 1
+vim.g.floaterm_autoinsert = v:true
+vim.g.floaterm_opener = 'tabe'
+vim.g.floaterm_keymap_toggle = '<C-\>'
+vim.cmd [[hi FloatermBorder guibg=gray guifg=black]]
+vim.cmd [[hi FloatermNC guibg=gray]]
+-- vim.g.fzf_floaterm_newentries = {
+--   \ '+lazygit' : {
+--     \ 'title': 'Lazygit',
+--     \ 'cmd': '{{ nix_bin }}/lazygit' },
+--   \ '+grv' : {
+--     \ 'title': 'GRV',
+--     \ 'cmd': '{{ nix_bin }}/grv' },
+--   \ '+zsh' : {
+--     \ 'title': 'Zsh Shell',
+--     \ 'cmd': '{{ nix_bin }}/zsh' },
+--   \ '+ranger' : {
+--     \ 'title': 'Ranger File Manager',
+--     \ 'cmd': '{{ nix_bin }}/ranger' },
+--   \ '+broot' : {
+--     \ 'title': 'Broot File Manager',
+--     \ 'cmd': '{{ nix_bin }}/broot' },
+--   \ '+pwsh' : {
+--     \ 'title': 'Powershell',
+--     \ 'cmd': 'pwsh' }
+--   \ }
+
 -- Toggleterm Config
 require("toggleterm").setup{
   size = function(term)

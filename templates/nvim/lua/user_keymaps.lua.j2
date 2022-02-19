@@ -24,9 +24,19 @@ nnoremap("<leader>wk", "<Cmd>WinShift up<CR>", "silent", "WinShift: Shift Split/
 nnoremap("<leader>wl", "<Cmd>WinShift right<CR>", "silent", "WinShift: Shift Split/Window Right")
 
 -- Terminal Mappings
-m.nname("<leader>s", "ToggleTerm")
+m.nname("<leader>s", "Floaterm")
 tnoremap("<C-/>", "<Cmd>ToggleTerm<CR>", "silent", "ToggleTerm: Toggle Terminal")
-nnoremap("<leader>sg", "<Cmd>LazyGit<CR>", "silent", "ToggleTerm: Lazygit")
+nnoremap("<C-s>", "<Cmd>FloatermNew<CR>", "silent", "Floaterm: New Terminal")
+nnoremap("<C-p>", "<Cmd>FloatermPrev<CR>", "silent", "Floaterm: Previous Terminal")
+nnoremap("<C-n>", "<Cmd>FloatermNext<CR>", "silent", "Floaterm: Next Terminal")
+nnoremap("<leader>ss", "<Cmd>Floaterms<CR>", "silent", "Floaterm: Select Terminal")
+nnoremap("<leader>sg", "<Cmd>LazyGit<CR>", "silent", "Floaterm: Lazygit")
+nnoremap("<leader>sb", "<Cmd>FloatermNew broot<CR>", "silent", "Floaterm: Broot")
+nnoremap("<leader>sr", "<Cmd>FloatermNew ranger<CR>", "silent", "Floaterm: Ranger")
+nnoremap("<leader>s/", "<Cmd>2ToggleTerm<CR>", "silent", "ToggleTerm: Double Terminal")
+nnoremap("<leader>st", "<Cmd>3ToggleTerm<CR>", "silent", "ToggleTerm: Triple Terminal")
+nnoremap("<leader>sx", "<Cmd>ToggleTerm size=20 direction=horizontal<CR>", "silent", "ToggleTerm: Horizontal Terminal")
+nnoremap("<leader>sv", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", "silent", "ToggleTerm: Vertical Terminal")
 
 -- Base Telescope Mappings
 nnoremap(":", "<cmd>lua require('telescope.builtin').commands()<CR>", "silent", "Telescope: View Commands")
