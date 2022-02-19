@@ -48,7 +48,9 @@ extra_plugin_settings: []
 extra_lua_plugin_settings: []
 extra_bookmarks: []
 lsp_providers: []
+lsp_providers_setup: []
 lsp_provider_lspconfig_file: "{{ lsp_providers | join('\n') }}"
+lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"

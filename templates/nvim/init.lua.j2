@@ -90,6 +90,12 @@ require('packer').startup(function()
       'skywind3000/asyncrun.extra'
     }
   }
+  -- Language Server Protocol Providers
+{{ lsp_provider_lspconfig_file or "-- No LSP Providers Installed" }}
+  -- Language Server Protocol Providers(End)
+  -- Language Plugins
+{{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
+  -- Language Plugins(End)
 end)
 
 -- Set Shell
@@ -247,7 +253,6 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 -- local servers = {
 --   'yamllint',
---   {{ lsp_provider_lspconfig_file or "-- No Extra Lsp Providers Installed" }}
 --   'bash-language-server'
 -- }
 -- 
@@ -259,7 +264,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- end
 require'lspconfig'.ansiblels.setup{}
 require'lspconfig'.bashls.setup{}
-{{ lsp_provider_lspconfig_file or "-- No Extra Lsp Providers Installed" }}
+{{ lsp_provider_lspconfig_setup_file or "-- No Extra Lsp Providers Installed" }}
 
 -- Example custom server
 -- Make runtime files discoverable to the server
