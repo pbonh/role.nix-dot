@@ -73,10 +73,3 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen *erm://* lua set_terminal_keymaps()')
-
--- FTerm Config
-require("FTerm").setup({
-  -- Filetype of the terminal buffer
-  ft = 'FTerm',
-  cmd = '{{ nvim_shell }}',
-})
