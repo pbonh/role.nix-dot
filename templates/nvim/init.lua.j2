@@ -60,6 +60,7 @@ require('packer').startup(function()
     end
   }
   -- Project Management
+  use 'windwp/nvim-projectconfig'
   use 'nvim-telescope/telescope-project.nvim'
   -- Keymap Plugins
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
@@ -354,6 +355,12 @@ require("winshift").setup({
 vim.g.asyncrun_open = 6
 vim.g.asynctasks_term_pos = 'toggleterm'
 vim.g.asynctasks_term_reuse = 1
+
+-- Project Config Settings
+require('nvim-projectconfig').setup({
+  project_dir = "{{ nvim_projects_dir }}",
+  autocmd = true
+})
 
 -- Ranger/Rnvimr Settings
 require('user_rnvimr')
