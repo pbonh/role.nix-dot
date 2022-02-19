@@ -78,7 +78,14 @@ require('packer').startup(function()
     }
   }
   use 'akinsho/toggleterm.nvim'
-  use 'kevinhwang91/rnvimr'
+  -- Tree Viewer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'nvim-tree'.setup {} end
+  }
   -- Git Plugins
   use 'kdheepak/lazygit.nvim'
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -373,7 +380,7 @@ require('nvim-projectconfig').setup({
 })
 
 -- Ranger/Rnvimr Settings
-require('user_rnvimr')
+-- require('user_rnvimr')
 
 -- File Manager Settings
 require('user_fm')
