@@ -44,4 +44,8 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- FTerm Config
--- require("FTerm").setup() -- not necessary according to plugin
+require("FTerm").setup({
+  -- Filetype of the terminal buffer
+  ft = 'FTerm',
+  cmd = '{{ nvim_shell }}',
+})
