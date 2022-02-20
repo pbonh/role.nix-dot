@@ -130,6 +130,11 @@ end)
 -- Set Shell
 vim.o.shell = "{{ nvim_shell }}"
 
+-- Enable Filetype-specific Settings
+vim.cmd [[
+  filetype plugin on
+]]
+
 -- Set Editor
 vim.env.GIT_EDITOR = "{{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=wipe'"
 
