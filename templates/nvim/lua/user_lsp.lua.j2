@@ -2,6 +2,7 @@ local lspconfig = require 'lspconfig'
 local on_attach = function(_, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
+local keybinds = require('lsp_config.keybinds')
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
