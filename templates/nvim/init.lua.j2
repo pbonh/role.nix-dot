@@ -57,7 +57,7 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   -- Cursorline Plugin
-  use 'yamatsum/nvim-cursorline'
+--use 'yamatsum/nvim-cursorline'
   -- Motion Plugins
   use 'ggandor/lightspeed.nvim'
   -- Start Screen
@@ -147,6 +147,7 @@ vim.env.GIT_EDITOR = "{{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=
 
 -- Cursorline
 vim.g.cursorline_timeout = 200
+vim.wo.cursorline = true
 
 -- Set highlight on search
 vim.o.hlsearch = true
