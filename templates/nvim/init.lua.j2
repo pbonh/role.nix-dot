@@ -119,6 +119,9 @@ require('packer').startup(function()
   -- Language Server Protocol Providers
 {{ lsp_provider_lspconfig_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
+  -- Debug Adapter Protocol
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  -- Debug Adapter Protocol(End)
   -- Language Plugins
 {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
   -- Language Plugins(End)
@@ -224,63 +227,10 @@ require('telescope').setup {
 require('telescope').load_extension 'fzf'
 
 -- LSP settings
-local lspconfig = require 'lspconfig'
-local on_attach = function(_, bufnr)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-end
+require('user_lsp')
 
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
--- Enable the following language servers
--- local servers = {
---   'yamllint',
---   'bash-language-server'
--- }
--- 
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---   }
--- end
-require'lspconfig'.ansiblels.setup{}
-require'lspconfig'.bashls.setup{}
-{{ lsp_provider_lspconfig_setup_file or "-- No Extra Lsp Providers Installed" }}
-
--- Example custom server
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+-- DAP settings
+require('user_dap')
 
 -- luasnip setup
 local luasnip = require 'luasnip'
