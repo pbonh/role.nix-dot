@@ -57,7 +57,7 @@ nnoremap("<leader>s/", "<Cmd>2ToggleTerm<CR>", "silent", "ToggleTerm: Double Ter
 nnoremap("<leader>st", "<Cmd>3ToggleTerm<CR>", "silent", "ToggleTerm: Triple Terminal")
 nnoremap("<leader>sx", "<Cmd>ToggleTerm size=20 direction=horizontal<CR>", "silent", "ToggleTerm: Horizontal Terminal")
 nnoremap("<leader>sv", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", "silent", "ToggleTerm: Vertical Terminal")
-vim.cmd('tunmap <Tab>')
+vim.cmd([[ tunmap <Tab> ]])
 
 -- Base Telescope Mappings
 nnoremap(":", "<cmd>lua require('telescope.builtin').commands()<CR>", "silent", "Telescope: View Commands")
