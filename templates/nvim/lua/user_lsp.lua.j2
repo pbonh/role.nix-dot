@@ -56,4 +56,7 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
-require'navigator'.setup()
+require'navigator'.setup({
+  default_mapping = true,
+  treesitter_analysis = true,
+})
