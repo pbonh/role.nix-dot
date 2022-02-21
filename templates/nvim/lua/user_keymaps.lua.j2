@@ -64,7 +64,7 @@ nnoremap(":", "<cmd>lua require('telescope.builtin').commands()<CR>", "silent", 
 nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>", "silent", "Telescope: Find Files")
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", "silent", "Telescope: View Buffers")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", "silent", "Telescope: Help Tags")
-nnoremap("<leader>ft", "<cmd>lua require('telescope.builtin').tags()<CR>", "silent", "Telescope: Search Tags")
+nnoremap("<leader>ft", "<cmd>Telescope tele_tabby list<CR>", "silent", "Telescope: Search Tabs")
 nnoremap("_", "<cmd>lua require('telescope.builtin').grep_string()<CR>", "silent", "Telescope: Grep String(Cursor Word)")
 nnoremap("<leader>bt", "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>", "silent", "Telescope: Search Buffer Tags")
 nnoremap("<leader>q", "<cmd>lua require('telescope.builtin').live_grep()<CR>", "silent", "Telescope: Live Grep Project")

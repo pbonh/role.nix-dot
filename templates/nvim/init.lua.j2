@@ -29,8 +29,8 @@ require('packer').startup(function()
       'kyazdani42/nvim-web-devicons', opt = true
     }
   }
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use 'nanozuki/tabby.nvim'
+  use {'TC72/telescope-tele-tabby.nvim', requires = 'nvim-telescope/telescope.nvim'}
   -- Theme
   use 'sainnhe/gruvbox-material'
   -- Add indentation guides even on blank lines
