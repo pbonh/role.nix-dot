@@ -12,8 +12,7 @@
 
 - name: Install Neovim Plugins(Packer)
   changed_when: false
-  shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless +PackerInstall +qall"
-    #shell: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
 - name: Setup Neovim Lua Config Directory
   file:
@@ -27,38 +26,6 @@
     dest: "{{ nvim_lua_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
   with_filetree: '../templates/nvim/lua'
   when: item.state == 'file'
-
-      #- name: Setup Neovim Lua Config Directory
-      #  file:
-      #    path: "{{ nvim_lua_config_dir }}"
-      #    state: directory
-      #    mode: '0755'
-      #
-      #- name: Neovim | Copies Neovim Lua Config | template
-      #  template:
-      #    src: nvim/config.lua.j2
-      #    dest: "{{ nvim_config_lua }}"
-      #
-      #- name: Neovim | Copies Neovim Config | template
-      #  template:
-      #    src: nvim/init.vim.j2
-      #    dest: "{{ nvim_init }}"
-      #
-      #- name: Install Neovim COC Plugin Settings
-      #  template:
-      #    src: nvim/coc-settings.json.j2
-      #    dest: "{{ nvim_coc_settings_file }}"
-      #
-      #- name: Setup Vim-Plug
-      #  file:
-      #    path: "{{ nvim_vim_plug_dir }}"
-      #    state: directory
-      #    mode: '0755'
-      #
-      #- name: Install Vim-Plug
-      #  get_url:
-      #    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      #    dest: "{{ nvim_vim_plug_dir }}/plug.vim"
 
 - name: Setup Neovim Filetype Directory
   file:
@@ -102,31 +69,3 @@
   copy:
     src: norg.vim
     dest: "{{ nvim_filetype_settings_dir }}/norg/norg.vim"
-
-# - name: Setup Neovim Plugin Config Directory
-#   file:
-#     path: "{{ nvim_plugin_config_dir }}"
-#     state: directory
-#     mode: '0755'
-#
-# - name: Install Neovim Plugin Configs
-#   copy:
-#     src: nvim/nvim-config/
-#     dest: "{{ nvim_plugin_config_dir }}"
-#
-# - name: Install Neovim Plugin Configs
-#   template:
-#     src: '{{ item.src }}'
-#     dest: "{{ nvim_plugin_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
-#   with_filetree: '../templates/nvim/nvim-config'
-#   when: item.state == 'file'
-
-      #- name: Check if Neovim Plugins Installed
-      #  find:
-      #    paths: "{{ nvim_plugged_dir }}/"
-      #    file_type: directory
-      #  register: pluginsInstalled
-      #
-      #- name: Install Neovim Plugins
-      #  when: pluginsInstalled.matched == 0
-      #  command: "{{ nix_bin }}/nix-shell -p gcc && {{ nix_bin }}/nvim --headless +PlugInstall +qall"
