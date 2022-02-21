@@ -16,6 +16,11 @@ zsh_git_fuzzy_upstream: origin
 zsh_git_fuzzy_branch: main
 extra_zsh_aliases: []
 extra_zsh_aliases_file: "{{ extra_zsh_aliases | join('\n') }}"
+extra_bashrc: []
+extra_bashrc_file: "{{ extra_bashrc | join('\n') }}"
+bash_plugins: "{{ dotfiles_user_home }}/.bashrc.d"
+bash_fzf_tab: "{{ bash_plugins }}/fzf-tab-completion"
+bash_git_fuzzy: "{{ bash_plugins }}/git-fuzzy"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
 github_username: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GITHUB_USERNAME') }}"

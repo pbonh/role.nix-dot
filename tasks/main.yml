@@ -5,6 +5,12 @@
     - zsh
     - shell
 
+- name: Install Bash Config
+  import_tasks: tasks/install_bash.yml
+  tags:
+    - bash
+    - shell
+
 - name: Install Git Config
   import_tasks: tasks/install_git.yml
   tags:
