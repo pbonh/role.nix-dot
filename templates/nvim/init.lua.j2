@@ -28,6 +28,10 @@ require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+  use {
+    'kdheepak/tabline.nvim',
+    requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+  }
   use {'TC72/telescope-tele-tabby.nvim', requires = 'nvim-telescope/telescope.nvim'}
   -- Theme
   use 'sainnhe/gruvbox-material'
