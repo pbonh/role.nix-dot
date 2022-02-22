@@ -24,12 +24,10 @@ require('packer').startup(function()
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Status/Tab Line
-  use {'konapun/vacuumline.nvim', requires = {
-      'glepnir/galaxyline.nvim', branch = 'main',
-      'kyazdani42/nvim-web-devicons', opt = true
-    }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
-  use 'nanozuki/tabby.nvim'
   use {'TC72/telescope-tele-tabby.nvim', requires = 'nvim-telescope/telescope.nvim'}
   -- Theme
   use 'sainnhe/gruvbox-material'
@@ -191,11 +189,6 @@ require('user_treesitter')
 
 -- Set statusbar
 require('user_statusline')
-
--- Set Tabline
-require("tabby").setup({
-    tabline = require("tabby.presets").active_wins_at_tail,
-})
 
 -- Enable Comment.nvim
 require('Comment').setup()
