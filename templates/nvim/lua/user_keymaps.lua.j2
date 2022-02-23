@@ -19,13 +19,16 @@ nnoremap("<C-k>", "<C-w>k", "silent", "Split/Window: Move Up")
 nnoremap("<C-l>", "<C-w>l", "silent", "Split/Window: Move Right")
 
 -- Terminal Mappings
--- vim.cmd('tunmap <C-[>')
--- vim.cmd('tunmap <tab>')
-tnoremap("<C-]>", "<C-\\><C-n>", "silent", "Terminal: Exit Insert Mode")
-tnoremap("<C-h>", "<C-\\><C-n><C-W>h", "silent", "Terminal: Change Split Left")
-tnoremap("<C-j>", "<C-\\><C-n><C-W>j", "silent", "Terminal: Change Split Down")
-tnoremap("<C-k>", "<C-\\><C-n><C-W>k", "silent", "Terminal: Change Split Up")
-tnoremap("<C-l>", "<C-\\><C-n><C-W>l", "silent", "Terminal: Change Split Right")
+vim.api.nvim_set_keymap('t', '<C-]>', '<C-\\><C-n> ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n><C-W>h ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n><C-W>j ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-W>k ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-W>l ', { noremap = true, silent = true })
+-- tnoremap("<C-]>", "<C-\\><C-n>", "silent", "Terminal: Exit Insert Mode")
+-- tnoremap("<C-h>", "<C-\\><C-n><C-W>h", "silent", "Terminal: Change Split Left")
+-- tnoremap("<C-j>", "<C-\\><C-n><C-W>j", "silent", "Terminal: Change Split Down")
+-- tnoremap("<C-k>", "<C-\\><C-n><C-W>k", "silent", "Terminal: Change Split Up")
+-- tnoremap("<C-l>", "<C-\\><C-n><C-W>l", "silent", "Terminal: Change Split Right")
 
 -- WinShift Mappings
 m.nname("<leader>w", "WinShift")
