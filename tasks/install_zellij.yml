@@ -16,7 +16,9 @@
     state: directory
     mode: '0755'
 
-- name: Zellij | Copies Zellij Layout Config | template
+- name: Zellij | Copies Zellij Layout Configs | template
   template:
-    src: zellij/layout.yaml.j2
-    dest: "{{ zellij_layout_work }}"
+    src: '{{ item.src }}'
+    dest: "{{ zellij_layout_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
+  with_filetree: '../templates/zellij/layouts'
+  when: item.state == 'file'
