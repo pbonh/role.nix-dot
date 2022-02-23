@@ -9,3 +9,14 @@
   template:
     src: zellij/config.yaml.j2
     dest: "{{ zellij_config_file }}"
+
+- name: Setup Zellij Layout Directory
+  file:
+    path: "{{ zellij_layout_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Zellij | Copies Zellij Layout Config | template
+  template:
+    src: zellij/layout.yaml.j2
+    dest: "{{ zellij_layout_work }}"
