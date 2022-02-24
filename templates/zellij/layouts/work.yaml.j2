@@ -1,10 +1,18 @@
 ---
+session:
+  name: "Work"
+
+template:
+  direction: Horizontal
+    run:
+      plugin:
+        location: "zellij:tab-bar"
+    run:
+      plugin:
+        location: "zellij:status-bar"
+
 tabs:
-  - name: "Work"
   - direction: Vertical
-    parts:
-      - direction: Horizontal
-        parts:
-          - direction: Vertical
-          - direction: Vertical
-      - direction: Horizontal
+    name: "Dotfiles"
+  - direction: Vertical
+    name: "Code"
