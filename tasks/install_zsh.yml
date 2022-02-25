@@ -19,3 +19,8 @@
   git:
     repo: "https://github.com/bigH/git-fuzzy"
     dest: "{{ zsh_git_fuzzy }}"
+
+- name: Zsh | Install Zsh Just Completions | shell
+  shell: "{{ nix_bin }}/just --completions=zsh > {{ zsh_completion_just }}"
+  args:
+    creates: "{{ zsh_completion_just }}"
