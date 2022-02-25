@@ -1,7 +1,14 @@
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
--- These two are optional and provide syntax highlighting
--- for Neorg tables and the @document.meta tag
+parser_configs.just = {
+  install_info = {
+    url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+  },
+  maintainers = { "@IndianBoy42" },
+}
+
 parser_configs.norg_meta = {
     install_info = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
@@ -23,6 +30,7 @@ require('nvim-treesitter.configs').setup {
     "norg",
     "norg_meta",
     "norg_table",
+    "just",
     "markdown",
     "nix",
     "lua",
