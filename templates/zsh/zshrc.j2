@@ -45,7 +45,6 @@ fi
 eval "$({{ nix_bin }}/direnv hook zsh)"
 eval "$({{ nix_bin }}/zoxide init zsh)"
 # eval "$({{ nix_bin }}/navi widget zsh)"
-eval "$({{ nix_bin }}/just --completions zsh)"
 _navi_call() {
    local result="$({{ nix_bin }}/navi "$@" </dev/tty)"
    printf "%s" "$result"
