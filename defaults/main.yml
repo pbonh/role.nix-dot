@@ -46,7 +46,8 @@ nvim_filetype_dir: "{{ nvim_config_dir }}/ftdetect"
 nvim_syntax_dir: "{{ nvim_config_dir }}/syntax"
 nvim_filetype_settings_dir: "{{ nvim_config_dir }}/ftplugin"
 nvim_projects_dir: "{{ xdg_config_dir }}/projects-config"
-nvim_shell: "{{ nix_bin }}/zsh"
+nvim_shell_cmd: "zsh"
+nvim_shell: "{{ nix_bin }}/{{ nvim_shell_cmd }}"
 nvim_custom_filetypes: {}
 lsp_provider_neovim_plugins: []
 language_neovim_plugins: []
