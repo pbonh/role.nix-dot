@@ -1,6 +1,6 @@
 ---
 session:
-  name: "Work"
+  name: "Homelab"
 
 template:
   direction: Horizontal
@@ -23,6 +23,10 @@ template:
           location: "zellij:status-bar"
 
 tabs:
+  - direction: Vertical
+    name: "Homelab"
+    run:
+      command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ homelab_dir }} && exec {{ nvim_shell_cmd }}"]}
   - direction: Vertical
     name: "Dotfiles"
     run:
