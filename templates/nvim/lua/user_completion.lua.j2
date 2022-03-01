@@ -1,7 +1,8 @@
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-require'cmp'.setup {
+local cmp = require'cmp'
+cmp.setup({
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
@@ -26,4 +27,4 @@ require'cmp'.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-}
+})
