@@ -59,9 +59,11 @@ extra_plugin_settings: []
 extra_lua_plugin_settings: []
 extra_bookmarks: []
 lsp_providers: []
+lsp_providers_plugins: []
 lsp_providers_setup: []
 treesitter_parsers: []
-lsp_provider_lspconfig_file: "{{ lsp_providers | join('\n') }}"
+lsp_provider_file: "{{ '\'' + lsp_providers |join('\', \'') + '\'' }}"
+lsp_provider_plugins_file: "{{ lsp_providers_plugins | join('\n') }}"
 lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"

@@ -10,7 +10,8 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 local servers = {
   'ansiblels',
-  'bashls'
+  'bashls',
+  {{ lsp_provider_file or "-- No Extra LSP Providers Installed" }}
 }
 
 for _, lsp in ipairs(servers) do

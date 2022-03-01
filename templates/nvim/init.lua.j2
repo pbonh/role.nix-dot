@@ -128,7 +128,7 @@ require('packer').startup(function()
   -- Formatter
   use 'sbdchd/neoformat'
   -- Language Server Protocol Providers
-{{ lsp_provider_lspconfig_file or "-- No LSP Providers Installed" }}
+{{ lsp_provider_plugins_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
   -- Debug Adapter Protocol
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
@@ -236,6 +236,9 @@ require('telescope').setup {
 -- Enable telescope fzf native
 require('telescope').load_extension 'fzf'
 
+-- luasnip setup
+local luasnip = require 'luasnip'
+
 -- nvim-cmp setup
 require('user_completion')
 
@@ -244,9 +247,6 @@ require('user_lsp')
 
 -- DAP settings
 require('user_dap')
-
--- luasnip setup
-local luasnip = require 'luasnip'
 
 -- Startup Settings
 require('startup_nvim')
