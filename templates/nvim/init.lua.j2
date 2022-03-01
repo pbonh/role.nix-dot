@@ -187,9 +187,6 @@ vim.opt.termguicolors = true
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox-material]])
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
 -- Treesitter Settings
 require('user_treesitter')
 
@@ -239,6 +236,9 @@ require('telescope').setup {
 -- Enable telescope fzf native
 require('telescope').load_extension 'fzf'
 
+-- nvim-cmp setup
+require('user_completion')
+
 -- LSP settings
 require('user_lsp')
 
@@ -247,9 +247,6 @@ require('user_dap')
 
 -- luasnip setup
 local luasnip = require 'luasnip'
-
--- nvim-cmp setup
-require('user_completion')
 
 -- Startup Settings
 require('startup_nvim')
