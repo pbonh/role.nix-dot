@@ -30,6 +30,7 @@ git_ssh: /usr/bin/ssh
 code_checkout_path: "{{ dotfiles_user_home }}/Code"
 code_checkout_path_github: "{{ code_checkout_path }}/github.com/{{ github_username }}"
 code_checkout_path_gitlab: "{{ code_checkout_path }}/gitlab.com/{{ github_username }}"
+code_home_dir: "{{ code_checkout_path_github }}"
 homelab_dir: "{{ code_checkout_path_github }}/homelab"
 dotfiles_checkout_dir: "{{ code_checkout_path_github }}/role.nix-dot"
 xdg_config_dir_navi: "{{ xdg_share_dir }}/navi"
@@ -105,3 +106,39 @@ tmux_keybindings_file: "{{ tmux_config_dir }}/keybindings.conf"
 zellij_config_dir: "{{ xdg_config_dir }}/zellij"
 zellij_config_file: "{{ zellij_config_dir }}/config.yaml"
 zellij_layout_dir: "{{ zellij_config_dir }}/layouts"
+zellij_work_layout_session_name: "HomeLab"
+zellij_work_layout:
+  session:
+    name: "{{ zellij_work_layout_session_name }}"
+  template:
+    direction: Horizontal
+    parts:
+      - direction: Vertical
+        borderless: true
+        split_size:
+          Fixed: 1
+        run:
+          plugin:
+            location: "zellij:tab-bar"
+      - direction: Vertical
+        body: true
+      - direction: Vertical
+        borderless: true
+        split_size:
+          Fixed: 2
+        run:
+          plugin:
+            location: "zellij:status-bar"
+  tabs:
+    - direction: Vertical
+      name: "{{ zellij_work_layout_session_name }}"
+      run:
+        command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ homelab_dir }} && exec {{ nvim_shell_cmd }}"]}
+    - direction: Vertical
+      name: "Dotfiles"
+      run:
+        command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ dotfiles_checkout_dir }} && exec {{ nvim_shell_cmd }}"]}
+    - direction: Vertical
+      name: "Code"
+      run:
+        command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ code_home_dir }} && exec {{ nvim_shell_cmd }}"]}

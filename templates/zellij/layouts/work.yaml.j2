@@ -34,4 +34,4 @@ tabs:
   - direction: Vertical
     name: "Code"
     run:
-      command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ code_checkout_path_github }} && exec {{ nvim_shell_cmd }}"]}
+      command: {cmd: {{ nvim_shell }}, args: ["-c", "cd {{ code_home_dir }} && exec {{ nvim_shell_cmd }}"]}
