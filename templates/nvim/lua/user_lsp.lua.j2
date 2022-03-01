@@ -11,7 +11,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local servers = {
   'ansiblels',
   'bashls',
-  {{ lsp_provider_file or "-- No Extra LSP Providers Installed" }}
+  {{ "'" + lsp_providers |join("', '") + "'" }}
 }
 
 for _, lsp in ipairs(servers) do
