@@ -48,6 +48,7 @@
 - name: Install Neovim Custom Filetypes
   vars:
     ftype: "{{ item.value.name }}"
+    ftype_ext: "{{ item.value.ext }}"
   template:
     src: nvim/ftype.j2
     dest: "{{ nvim_filetype_dir }}/{{ item.value.name }}.vim"
