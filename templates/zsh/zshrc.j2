@@ -22,6 +22,8 @@ export PATH=$PATH:{{ bin_directory }}
 
 ###############################################################################
 # BEGIN: Environment
+export SHELL="{{ nvim_shell }}"
+export GIT_SSH="{{ git_ssh }}"
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
     alias nvim={{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=wipe'
 fi
@@ -32,7 +34,6 @@ else
     export VISUAL="{{ nix_bin }}/nvim"
     export EDITOR="{{ nix_bin }}/nvim"
 fi
-export GIT_SSH="{{ git_ssh }}"
 # END: Environment
 ###############################################################################
 
