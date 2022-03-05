@@ -22,3 +22,13 @@
     dest: "{{ zellij_layout_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
   with_filetree: '../templates/zellij/layouts'
   when: item.state == 'file'
+
+- name: Zellij | Copies Zellij Layout Configs | template
+  vars:
+    zellij_session_info: "{{ item.value.zellij_session }}"
+    zellij_template_info: "{{ item.value.zellij_template }}"
+    zellij_tab_info: "{{ item.value.zellij_tabs }}"
+  template:
+    src: zellij/layouts-template/layout.yaml.j2
+    dest: "{{ zellij_layout_dir }}/{{ item.value.name  | regex_replace('\\.j2$', '') }}"
+  loop: "{{ zellij_layouts | dict2items }}"
