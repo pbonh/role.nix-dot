@@ -84,6 +84,8 @@ require('packer').startup(function()
   }
   -- Keymap Plugins
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
+  -- Quickfix Plugin
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
   -- Split/Window Management
   use 'sindrets/winshift.nvim'
   -- File Manager Plugin
@@ -200,6 +202,9 @@ require('user_treesitter')
 
 -- Set statusbar
 require('user_statusline')
+
+-- Set Quickfix
+require('user_quickfix')
 
 -- Enable Comment.nvim
 require('Comment').setup()

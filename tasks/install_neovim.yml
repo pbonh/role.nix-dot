@@ -68,5 +68,10 @@
 
 - name: Setup Neorg Keymaps
   copy:
-    src: norg.vim
+    src: nvim/norg.vim
     dest: "{{ nvim_filetype_settings_dir }}/norg/norg.vim"
+
+- name: Install Quickfix Window Syntax Highlighting
+  copy:
+    src: nvim/qf.vim
+    dest: "{{ nvim_syntax_dir }}/qf.vim"
