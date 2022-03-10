@@ -129,7 +129,7 @@ require('packer').startup(function()
   -- Neorg/Org Mode
   use { 'nvim-neorg/neorg', requires = { 'nvim-lua/plenary.nvim' } }
   -- Formatter
-  use 'sbdchd/neoformat'
+--use 'sbdchd/neoformat'
   -- Language Server Protocol Providers
 {{ lsp_provider_plugins_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
@@ -312,7 +312,7 @@ require('user_toggleterm')
 require('user_neorg')
 
 -- Neoformat Settings
-require('user_neoformat')
+-- require('user_neoformat')
 
 -- Main Keymaps
 require('user_keymaps')
