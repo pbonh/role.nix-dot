@@ -139,7 +139,7 @@ zellij_layouts:
         - direction: Vertical
           name: "Notes"
           run:
-            command: {cmd: "{{ nvim_exe }}", args: ["+Neorg"]}
+            command: {cmd: "{{ nvim_exe }}", args: ["+NeorgStart"]}
         - direction: Vertical
           name: "Homelab"
           run:
