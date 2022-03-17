@@ -18,6 +18,7 @@ require('neorg').setup {
               workspaces = {
                   notes = "{{ nvim_neorg_dir }}"
               },
+              default_workspace = notes,
               autochdir = true, -- Automatically change the directory to the current workspace's root every time
               index = "index.norg", -- The name of the main (root) .norg file
           },
