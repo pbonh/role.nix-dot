@@ -137,6 +137,10 @@ zellij_layouts:
     zellij_tabs:
       tabs:
         - direction: Vertical
+          name: "Notes"
+          run:
+            command: {cmd: "{{ nvim_exe }}", args: ["+Neorg"]}
+        - direction: Vertical
           name: "Homelab"
           run:
             command: {cmd: "{{ nvim_shell }}", args: ["-c", "cd {{ homelab_dir }} && exec {{ nvim_shell_cmd }}"]}
