@@ -25,9 +25,9 @@ local os_sep = Path.path.sep
 local pickers = require "telescope.pickers"
 local scan = require "plenary.scandir"
 
-local selective_live_grep = {}
+local custom_pickers = {}
 
-selective_live_grep.live_grep_in_folder = function(opts)
+custom_pickers.live_grep_in_folder = function(opts)
   opts = opts or {}
   local data = {}
   scan.scan_dir(vim.loop.cwd(), {
@@ -64,3 +64,5 @@ selective_live_grep.live_grep_in_folder = function(opts)
     end,
   }):find()
 end
+
+return custom_pickers
