@@ -13,7 +13,6 @@ require('neorg').setup {
           },
       },
       ["core.norg.concealer"] = {}, -- Allows for use of icons
-      ["core.gtd.base"] = {},
       ["core.norg.completion"] = {},
       ["core.integrations.nvim-cmp"] = {},
       ["core.norg.dirman"] = { -- Manage your directories with Neorg
@@ -25,6 +24,11 @@ require('neorg').setup {
               autochdir = true, -- Automatically change the directory to the current workspace's root every time
               index = "index.norg", -- The name of the main (root) .norg file
           },
+      },
+      ["core.gtd.base"] = {
+          config = {
+              workspace = notes,
+          }
       },
   },
 }
