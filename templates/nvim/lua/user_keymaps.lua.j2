@@ -77,6 +77,10 @@ nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "s
 
 -- Extra Telescope Mappings
 nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
+nnoremap("<leader>nf", "<cmd>Telescope neorg find_linkable<CR>", "silent", { ft = "norg" }, "Telescope: Find Neorg Links")
+nnoremap("<leader>n/", "<cmd>Telescope neorg search_headings<CR>", "silent", { ft = "norg" }, "Telescope: Search Neorg File Headings")
+nnoremap("<leader>ni", "<cmd>Telescope neorg insert_link<CR>", "silent", { ft = "norg" }, "Telescope: Insert Neorg Links")
+nnoremap("<leader>nl", "<cmd>Telescope neorg insert_file_link<CR>", "silent", { ft = "norg" }, "Telescope: Insert Neorg File Links")
 
 -- Diagnostic Mappings
 -- m.nname("<leader>e", "Diagnostic")
