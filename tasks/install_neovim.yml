@@ -60,16 +60,16 @@
     dest: "{{ nvim_syntax_dir }}/{{ item.value.name }}.vim"
   loop: "{{ nvim_custom_filetypes | dict2items }}"
 
-- name: Setup Neorg Keymap Settings
-  file:
-    path: "{{ nvim_filetype_settings_dir }}/norg"
-    state: directory
-    mode: '0755'
-
-- name: Setup Neorg Keymaps
-  copy:
-    src: nvim/norg.vim
-    dest: "{{ nvim_filetype_settings_dir }}/norg/norg.vim"
+#- name: Setup Neorg Keymap Settings
+#  file:
+#    path: "{{ nvim_filetype_settings_dir }}/norg"
+#    state: directory
+#    mode: '0755'
+#
+#- name: Setup Neorg Keymaps
+#  copy:
+#    src: nvim/norg.vim
+#    dest: "{{ nvim_filetype_settings_dir }}/norg/norg.vim"
 
 - name: Install Quickfix Window Syntax Highlighting
   copy:

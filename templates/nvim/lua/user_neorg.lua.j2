@@ -6,6 +6,11 @@ require('neorg').setup {
           config = {
               default_keybinds = true,
               neorg_leader = ","
+              hook = function(keybinds)
+                keybinds.unmap("norg", "n", "<CR>")
+                keybinds.unmap("norg", "n", "<M-CR>")
+                keybinds.map("norg", "n", "gtd", "<cmd>echo 'Hello!'<CR>")
+              end,
           },
       },
       ["core.norg.concealer"] = {}, -- Allows for use of icons
