@@ -1,1 +1,2 @@
-nnoremap <cr> :
+" nnoremap <cr> :
+unmap :
