@@ -6,17 +6,17 @@ require('neorg').setup {
           config = {
               default_keybinds = false,
               neorg_leader = "<Leader>o"
-          }
+          },
       },
       ["core.norg.concealer"] = {}, -- Allows for use of icons
       ["core.norg.dirman"] = { -- Manage your directories with Neorg
           config = {
               workspaces = {
-                  notes_workspace = "{{ code_checkout_path }}/neorg.notes"
+                  notes_workspace = "{{ nvim_neorg_dir }}"
               },
-              autodetect = true,
-              autochdir = true,
-          }
-      }
+              autochdir = true, -- Automatically change the directory to the current workspace's root every time
+              index = "index.norg", -- The name of the main (root) .norg file
+          },
+      },
   },
 }
