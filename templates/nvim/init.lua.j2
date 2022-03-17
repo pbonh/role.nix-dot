@@ -127,7 +127,11 @@ require('packer').startup(function()
     }
   }
   -- Neorg/Org Mode
-  use { 'nvim-neorg/neorg', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-neorg/neorg', requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+    }
+  }
   -- Formatter
 --use 'sbdchd/neoformat'
   -- Language Server Protocol Providers
