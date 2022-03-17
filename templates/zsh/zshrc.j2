@@ -194,8 +194,8 @@ fzf_kill() {
 
 ###############################################################################
 # BEGIN: Aliases
-alias v=nvim
-alias cat=bat
+alias v={{ nvim_exe }}
+alias cat={{ nix_bin }}/bat
 #alias ls='{{ nix_bin }}/exa  --group-directories-first'
 alias ls='{{ nix_bin}}/lsd --group-dirs first'
 alias ffe='fzf_find_edit'
@@ -203,10 +203,10 @@ alias fcd='fzf_change_directory'
 alias fcdd='fzf_change_directory_arg'
 alias fge='fzf_grep_edit'
 alias fkill='fzf_kill'
-alias fsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
-alias gsk='sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
-alias dsk='sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
-alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="{{ nix_bin }}/bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
+alias fsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
+alias gsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
+alias dsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
+alias skvi='f(){ x="$({{ nix_bin }}/sk --bind "ctrl-p:toggle-preview" --ansi --preview="{{ nix_bin }}/bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
 unalias cdg 2> /dev/null
 cdg() {
    local dest_dir=$(cdscuts_glob_echo | {{ nix_bin }}/fzf )
