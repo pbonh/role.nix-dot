@@ -30,5 +30,5 @@
     zellij_tab_info: "{{ item.value.zellij_tabs }}"
   template:
     src: zellij/layouts-template/layout.yaml.j2
-    dest: "{{ zellij_layout_dir }}/{{ item.value.name  | regex_replace('\\.j2$', '') }}"
+    dest: "{{ zellij_layout_dir }}/{{ item.value.name  | regex_replace('\\.j2$', '') }}.yaml"
   loop: "{{ zellij_layouts | dict2items }}"
