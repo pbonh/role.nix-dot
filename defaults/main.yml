@@ -107,6 +107,7 @@ tmux_tpm_url: https://github.com/tmux-plugins/tpm
 tmux_keybindings_file: "{{ tmux_config_dir }}/keybindings.conf"
 zellij_config_dir: "{{ xdg_config_dir }}/zellij"
 zellij_config_file: "{{ zellij_config_dir }}/config.yaml"
+zellij_themes_dir: "{{ zellij_config_dir }}/themes"
 zellij_layout_dir: "{{ zellij_config_dir }}/layouts"
 zellij_layouts:
   example:
