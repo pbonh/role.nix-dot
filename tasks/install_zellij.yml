@@ -16,6 +16,12 @@
     state: directory
     mode: '0755'
 
+- name: Setup Zellij Themes Directory
+  file:
+    path: "{{ zellij_themes_dir }}"
+    state: directory
+    mode: '0755'
+
 - name: Zellij | Copies Zellij Default Layouts | template
   template:
     src: '{{ item.src }}'
