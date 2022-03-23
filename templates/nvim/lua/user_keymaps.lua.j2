@@ -13,10 +13,24 @@ nnoremap("<CR>", ":", "Enter Commands")
 -- nnoremap(",", "<Cmd>WhichKey<CR>", "silent", "WhichKey: Show Keymappings")
 
 -- Split/Window Mappings
-nnoremap("<C-h>", "<C-w>h", "silent", "Split/Window: Move Left")
-nnoremap("<C-j>", "<C-w>j", "silent", "Split/Window: Move Down")
-nnoremap("<C-k>", "<C-w>k", "silent", "Split/Window: Move Up")
-nnoremap("<C-l>", "<C-w>l", "silent", "Split/Window: Move Right")
+m.nname("<leader>w", "Split/Window")
+-- nnoremap("<C-h>", "<C-w>h", "silent", "Split/Window: Move Left")
+-- nnoremap("<C-j>", "<C-w>j", "silent", "Split/Window: Move Down")
+-- nnoremap("<C-k>", "<C-w>k", "silent", "Split/Window: Move Up")
+-- nnoremap("<C-l>", "<C-w>l", "silent", "Split/Window: Move Right")
+nnoremap("<C-h>", "require('smart-splits').move_cursor_up()", "silent", "Split/Window: Move Left")
+nnoremap("<C-j>", "require('smart-splits').move_cursor_down()", "silent", "Split/Window: Move Down")
+nnoremap("<C-k>", "require('smart-splits').move_cursor_left()", "silent", "Split/Window: Move Up")
+nnoremap("<C-l>", "require('smart-splits').move_cursor_right()", "silent", "Split/Window: Move Right")
+nnoremap("<C-w>h", "require('smart-splits').resize_left", "silent", "Split/Window: Resize Left")
+nnoremap("<C-w>j", "require('smart-splits').resize_down", "silent", "Split/Window: Resize Down")
+nnoremap("<C-w>k", "require('smart-splits').resize_up", "silent", "Split/Window: Resize Up")
+nnoremap("<C-w>l", "require('smart-splits').resize_right", "silent", "Split/Window: Resize Right")
+nnoremap("<leader>ww", "<Cmd>WinShift<CR>", "silent", "WinShift: Enter WinShift Mode")
+nnoremap("<leader>wh", "<Cmd>WinShift left<CR>", "silent", "WinShift: Shift Split/Window Left")
+nnoremap("<leader>wj", "<Cmd>WinShift down<CR>", "silent", "WinShift: Shift Split/Window Down")
+nnoremap("<leader>wk", "<Cmd>WinShift up<CR>", "silent", "WinShift: Shift Split/Window Up")
+nnoremap("<leader>wl", "<Cmd>WinShift right<CR>", "silent", "WinShift: Shift Split/Window Right")
 
 -- Terminal Mappings
 vim.api.nvim_set_keymap('t', '<C-]>', '<C-\\><C-n> ', { noremap = true, silent = true })
@@ -29,14 +43,6 @@ vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-W>l ', { noremap = true, si
 -- tnoremap("<C-j>", "<C-\\><C-n><C-W>j", "silent", "Terminal: Change Split Down")
 -- tnoremap("<C-k>", "<C-\\><C-n><C-W>k", "silent", "Terminal: Change Split Up")
 -- tnoremap("<C-l>", "<C-\\><C-n><C-W>l", "silent", "Terminal: Change Split Right")
-
--- WinShift Mappings
-m.nname("<leader>w", "WinShift")
-nnoremap("<leader>ww", "<Cmd>WinShift<CR>", "silent", "WinShift: Enter WinShift Mode")
-nnoremap("<leader>wh", "<Cmd>WinShift left<CR>", "silent", "WinShift: Shift Split/Window Left")
-nnoremap("<leader>wj", "<Cmd>WinShift down<CR>", "silent", "WinShift: Shift Split/Window Down")
-nnoremap("<leader>wk", "<Cmd>WinShift up<CR>", "silent", "WinShift: Shift Split/Window Up")
-nnoremap("<leader>wl", "<Cmd>WinShift right<CR>", "silent", "WinShift: Shift Split/Window Right")
 
 -- Search Mappings
 nnoremap("n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "silent", "HLSLens: Next Search Result")
