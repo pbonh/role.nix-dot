@@ -23,8 +23,8 @@ require('fm-nvim').setup{
 			blend     = 0,
 
 			-- Num from 0 - 1 for measurements
-			height    = 0.8,
-			width     = 0.8,
+			height    = 0.9,
+			width     = 0.9,
 
 			-- X and Y Axis of Window
 			x         = 0.5,
@@ -69,6 +69,5 @@ require('fm-nvim').setup{
 	},
 
 	-- Path to broot config
-	-- broot_conf = vim.fn.stdpath("data") .. "/site/pack/packer/start/fm-nvim/assets/broot_conf.hjson"
 	broot_conf = vim.fn.stdpath("data") .. "{{ broot_config }}/nvim.hjson"
 }
