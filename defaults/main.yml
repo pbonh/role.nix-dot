@@ -63,7 +63,7 @@ extra_plugin_settings: []
 extra_lua_plugin_settings: []
 extra_bookmarks: []
 lsp_providers: []
-lsp_providers_file: "{{ "'" + lsp_providers |join("', '") + "'" }}"
+lsp_providers_file: "{{ \"'\" + lsp_providers |join(\"', '\") + \"'\" }}"
 lsp_providers_plugins: []
 lsp_providers_setup: []
 treesitter_parsers: []
