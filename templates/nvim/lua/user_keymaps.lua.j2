@@ -60,7 +60,6 @@ nnoremap("<C-s>", "<Cmd>FloatermNew<CR>", "silent", "Floaterm: New Terminal")
 tnoremap("<C-b>", "<Cmd>FloatermPrev<CR>", "silent", "Floaterm: Previous Terminal")
 tnoremap("<C-f>", "<Cmd>FloatermNext<CR>", "silent", "Floaterm: Next Terminal")
 nnoremap("<leader>ss", "<Cmd>Floaterms<CR>", "silent", "Floaterm: Select Terminal")
-nnoremap("<leader>sg", "<Cmd>LazyGit<CR>", "silent", "Floaterm: Lazygit")
 nnoremap("<leader>sb", "<Cmd>Broot<CR>", "silent", "Floaterm: Broot")
 nnoremap("<leader>sr", "<Cmd>FloatermNew ranger<CR>", "silent", "Floaterm: Ranger")
 nnoremap("<leader>s/", "<Cmd>2ToggleTerm<CR>", "silent", "ToggleTerm: Double Terminal")
@@ -80,6 +79,14 @@ nnoremap("<leader>Q", "<cmd>lua require('telescope.builtin').live_grep()<CR>", "
 nnoremap("<leader>q", "<cmd>lua require('telescope-custom').live_grep_in_folder()<CR>", "silent", "Telescope: Selective Live Grep Project")
 nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "silent", "Telescope: Find in Current Buffer")
 nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "silent", "Telescope: Old Files")
+
+-- Git Mappings
+m.nname("<leader>g", "Git")
+nnoremap("<leader>gg", "<Cmd>LazyGit<CR>", "silent", "Git: Lazygit")
+nnoremap("<leader>gb", "<Cmd>lua require('telescope.builtin').git_branches()<CR>", "silent", "Git: Pick Branch")
+nnoremap("<leader>gc", "<Cmd>lua require('telescope.builtin').git_commits()<CR>", "silent", "Git: Pick Commit")
+nnoremap("<leader>gl", "<Cmd>lua require('telescope.builtin').git_bcommits()<CR>", "silent", "Git: Pick Buffer Commit")
+nnoremap("<leader>gs", "<Cmd>lua require('telescope.builtin').git_stash()<CR>", "silent", "Git: Show Stash")
 
 -- Extra Telescope Mappings
 nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
