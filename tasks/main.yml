@@ -49,6 +49,12 @@
     - git
     - lazygit
 
+- name: Install Gitui
+  import_tasks: tasks/install_gitui.yml
+  tags:
+    - git
+    - gitui
+
 - name: Install Broot
   import_tasks: tasks/install_broot.yml
   tags:

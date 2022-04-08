@@ -96,6 +96,8 @@ ranger_config: "{{ xdg_config_dir }}/ranger"
 ranger_plugins: "{{ ranger_config }}/plugins"
 lazygit_config: "{{ xdg_config_dir }}/lazygit"
 lazygit_config_file: "{{ lazygit_config }}/config.yml"
+gitui_config: "{{ xdg_config_dir }}/gitui"
+gitui_config_file: "{{ gitui_config }}/key_bindings.ron"
 broot_config: "{{ xdg_config_dir }}/broot"
 broot_config_file: "{{ broot_config }}/conf.hjson"
 cdg_paths_global: /etc/cdg_paths
