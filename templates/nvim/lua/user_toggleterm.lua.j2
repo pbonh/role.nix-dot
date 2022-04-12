@@ -65,15 +65,15 @@ require("toggleterm").setup{
 require'FTerm'.setup({
     border = 'double',
     dimensions  = {
-        height = 0.95,
-        width = 0.95,
+        height = 1.0,
+        width = 1.0,
     },
 })
 
 local fterm = require("FTerm")
 local btop = fterm:new({
     ft = 'fterm_btop',
-    cmd = "btop"
+    cmd = "btop",
 })
  -- Use this to toggle btop in a floating terminal
 function _G.__fterm_btop()
