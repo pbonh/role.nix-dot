@@ -10,6 +10,10 @@
     src: nvim/init.lua.j2
     dest: "{{ nvim_init_lua }}"
 
+- name: Install Neovim Plugins(Packer)
+  changed_when: false
+  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+
 - name: Setup Neovim Lua Config Directory
   file:
     path: "{{ nvim_lua_config_dir }}"
