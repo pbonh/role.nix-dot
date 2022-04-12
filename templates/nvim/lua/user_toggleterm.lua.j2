@@ -60,3 +60,26 @@ require("toggleterm").setup{
     }
   }
 }
+
+-- FTerm Config
+require'FTerm'.setup({
+    border = 'double',
+    dimensions  = {
+        height = 0.95,
+        width = 0.95,
+    },
+})
+
+local fterm = require("FTerm")
+local btop = fterm:new({
+    ft = 'fterm_btop',
+    cmd = "btop"
+})
+ -- Use this to toggle btop in a floating terminal
+function _G.__fterm_btop()
+    btop:toggle()
+end
+
+{% for nvim_fterm_cmd in nvim_fterm_cmds %}
+vim.api.nvim_add_user_command('{{ nvim_fterm_cmd.cmd_name }}', function() require('FTerm').run('{{ nvim_fterm_cmd.cmd_str }}') end, { bang = true })
+{% endfor %}

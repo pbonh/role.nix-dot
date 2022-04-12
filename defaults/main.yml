@@ -53,6 +53,9 @@ nvim_projects_dir: "{{ xdg_config_dir }}/projects-config"
 nvim_neorg_dir: "{{ dotfiles_user_home }}/OrgNotes"
 nvim_shell_cmd: "zsh"
 nvim_shell: "{{ nix_bin }}/{{ nvim_shell_cmd }}"
+nvim_fterm_cmds:
+  - cmd_name: ManLs
+    cmd_str: "man ls"
 nvim_custom_filetypes: {}
 lsp_provider_neovim_plugins: []
 language_neovim_plugins: []
