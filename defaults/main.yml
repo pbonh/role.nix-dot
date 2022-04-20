@@ -56,6 +56,8 @@ nvim_shell: "{{ nix_bin }}/{{ nvim_shell_cmd }}"
 nvim_fterm_cmds:
   - cmd_name: ManLs
     cmd_str: "man ls"
+  - cmd_name: BTop
+    cmd_str: "btop"
 nvim_custom_filetypes: {}
 lsp_provider_neovim_plugins: []
 language_neovim_plugins: []
