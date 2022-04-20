@@ -22,6 +22,9 @@ source ~/.nix-profile/etc/profile.d/nix.sh
 # Update Installed Nix Packages
 nix-env -u '*'
 
+# Update Nix & Home-Manager Nix Packages(No SystemD)
+nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert; home-manager switch
+
 # Update Nix Itself(WSL)
 nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert;
 
