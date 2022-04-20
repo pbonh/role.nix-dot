@@ -81,5 +81,5 @@ function _G.__fterm_btop()
 end
 
 {% for nvim_fterm_cmd in nvim_fterm_cmds %}
-vim.api.nvim_add_user_command('{{ nvim_fterm_cmd.cmd_name }}', function() require('FTerm').run('{{ nvim_fterm_cmd.cmd_str }}') end, { bang = true })
+vim.api.nvim_create_user_command('{{ nvim_fterm_cmd.cmd_name }}', function() require('FTerm').run('{{ nvim_fterm_cmd.cmd_str }}') end, { bang = true })
 {% endfor %}
