@@ -49,11 +49,13 @@ lspconfig['sumneko_lua'].setup {
   },
 }
 
+require'fzf_lsp'.setup()
+
 -- require'navigator'.setup({
 --   default_mapping = false,
 --   keymaps = {
---     { key = 'gd', func = "require('navigator.definition').definition()" },
---     { key = 'gD', func = "declaration({ border = 'rounded', max_width = 80 })" },
+--     { key = 'gD', func = "require('navigator.definition').definition()" },
+--     { key = 'gd', func = "declaration({ border = 'rounded', max_width = 80 })" },
 --     { key = '<Space>D', func = 'type_definition()' },
 --     { key = 'gp', func = "require('navigator.definition').definition_preview()" },
 --     { key = 'gi', func = 'implementation()' },
@@ -72,8 +74,8 @@ lspconfig['sumneko_lua'].setup {
 --     { key = '<Space>rn', func = "require('navigator.rename').rename()" },
 --     { key = '<Leader>gi', func = 'incoming_calls()' },
 --     { key = '<Leader>go', func = 'outgoing_calls()' },
---     { key = 'gL', func = "require('navigator.diagnostics').show_diagnostics()" },
---     { key = 'gG', func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+--     { key = 'gG', func = "require('navigator.diagnostics').show_diagnostics()" },
+--     { key = 'gL', func = "require('navigator.diagnostics').show_buf_diagnostics()" },
 --     { key = '<Leader>dt', func = "require('navigator.diagnostics').toggle_diagnostics()" },
 --     { key = ']d', func = "diagnostic.goto_next({ border = 'rounded', max_width = 80})" },
 --     { key = '[d', func = "diagnostic.goto_prev({ border = 'rounded', max_width = 80})" },
