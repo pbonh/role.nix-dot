@@ -129,16 +129,16 @@ return require('packer').startup(function(use)
     'nvim-neorg/neorg-telescope',
   }
   }
-      -- Formatter
-      --use 'sbdchd/neoformat'
-      -- Language Server Protocol Providers
-      { { lsp_provider_plugins_file or "-- No LSP Providers Installed" } }
+  -- Formatter
+  --use 'sbdchd/neoformat'
+  -- Language Server Protocol Providers
+  {{ lsp_provider_plugins_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
   -- Debug Adapter Protocol
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-      -- Debug Adapter Protocol(End)
-      -- Language Plugins
-      { { language_neovim_plugins_file or "-- No Language Plugins Installed" } }
+  -- Debug Adapter Protocol(End)
+  -- Language Plugins
+  {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
   -- Language Plugins(End)
   if packer_bootstrap then
     require('packer').sync()
