@@ -1,0 +1,141 @@
+-- Packer: Install Packer
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+-- Packer: Install Plugins
+return require('packer').startup(function(use)
+  -- Packer Plugin Manager
+  use 'wbthomason/packer.nvim' -- Package manager
+  -- Comments
+  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  -- Selection UI
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- Status/Tab Line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+  use {
+    'kdheepak/tabline.nvim',
+    requires = { { 'nvim-lualine/lualine.nvim', opt = true }, { 'kyazdani42/nvim-web-devicons', opt = true } }
+  }
+  use { 'TC72/telescope-tele-tabby.nvim', requires = 'nvim-telescope/telescope.nvim' }
+  -- Theme
+  use 'sainnhe/gruvbox-material'
+  -- Add indentation guides even on blank lines
+  use 'lukas-reineke/indent-blankline.nvim'
+  -- Add git related info in the signs columns and popups
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  -- Highlight, edit, and navigate code using a fast incremental parsing library
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- Better Highlighting
+  use 'kevinhwang91/nvim-hlslens'
+  use { 'petertriho/nvim-scrollbar', requires = { 'kevinhwang91/nvim-hlslens' } }
+  use "IndianBoy42/tree-sitter-just"
+  -- LSP Plugins
+  Plug 'gfanto/fzf-lsp.nvim'
+  --use { 'ray-x/navigator.lua', requires = {
+  --  'nvim-treesitter/nvim-treesitter',
+  --  'nvim-treesitter/nvim-treesitter-textobjects',
+  --  'ray-x/guihua.lua',
+  --  run = 'cd lua/fzy && make'
+  --}
+  --}
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'simrat39/symbols-outline.nvim'
+  -- Cursorline Plugin
+  --use 'yamatsum/nvim-cursorline'
+  -- Motion Plugins
+  use 'ggandor/lightspeed.nvim'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  -- Start Screen
+  use {
+    "startup-nvim/startup.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require "startup".setup()
+    end
+  }
+  -- Project Management
+  use 'windwp/nvim-projectconfig'
+  use 'nvim-telescope/telescope-project.nvim'
+  use { 'jvgrootveld/telescope-zoxide',
+    requires = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-lua/popup.nvim'
+    }
+  }
+  -- Keymap Plugins
+  use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
+  -- Quickfix Plugin
+  use { 'kevinhwang91/nvim-bqf' }
+  -- Split/Window Management
+  use 'sindrets/winshift.nvim'
+  use 'mrjones2014/smart-splits.nvim'
+  -- File Manager Plugin
+  use { 'is0n/fm-nvim' }
+  -- Terminal Plugins
+  use { 'voldikss/vim-floaterm',
+    requires = {
+      'voldikss/fzf-floaterm',
+      'junegunn/fzf.vim',
+      'junegunn/fzf', run = ':call fzf#install()'
+    }
+  }
+  use 'akinsho/toggleterm.nvim'
+  use 'numToStr/FTerm.nvim'
+  -- Tree Viewer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require 'nvim-tree'.setup {} end
+  }
+  -- Git Plugins
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- Task Runner
+  use { 'skywind3000/asynctasks.vim', requires = 'skywind3000/asyncrun.vim' }
+  -- Task Runner
+  use { 'GustavoKatel/telescope-asynctasks.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'skywind3000/asynctasks.vim',
+      'skywind3000/asyncrun.vim',
+      'skywind3000/asyncrun.extra'
+    }
+  }
+  -- Neorg/Org Mode
+  use { 'nvim-neorg/neorg', requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-neorg/neorg-telescope',
+  }
+  }
+      -- Formatter
+      --use 'sbdchd/neoformat'
+      -- Language Server Protocol Providers
+      { { lsp_provider_plugins_file or "-- No LSP Providers Installed" } }
+  -- Language Server Protocol Providers(End)
+  -- Debug Adapter Protocol
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+      -- Debug Adapter Protocol(End)
+      -- Language Plugins
+      { { language_neovim_plugins_file or "-- No Language Plugins Installed" } }
+  -- Language Plugins(End)
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
