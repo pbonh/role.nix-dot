@@ -15,10 +15,10 @@
     path: "{{ nvim_packer_dir }}"
   register: packer_installed
 
-- name: Install Neovim Plugins(Packer)
-  changed_when: false
-  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
-  when: packer_installed.stat.exists
+    #- name: Install Neovim Plugins(Packer)
+    #  changed_when: false
+    #  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+    #  when: packer_installed.stat.exists
 
 - name: Setup Neovim Lua Config Directory
   file:
@@ -33,9 +33,9 @@
   with_filetree: '../templates/nvim/lua'
   when: item.state == 'file'
 
-- name: Install Neovim Plugins(Packer)
-  changed_when: false
-  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+    #- name: Install Neovim Plugins(Packer)
+    #  changed_when: false
+    #  shell: "{{ nix_bin }}/nix-shell --command \"zsh\" -p gcc && {{ nix_bin }}/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
 - name: Setup Neovim Filetype Directory
   file:
