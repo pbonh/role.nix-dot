@@ -38,7 +38,12 @@ return require('packer').startup(function(use)
   use { 'petertriho/nvim-scrollbar', requires = { 'kevinhwang91/nvim-hlslens' } }
   use "IndianBoy42/tree-sitter-just"
   -- LSP Plugins
-  Plug 'gfanto/fzf-lsp.nvim'
+  use { 'gfanto/fzf-lsp.nvim',
+    requires = {
+      'junegunn/fzf.vim',
+      'junegunn/fzf', run = ':call fzf#install()'
+    }
+  }
   --use { 'ray-x/navigator.lua', requires = {
   --  'nvim-treesitter/nvim-treesitter',
   --  'nvim-treesitter/nvim-treesitter-textobjects',
