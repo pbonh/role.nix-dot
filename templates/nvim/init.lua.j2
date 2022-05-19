@@ -1,21 +1,15 @@
 -- Set Python Path
 vim.g.python3_host_prog = '{{ nix_bin }}/nvim-python3'
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+-- Packer: Install Packer
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-vim.cmd [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]]
-
-local use = require('packer').use
-require('packer').startup(function()
+-- Packer: Install Plugins
+return require('packer').startup(function(use)
   -- Packer Plugin Manager
   use 'wbthomason/packer.nvim' -- Package manager
   -- Comments
@@ -144,6 +138,9 @@ require('packer').startup(function()
       -- Language Plugins
       { { language_neovim_plugins_file or "-- No Language Plugins Installed" } }
   -- Language Plugins(End)
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
 
 -- Set Shell
