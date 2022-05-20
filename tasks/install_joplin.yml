@@ -1,0 +1,6 @@
+---
+- name: Joplin | Set File Sync | command
+  command: "{{ joplin_exe }} config sync.target 2"
+
+- name: Joplin | Set File Sync Directory | command
+  command: "{{ joplin_exe }} config sync.2.path {{ nvim_neorg_dir }}"

@@ -74,3 +74,8 @@
   import_tasks: tasks/install_direnv.yml
   tags:
     - direnv
+
+- name: Install Joplin Config
+  import_tasks: tasks/install_joplin.yml
+  tags:
+    - joplin
