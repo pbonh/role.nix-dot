@@ -87,6 +87,8 @@ nnoremap("<leader>gb", "<Cmd>lua require('telescope.builtin').git_branches()<CR>
 nnoremap("<leader>gl", "<Cmd>lua require('telescope.builtin').git_commits()<CR>", "silent", "Git: Pick Commit")
 nnoremap("<leader>gc", "<Cmd>lua require('telescope.builtin').git_bcommits()<CR>", "silent", "Git: Pick Buffer Commit")
 nnoremap("<leader>gs", "<Cmd>lua require('telescope.builtin').git_stash()<CR>", "silent", "Git: Show Stash")
+nnoremap("<leader>gd", "<Cmd>DiffviewOpen<CR>", "silent", "Git: Show Diff")
+nnoremap("<leader>gh", "<Cmd>DiffviewFileHistory .<CR>", "silent", "Git: Show Changed File History")
 
 -- Extra Telescope Mappings
 nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")

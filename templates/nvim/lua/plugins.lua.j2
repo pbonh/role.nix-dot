@@ -28,8 +28,12 @@ return require('packer').startup(function(use)
   use 'sainnhe/gruvbox-material'
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
-  -- Add git related info in the signs columns and popups
+  -- Git Plugins
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use {'akinsho/git-conflict.nvim', config = function()
+    require('git-conflict').setup()
+  end}
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -108,8 +112,6 @@ return require('packer').startup(function(use)
     },
     config = function() require 'nvim-tree'.setup {} end
   }
-  -- Git Plugins
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   -- Task Runner
   use { 'skywind3000/asynctasks.vim', requires = 'skywind3000/asyncrun.vim' }
   -- Task Runner
@@ -123,7 +125,8 @@ return require('packer').startup(function(use)
       'skywind3000/asyncrun.extra'
     }
   }
-  -- Neorg/Org Mode
+  -- Notes/Neorg/Org Mode
+  use {"ellisonleao/glow.nvim", branch = 'main'}
   use { 'nvim-neorg/neorg', requires = {
     'nvim-lua/plenary.nvim',
     'nvim-neorg/neorg-telescope',
