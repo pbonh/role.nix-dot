@@ -1,4 +1,9 @@
 ---
+- name: Joplin | Copies Joplin Keybindings | template
+  template:
+    src: joplin/joplin-keymap.json.j2
+    dest: "{{ joplin_config_dir }}/joplin-keymap.json"
+
 - name: Joplin | Set File Sync | command
   changed_when: false
   command: "{{ joplin_exe }} config sync.target 2"
