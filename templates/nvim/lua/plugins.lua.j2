@@ -24,9 +24,10 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lualine/lualine.nvim', opt = true }, { 'kyazdani42/nvim-web-devicons', opt = true } }
   }
   use { 'TC72/telescope-tele-tabby.nvim', requires = 'nvim-telescope/telescope.nvim' }
+  use "b0o/incline.nvim"
   -- Theme
   use 'sainnhe/gruvbox-material'
-  -- Add indentation guides even on blank lines
+  -- Indent Plugins
   use 'lukas-reineke/indent-blankline.nvim'
   -- Git Plugins
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -34,9 +35,24 @@ return require('packer').startup(function(use)
   use {'akinsho/git-conflict.nvim', config = function()
     require('git-conflict').setup()
   end}
-  -- Highlight, edit, and navigate code using a fast incremental parsing library
+  -- Treesitter Plugins
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- Buffer Switching
+  use({
+    "ghillb/cybu.nvim",
+    branch = "main",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      local ok, cybu = pcall(require, "cybu")
+      if not ok then
+        return
+      end
+      cybu.setup()
+      vim.keymap.set("n", "[b", "<Plug>(CybuPrev)")
+      vim.keymap.set("n", "]b", "<Plug>(CybuNext)")
+    end,
+  })
   -- Better Highlighting
   use 'kevinhwang91/nvim-hlslens'
   use { 'petertriho/nvim-scrollbar', requires = { 'kevinhwang91/nvim-hlslens' } }
@@ -64,7 +80,7 @@ return require('packer').startup(function(use)
   -- Cursorline Plugin
   --use 'yamatsum/nvim-cursorline'
   -- Motion Plugins
-  use 'ggandor/lightspeed.nvim'
+  use 'ggandor/leap.nvim'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   -- Start Screen
@@ -75,6 +91,8 @@ return require('packer').startup(function(use)
       require "startup".setup()
     end
   }
+  -- Marks Management
+  use 'chentoast/marks.nvim'
   -- Project Management
   use 'windwp/nvim-projectconfig'
   use 'nvim-telescope/telescope-project.nvim'

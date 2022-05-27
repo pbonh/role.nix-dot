@@ -1,3 +1,5 @@
+vim.opt.laststatus = 3
+
 -- Set Statusline
 require('lualine').setup {
   options = { theme  = gruvbox },
@@ -27,3 +29,5 @@ vim.cmd[[
   set guioptions-=e " Use showtabline in gui vim
   set sessionoptions+=tabpages,globals " store tabpages and globals in session
 ]]
+
+require('incline').setup()
