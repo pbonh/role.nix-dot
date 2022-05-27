@@ -88,6 +88,7 @@ treesitter_parsers_file: "{{ '\"' + treesitter_parsers |join('\", \"') + '\"' }}
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
 neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
+extra_nvim_lua_settings_file: "{{ extra_nvim_lua_settings | join('\n') }}"
 extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 extra_lua_plugin_settings_file: "{{ extra_lua_plugin_settings | join('\n') }}"
 extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
