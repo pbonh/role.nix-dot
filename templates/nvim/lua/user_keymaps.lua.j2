@@ -152,3 +152,7 @@ nnoremap("<leader>S", "<Cmd>SymbolsOutline<CR>", "silent", "Symbol Outline: Togg
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
+-- Nvim-Dap-UI Mappings
+ nnoremap("<leader>dd", "<cmd>lua require("dapui").toggle()<CR>", "silent", "DAP-UI: Toggle Debugger")
+ nnoremap("<leader>do", "<cmd>lua require("dapui").open()<CR>", "silent", "DAP-UI: Open Debugger")
+ nnoremap("<leader>dc", "<cmd>lua require("dapui").close()<CR>", "silent", "DAP-UI: Close Debugger")
