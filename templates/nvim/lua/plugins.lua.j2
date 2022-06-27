@@ -35,6 +35,12 @@ return require('packer').startup(function(use)
   use {'akinsho/git-conflict.nvim', config = function()
     require('git-conflict').setup()
   end}
+  use { 'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('neogit').setup()
+    end,
+  }
   -- Treesitter Plugins
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = { 'nvim-treesitter/nvim-treesitter' } }
@@ -108,9 +114,14 @@ return require('packer').startup(function(use)
   }
   -- Keymap Plugins
   use { 'b0o/mapx.nvim', requires = { 'folke/which-key.nvim' } }
+  -- Hydra/Sub-Mode Plugin
+  use { 'anuvyklack/hydra.nvim',
+    requires = 'anuvyklack/keymap-layer.nvim' -- needed only for pink hydras
+  }
   -- Quickfix Plugin
   use { 'kevinhwang91/nvim-bqf' }
   -- Split/Window Management
+  use 'jlanzarotta/bufexplorer'
   use 'sindrets/winshift.nvim'
   use 'mrjones2014/smart-splits.nvim'
   -- File Manager Plugin
