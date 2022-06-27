@@ -1,7 +1,5 @@
 local Hydra = require('hydra')
-
-Hydra({
-   hint = [[
+local hint = [[
  ^^^^^^     Move     ^^^^^^   ^^    Size   ^^   ^^     Split
  ^^^^^^--------------^^^^^^   ^^-----------^^   ^^---------------
  ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^    ^   _<C-k>_   ^   _s_: horizontally
@@ -10,6 +8,8 @@ Hydra({
  focus^^^^^^   window^^^^^^   ^_=_: equalize    ^ ^
  ^ ^ ^ ^ ^ ^   ^ ^ ^ ^ ^ ^    ^^ ^          ^   _b_: choose buffer 
 ]]
+
+Hydra({
    name = 'WINDOWS',
    hint = hint,
    config = {
