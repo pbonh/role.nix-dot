@@ -23,10 +23,14 @@ Hydra({
    mode = 'n',
    body = '<C-w>',
    heads = {
-      { 'h', '<C-w>h' },
-      { 'j', '<C-w>j' },
-      { 'k', [[<cmd>try | wincmd k | catch /^Vim\%((\a\+)\)\=:E11:/ | close | endtry<CR>]] },
-      { 'l', '<C-w>l' },
+      -- { 'h', '<C-w>h' },
+      -- { 'j', '<C-w>j' },
+      -- { 'k', [[<cmd>try | wincmd k | catch /^Vim\%((\a\+)\)\=:E11:/ | close | endtry<CR>]] },
+      -- { 'l', '<C-w>l' },
+      { 'h', '<Cmd>lua require("smart-splits").move_cursor_left()<CR>' },
+      { 'j', '<Cmd>lua require("smart-splits").move_cursor_down()<CR>' },
+      { 'k', '<Cmd>lua require("smart-splits").move_cursor_up()<CR>' },
+      { 'l', '<Cmd>lua require("smart-splits").move_cursor_right()<CR>' },
 
       { 'H', '<Cmd>WinShift left<CR>' },
       { 'J', '<Cmd>WinShift down<CR>' },
@@ -36,10 +40,10 @@ Hydra({
       { 's', '<C-w>s' },
       { 'v', '<C-w>v' },
 
-      { '<C-h>', function() splits.resize_left(2)  end },
-      { '<C-j>', function() splits.resize_down(2)  end },
-      { '<C-k>', function() splits.resize_up(2)    end },
-      { '<C-l>', function() splits.resize_right(2) end },
+      { '<C-h>', '<Cmd>lua require("smart-splits").resize_left()<CR>' },
+      { '<C-j>', '<Cmd>lua require("smart-splits").resize_down()<CR>' },
+      { '<C-k>', '<Cmd>lua require("smart-splits").resize_up()<CR>' },
+      { '<C-l>', '<Cmd>lua require("smart-splits").resize_right()<CR>' },
       { '=', '<C-w>=', { desc = 'equalize'} },
 
       { 'b', '<Cmd>BufExplorer<CR>', { exit = true, desc = 'choose buffer' } },
