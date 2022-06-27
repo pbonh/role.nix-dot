@@ -44,7 +44,8 @@ Hydra({
       { 'b', '<Cmd>BufExplorer<CR>', { exit = true, desc = 'choose buffer' } },
       { 'q', [[<Cmd>try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry<CR>]],
                                                      { desc = 'close window' } },
-      { '<Esc>', nil,  { exit = true, desc = false }}
+      { '<Esc>', nil,  { exit = true, desc = false }},
+      { '<C-[>', nil,  { exit = true, desc = false }},
    }
 })
 
