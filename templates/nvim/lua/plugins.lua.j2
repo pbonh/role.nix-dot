@@ -192,6 +192,19 @@ return require('packer').startup(function(use)
   -- Language Plugins
   {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
   -- Language Plugins(End)
+  -- Testing Plugin
+  {% if {{ nvim_test_enable }} %}
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
+  {% else %}
+  -- No Testing Plugins Enabled
+  {% endif %}
   if packer_bootstrap then
     require('packer').sync()
   end
