@@ -80,6 +80,7 @@ lsp_providers_plugins: []
 lsp_providers_setup: []
 treesitter_parsers: []
 treesitter_extra_config: []
+refactoring_settings: []
 lsp_provider_file: "{{ '''' + lsp_providers |join(''', ''') + '''' }}"
 lsp_provider_plugins_file: "{{ lsp_providers_plugins | join('\n') }}"
 lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
@@ -87,6 +88,7 @@ lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
 treesitter_parsers_file: "{{ '\"' + treesitter_parsers |join('\", \"') + '\"' }}"
 treesitter_extra_config_file: "{{ treesitter_extra_config | join('\n') }}"
+refactoring_settings_file: "{{ refactoring_settings | join('\n') }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
 neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"

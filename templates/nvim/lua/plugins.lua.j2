@@ -165,8 +165,24 @@ return require('packer').startup(function(use)
     'nvim-neorg/neorg-telescope',
   }
   }
-  -- Formatter
+  -- Annotations/Refactoring/Formatting
   --use 'sbdchd/neoformat'
+  use {
+    "danymat/neogen",
+    config = function()
+        require('neogen').setup {}
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
+  }
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
   -- Language Server Protocol Providers
   {{ lsp_provider_plugins_file or "-- No LSP Providers Installed" }}
   -- Language Server Protocol Providers(End)
