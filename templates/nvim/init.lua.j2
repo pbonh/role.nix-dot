@@ -166,7 +166,7 @@ require("marks").setup{}
 -- Leap Plugin Settings
 require('leap').set_default_keymaps(true)
 
-{% if {{ nvim_test_enable }} %}
+{% if nvim_test_enable %}
 require('user_test')
 {% else %}
 -- No Testing Plugins Enabled

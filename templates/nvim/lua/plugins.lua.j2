@@ -193,7 +193,7 @@ return require('packer').startup(function(use)
   {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
   -- Language Plugins(End)
   -- Testing Plugin
-  {% if {{ nvim_test_enable }} %}
+  {% if nvim_test_enable %}
   use {
     "nvim-neotest/neotest",
     requires = {
