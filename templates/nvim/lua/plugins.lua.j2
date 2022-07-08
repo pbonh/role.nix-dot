@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   -- Selection UI
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'axkirillov/easypick.nvim', requires = 'nvim-telescope/telescope.nvim'}
   -- Status/Tab Line
   use {
     'nvim-lualine/lualine.nvim',
