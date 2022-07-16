@@ -82,6 +82,7 @@ treesitter_parsers: []
 treesitter_extra_config: []
 refactoring_settings: []
 telescope_picker_config: []
+nvim_completion_config: []
 lsp_provider_file: "{{ '''' + lsp_providers |join(''', ''') + '''' }}"
 lsp_provider_plugins_file: "{{ lsp_providers_plugins | join('\n') }}"
 lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
@@ -91,6 +92,7 @@ treesitter_parsers_file: "{{ '\"' + treesitter_parsers |join('\", \"') + '\"' }}
 treesitter_extra_config_file: "{{ treesitter_extra_config | join('\n') }}"
 refactoring_settings_file: "{{ refactoring_settings | join('\n') }}"
 telescope_picker_config_file: "{{ telescope_picker_config | join('\n') }}"
+nvim_completion_config_file: "{{ nvim_completion_config | join('\n') }}"
 ale_plugin_settings_file: "{{ ale_plugin_settings | join('\n') }}"
 neoformat_plugin_settings_file: "{{ neoformat_plugin_settings | join('\n') }}"
 dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
