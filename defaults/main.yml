@@ -72,6 +72,7 @@ extra_nvim_lua_settings: []
 extra_nvim_vimscript_settings: []
 extra_plugin_settings: []
 extra_lua_plugin_settings: []
+extra_nvim_language_mappings: []
 extra_bookmarks: []
 lsp_providers: []
 lsp_providers_luafile: "{{ \"'\" + lsp_providers | join(\"', '\") + \"'\" }}"
@@ -99,6 +100,7 @@ dap_plugin_settings_file: "{{ dap_plugin_settings | join('\n') }}"
 extra_nvim_lua_settings_file: "{{ extra_nvim_lua_settings | join('\n') }}"
 extra_plugin_settings_file: "{{ extra_plugin_settings | join('\n') }}"
 extra_lua_plugin_settings_file: "{{ extra_lua_plugin_settings | join('\n') }}"
+extra_nvim_language_mappings_file: "{{ extra_nvim_language_mappings | join('\n') }}"
 extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
 #extra_bookmarks_startify: "{{ extra_bookmarks | map('regex_replace', '^(.*)$', '\'\\1\', ') | list }}"
 #extra_bookmarks_startify: "{{ extra_bookmarks_quotes | join(', ') }}"
