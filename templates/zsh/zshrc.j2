@@ -207,6 +207,11 @@ alias fsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"
 alias gsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
 alias dsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
 alias skvi='f(){ x="$({{ nix_bin }}/sk --bind "ctrl-p:toggle-preview" --ansi --preview="{{ nix_bin }}/bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
+unalias mkcd 2> /dev/null
+mkcd () {
+  mkdir "$1"
+  cd "$1"
+}
 unalias cdg 2> /dev/null
 cdg() {
    local dest_dir=$(cdscuts_glob_echo | {{ nix_bin }}/fzf )
