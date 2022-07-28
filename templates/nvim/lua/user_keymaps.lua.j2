@@ -92,11 +92,15 @@ nnoremap("<leader>gd", "<Cmd>DiffviewOpen<CR>", "silent", "Git: Show Diff")
 nnoremap("<leader>gh", "<Cmd>DiffviewFileHistory .<CR>", "silent", "Git: Show Changed File History")
 
 -- Extra Telescope Mappings
-nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
-nnoremap("<leader>nf", "<cmd>Telescope neorg find_linkable<CR>", "silent", { ft = "norg" }, "Telescope: Find Neorg Links")
-nnoremap("<leader>n/", "<cmd>Telescope neorg search_headings<CR>", "silent", { ft = "norg" }, "Telescope: Search Neorg File Headings")
-nnoremap("<leader>ni", "<cmd>Telescope neorg insert_link<CR>", "silent", { ft = "norg" }, "Telescope: Insert Neorg Links")
-nnoremap("<leader>nl", "<cmd>Telescope neorg insert_file_link<CR>", "silent", { ft = "norg" }, "Telescope: Insert Neorg File Links")
+m.nname("<leader>t", "Telescope")
+nnoremap("<leader>td", "<cmd>Telescope dap commands<CR>", "silent", "Telescope: DAP Commands")
+nnoremap("<leader>tb", "<cmd>Telescope dap commands<CR>", "silent", "Telescope: DAP Breakpoints")
+nnoremap("<leader>tt", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
+m.nname("<leader>n", "Telescope Neorg")
+nnoremap("<leader>nf", "<cmd>Telescope neorg find_linkable<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Find Neorg Links")
+nnoremap("<leader>n/", "<cmd>Telescope neorg search_headings<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Search Neorg File Headings")
+nnoremap("<leader>ni", "<cmd>Telescope neorg insert_link<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Insert Neorg Links")
+nnoremap("<leader>nl", "<cmd>Telescope neorg insert_file_link<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Insert Neorg File Links")
 
 -- Diagnostic Mappings
 -- m.nname("<leader>e", "Diagnostic")
