@@ -198,6 +198,13 @@ return require('packer').startup(function(use)
         {"nvim-telescope/telescope.nvim"}
     }
   }
+  use {
+    "theHamsta/nvim-dap-virtual-text",
+    requires = {
+        {"mfussenegger/nvim-dap"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
   -- Debug Adapter Protocol(End)
   -- Language Plugins
   {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
