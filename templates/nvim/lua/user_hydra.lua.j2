@@ -115,11 +115,12 @@ Hydra({
       invoke_on_body = true,
       hint = {
          border = 'rounded',
-         offset = -1
-      }
+         position = 'middle',
+         offset = -1,
+      },
    },
-   mode = {'n', 't', 'x'},
-   body = '<C-w>',
+   mode = {'n', 't'},
+   body = {'<C-w>', '<leader>w'},
    heads = {
       { 'h', function() splits.move_cursor_left() end },
       { 'j', function() splits.move_cursor_down() end },
@@ -152,6 +153,7 @@ Hydra({
       { '<C-o>', '<C-w>o', { exit = true, desc = false } },
 
       -- { 'b', choose_buffer, { exit = true, desc = 'choose buffer' } },
+      { 'b',     cmd 'Telescope buffers', { exit = true, desc = 'choose buffer' } },
 
       { 'c',     pcmd('close', 'E444') },
       { 'q',     pcmd('close', 'E444'), { desc = 'close window' } },
