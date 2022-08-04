@@ -157,10 +157,10 @@ Hydra({
    mode = 'n',
    body = '<C-w>',
    heads = {
-      { 'h', function() require("smart-splits").move_cursor_left() end },
-      { 'j', function() require("smart-splits").move_cursor_down() end },
-      { 'k', function() require("smart-splits").move_cursor_up() end },
-      { 'l', function() require("smart-splits").move_cursor_right() end },
+      { 'h', function() splits.move_cursor_left() end },
+      { 'j', function() splits.move_cursor_down() end },
+      { 'k', function() splits.move_cursor_up() end },
+      { 'l', function() splits.move_cursor_right() end },
 
       { 'H', cmd 'WinShift left' },
       { 'J', cmd 'WinShift down' },

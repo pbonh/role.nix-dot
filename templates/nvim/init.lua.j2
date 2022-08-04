@@ -143,9 +143,6 @@ vim.g.glow_use_pager = true
 -- Main Keymaps
 require('user_keymaps')
 
--- WinShift
-require('user_window')
-
 -- User Language Plugin Settings
 require('user_languages')
 
@@ -157,6 +154,9 @@ require('user_sidebar')
 
 -- Marks Plugin
 require("marks").setup{}
+
+-- WinShift
+require('user_window')
 
 -- Leap Plugin Settings
 require('leap').set_default_keymaps(true)
