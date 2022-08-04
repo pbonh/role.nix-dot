@@ -33,7 +33,7 @@ vim.cmd [[hi FloatermNC guibg=gray]]
 --   \ }
 
 -- Toggleterm Config
-require("toggleterm").setup{
+require("toggleterm").setup({
   size = function(term)
     if term.direction == "horizontal" then
       return 25
@@ -62,7 +62,12 @@ require("toggleterm").setup{
       background = "Normal",
     }
   }
-}
+})
+
+require("vstask").setup({
+  -- use_harpoon = true, -- use harpoon to auto cache terminals
+  terminal = 'toggleterm',
+})
 
 -- FTerm Config
 require'FTerm'.setup({

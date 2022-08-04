@@ -162,6 +162,14 @@ return require('packer').startup(function(use)
     }
   }
   use { 'stevearc/overseer.nvim' }
+  use {
+    'EthanJWright/vs-tasks.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim'
+    }
+  }
   -- Notes/Neorg/Org Mode
   use {"ellisonleao/glow.nvim", branch = 'main'}
   use { 'nvim-neorg/neorg', requires = {
