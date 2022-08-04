@@ -93,8 +93,6 @@ nnoremap("<leader>gh", "<Cmd>DiffviewFileHistory .<CR>", "silent", "Git: Show Ch
 
 -- Extra Telescope Mappings
 -- m.nname("<leader>t", "Telescope")
--- nnoremap("<leader>td", "<cmd>Telescope dap commands<CR>", "silent", "Telescope: DAP Commands")
--- nnoremap("<leader>tb", "<cmd>Telescope dap commands<CR>", "silent", "Telescope: DAP Breakpoints")
 nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
 m.nname("<leader>n", "Telescope Neorg")
 nnoremap("<leader>nf", "<cmd>Telescope neorg find_linkable<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Find Neorg Links")
@@ -166,6 +164,8 @@ nnoremap("<leader>di", "<cmd>lua require'dap'.step_into()<CR>", "silent", "DAP: 
 nnoremap("<leader>do", "<cmd>lua require'dap'.step_out()<CR>", "silent", "DAP: Step Out")
 nnoremap("<leader>dr", "<cmd>lua require'dap'.repl.open()<CR>", "silent", "DAP: Open REPL")
 nnoremap("<leader>dd", "<cmd>lua require('dapui').toggle()<CR>", "silent", "DAP-UI: Toggle Debugger")
+nnoremap("<leader>dt", "<cmd>Telescope dap commands<CR>", "silent", "DAP: Telescope List DAP Commands")
+nnoremap("<leader>dl", "<cmd>Telescope dap list_breakpoints<CR>", "silent", "DAP: Telescope List DAP Breakpoints")
 -- nnoremap("<leader>do", "<cmd>lua require('dapui').open()<CR>", "silent", "DAP-UI: Open Debugger")
 -- nnoremap("<leader>dx", "<cmd>lua require('dapui').close()<CR>", "silent", "DAP-UI: Close Debugger")
 nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>", "silent", "DAP: Continue")
