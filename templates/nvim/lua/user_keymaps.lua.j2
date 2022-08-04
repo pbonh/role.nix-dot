@@ -3,8 +3,19 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Which-Key Config
+require("which-key").setup({
+  triggers_blacklist = {
+    n = { "<C-w>", "<C-g>" },
+    v = { "<C-w>", "<C-g>" },
+  },
+})
+
 -- Enable Mapx/Which-Key
-local m = require'mapx'.setup{ global = true, whichkey = true }
+local m = require('mapx').setup({
+  global = true,
+  whichkey = true
+})
 
 -- Enter Command Mode Mapping(Reassign Colon/Enter)
 nnoremap("<CR>", ":", "Enter Commands")
