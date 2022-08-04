@@ -154,7 +154,7 @@ Hydra({
          offset = -1
       }
    },
-   mode = 'n',
+   mode = {'n', 't', 'x'},
    body = '<C-w>',
    heads = {
       { 'h', function() splits.move_cursor_left() end },
