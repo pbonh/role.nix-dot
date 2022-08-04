@@ -140,9 +140,6 @@ vim.g.glow_use_pager = true
 -- Neoformat Settings
 -- require('user_neoformat')
 
--- Main Keymaps
-require('user_keymaps')
-
 -- User Language Plugin Settings
 require('user_languages')
 
@@ -155,11 +152,14 @@ require('user_sidebar')
 -- Marks Plugin
 require("marks").setup{}
 
+-- WinShift
+require('user_window')
+
 -- Hydra
 require('user_hydra')
 
--- WinShift
-require('user_window')
+-- Main Keymaps
+require('user_keymaps')
 
 -- Leap Plugin Settings
 require('leap').set_default_keymaps(true)
