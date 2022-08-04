@@ -139,9 +139,8 @@ return require('packer').startup(function(use)
       'junegunn/fzf', run = ':call fzf#install()'
     }
   }
-  use 'akinsho/toggleterm.nvim'
+  use {"akinsho/toggleterm.nvim", tag = 'v2.*'}
   use 'numToStr/FTerm.nvim'
-  use 'stevearc/overseer.nvim'
   -- Tree Viewer
   use {
     'kyazdani42/nvim-tree.lua',
@@ -152,7 +151,6 @@ return require('packer').startup(function(use)
   }
   -- Task Runner
   use { 'skywind3000/asynctasks.vim', requires = 'skywind3000/asyncrun.vim' }
-  -- Task Runner
   use { 'GustavoKatel/telescope-asynctasks.nvim',
     requires = {
       'nvim-lua/popup.nvim',
@@ -163,6 +161,7 @@ return require('packer').startup(function(use)
       'skywind3000/asyncrun.extra'
     }
   }
+  use { 'stevearc/overseer.nvim' }
   -- Notes/Neorg/Org Mode
   use {"ellisonleao/glow.nvim", branch = 'main'}
   use { 'nvim-neorg/neorg', requires = {
