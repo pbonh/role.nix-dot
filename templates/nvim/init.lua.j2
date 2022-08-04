@@ -119,13 +119,8 @@ require('startup_nvim')
 -- Project Settings
 require('user_project')
 
--- WinShift
-require('user_window')
-
 -- Task Settings
--- vim.g.asyncrun_open = 6
-vim.g.asynctasks_term_pos = 'floaterm_reuse'
-vim.g.asynctasks_term_reuse = 1
+require('user_tasks')
 
 -- Ranger/Rnvimr Settings
 -- require('user_rnvimr')
@@ -147,6 +142,9 @@ vim.g.glow_use_pager = true
 
 -- Main Keymaps
 require('user_keymaps')
+
+-- WinShift
+require('user_window')
 
 -- User Language Plugin Settings
 require('user_languages')
