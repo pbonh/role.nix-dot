@@ -106,6 +106,7 @@ nnoremap("<leader>gh", "<Cmd>DiffviewFileHistory .<CR>", "silent", "Git: Show Ch
 -- Extra Telescope Mappings
 -- m.nname("<leader>t", "Telescope")
 nnoremap("<leader>t", "<cmd>lua require('telescope').extensions.asynctasks.all()<CR>", "silent", "Telescope: Run Task")
+nnoremap("<leader>j", "<cmd>FloatermNew --autoclose=0 just --choose<CR>", "silent", "Floaterm: Choose Justfile Task")
 m.nname("<leader>n", "Telescope Neorg")
 nnoremap("<leader>nf", "<cmd>Telescope neorg find_linkable<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Find Neorg Links")
 nnoremap("<leader>n/", "<cmd>Telescope neorg search_headings<CR>", "silent", { ft = "norg" }, "Telescope Neorg: Search Neorg File Headings")
