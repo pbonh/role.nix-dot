@@ -1,5 +1,5 @@
 ---
-- name: Setup Helix Config Directory
+- name: Helix | Setup Helix Config Directory | template
   file:
     path: "{{ helix_config_dir }}"
     state: directory
