@@ -1,4 +1,10 @@
 ---
+- name: Joplin | Setup Joplin Config Directory | template
+  file:
+    path: "{{ joplin_config_dir }}"
+    state: directory
+    mode: '0755'
+
 - name: Joplin | Copies Joplin Keybindings | template
   template:
     src: joplin/joplin-keymap.json.j2
