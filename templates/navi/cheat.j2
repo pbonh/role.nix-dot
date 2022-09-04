@@ -42,6 +42,12 @@ nix-env -i {{ nix_buildenv_name }}
 # Change branch
 git checkout <branch>
 
+# Update Submodules
+git submodule update --recursive --remote
+
+# Synchronize Submodules
+git submodule sync --recursive
+
 $ branch: git branch | awk '{print $NF}'
 
 # Pull Latest
