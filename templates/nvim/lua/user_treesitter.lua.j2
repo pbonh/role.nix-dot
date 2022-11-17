@@ -21,6 +21,7 @@ parser_configs.norg_table = {
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 
     "bash",
+    "fennel",
     "json",
     "lua",
     "make",
@@ -30,6 +31,7 @@ require('nvim-treesitter.configs').setup {
     "norg_meta",
     "norg_table",
     "query",
+    "toml",
     "yaml",
     {{ treesitter_parsers_file or "-- No Extra Treesitter Parsers Installed" }}
   },
