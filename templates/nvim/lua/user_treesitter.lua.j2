@@ -1,14 +1,5 @@
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
-parser_configs.just = {
-  install_info = {
-    url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
-    files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
-  },
-  maintainers = { "@IndianBoy42" },
-}
-
 parser_configs.norg_meta = {
     install_info = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
@@ -24,6 +15,8 @@ parser_configs.norg_table = {
         branch = "main"
     },
 }
+
+{{ treesitter_parsers_custom_file or "-- No Custom Treesitter Parsers Installed" }}
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 

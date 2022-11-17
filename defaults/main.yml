@@ -80,16 +80,30 @@ lsp_providers_file: "{{ (lsp_providers_luafile != '') | ternary(lsp_providers_lu
 lsp_providers_plugins: []
 lsp_providers_setup: []
 treesitter_parsers: []
+treesitter_custom_parsers_default:
+  - just
+treesitter_custom_parsers: "{{ treesitter_custom_parsers_default }}"
+treesitter_parsers_all: "{{ treesitter_parsers + treesitter_custom_parsers }}"
 treesitter_extra_config: []
 refactoring_settings: []
 telescope_picker_config: []
 nvim_completion_config: []
+treesitter_custom_parsers_info:
+  - "parser_configs.just = {"
+  - "  install_info = {"
+  - "    url = \"https://github.com/IndianBoy42/tree-sitter-just\","
+  - "    files = { \"src/parser.c\", \"src/scanner.cc\" },"
+  - "    branch = \"main\","
+  - "  },"
+  - "  maintainers = { \"@IndianBoy42\" },"
+  - "}"
 lsp_provider_file: "{{ '''' + lsp_providers |join(''', ''') + '''' }}"
 lsp_provider_plugins_file: "{{ lsp_providers_plugins | join('\n') }}"
 lsp_provider_lspconfig_setup_file: "{{ lsp_providers_setup | join('\n') }}"
 lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }}"
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
-treesitter_parsers_file: "{{ '\"' + treesitter_parsers |join('\", \"') + '\"' }}"
+treesitter_parsers_file: "{{ '\"' + treesitter_parsers_all |join('\", \"') + '\"' }}"
+treesitter_parsers_custom_file: "{{ treesitter_custom_parsers_info | join('\n') }}"
 treesitter_extra_config_file: "{{ treesitter_extra_config | join('\n') }}"
 refactoring_settings_file: "{{ refactoring_settings | join('\n') }}"
 telescope_picker_config_file: "{{ telescope_picker_config | join('\n') }}"
