@@ -201,6 +201,7 @@ zellij_layouts:
 zellij_session_info: "{{ zellij_layouts.example.zellij_session }}"
 zellij_template_info: "{{ zellij_layouts.example.zellij_template }}"
 zellij_tab_info: "{{ zellij_layouts.example.zellij_tabs }}"
+zellij_kdl_config_file: "{{ zellij_config_dir }}/config.kdl"
 zellij_kdl_layouts:
   example:
     name: dev1

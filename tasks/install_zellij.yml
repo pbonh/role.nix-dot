@@ -10,6 +10,11 @@
     src: zellij/config.yaml.j2
     dest: "{{ zellij_config_file }}"
 
+- name: Zellij | Copies Zellij Config(KDL) | template
+  template:
+    src: zellij/config.kdl.j2
+    dest: "{{ zellij_kdl_config_file }}"
+
 - name: Setup Zellij Layout Directory
   file:
     path: "{{ zellij_layout_dir }}"
