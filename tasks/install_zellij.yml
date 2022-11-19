@@ -39,6 +39,15 @@
     dest: "{{ zellij_layout_dir }}/{{ item.value.name  | regex_replace('\\.j2$', '') }}.yaml"
   loop: "{{ zellij_layouts | dict2items }}"
 
+- name: Zellij | Copies Zellij User Layouts(KDL) | template
+  vars:
+    zellij_kdl_session_name: "{{ item.value.name }}"
+    zellij_kdl_layout_info: "{{ item.value.layout_info }}"
+  template:
+    src: zellij/layouts-template/layout.kdl.j2
+    dest: "{{ zellij_layout_dir }}/{{ item.value.name  | regex_replace('\\.j2$', '') }}.kdl"
+  loop: "{{ zellij_kdl_layouts | dict2items }}"
+
 - name: Zellij | Copies Zellij Default Themes | template
   template:
     src: '{{ item.src }}'
