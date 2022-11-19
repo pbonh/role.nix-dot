@@ -1,16 +1,4 @@
 // Zellij Session Layout: {{ zellij_kdl_session_name }}
-// layout {
-//     default_tab_template {
-//         pane size=1 borderless=true {
-//             plugin location="zellij:tab-bar"
-//         }
-//         children
-//         pane size=2 borderless=true {
-//             plugin location="zellij:status-bar"
-//         }
-//     }
-//     {{ zellij_kdl_layout_info | join('\n') }}
-// }
 layout {
     tab_template name="shell-in-dir" {
         pane size=1 borderless=true {
